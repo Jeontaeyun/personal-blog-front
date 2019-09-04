@@ -204,3 +204,5 @@ module.exports = ({config}) => {
   return config
 }
 ```
+
+이후 components파일과 pages파일을 생성해 프로젝트를 진행하면 된다. components는 자동적으로 @components라는 네임스페이스를 가지며 절대 경로를 사용할 수 있다.

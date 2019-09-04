@@ -5,9 +5,10 @@
         {
           "root": ["./"],
           "alias": {
-            "@components": ["./components"]
+            "@components": ["./components"],
+            "@public": ["./public"]
           },
-          "extensions": [ ".wasm", ".mjs", ".js", ".jsx", ".json", ".ts", ".tsx" ]
+          "extensions": [ ".wasm", ".mjs", ".js", ".jsx", ".json", ".ts", ".tsx", ".jpg", ".png" ]
         }
     ]],
 }

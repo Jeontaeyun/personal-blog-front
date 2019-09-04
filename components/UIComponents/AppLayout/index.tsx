@@ -1,53 +1,67 @@
 import * as React from "react";
 import styled from 'styled-components';
+import SideBottomButton from "../SideBottomButton";
+import ProfileImage from "../ProfileImage";
+import HeaderComponent from "../HeaderComponent";
+
+interface Props{
+  MainContents : any
+};
+
+const AppLayout: React.SFC<Props> = (props) => {
+  const {MainContents} = props;
+  return (
+    <>
+      <Header>
+        <HeaderComponent/>
+        <LayoutProfile size="200px"/>
+      </Header>
+      <Main>
+        {MainContents}
+      </Main>
+      <Footer>
+      w
+      </Footer>
+      <SideBottomButton/>
+    </>
+  );
+};
+
+AppLayout.defaultProps = {
+  MainContents: "Main",
+}
 
 const Header = styled.div`
+  position: relative;
   margin: 0;
   width: 100%;
   height: 400px;
-  background: black;
+  background: ${props=>props.theme.subColor};
 `;
 
 const Main = styled.div`
-  margin: 0;
+  margin-top: 8rem;
   width: 100%;
   height: 400px;
-  background: yellow;
+  background: white;
 `;
 
 const Footer = styled.div`
   margin: 0;
   width: 100%;
   height: 300px;
-  background: red;
+  background: ${props=>props.theme.subColor};
 `;
 
-interface Props{
-  HeaderContents : any,
-  MainContents : any,
-  FooterContents : any 
-};
-
-const AppLayout: React.SFC<Props> = ({HeaderContents, MainContents, FooterContents}) => {
-  return (
-    <>
-      <Header>
-        {HeaderContents}
-      </Header>
-      <Main>
-        {MainContents}
-      </Main>
-      <Footer>
-        {FooterContents}
-      </Footer>
-    </>
-  );
-};
-
-AppLayout.defaultProps = {
-  HeaderContents: "Header",
-  MainContents: "Main",
-  FooterContents: "Footer"
-}
+const LayoutProfile = styled(ProfileImage)`
+  position: absolute;
+  z-index: 100;
+  bottom: -100px;
+  left: 50%;
+  transform: translate(-50%);
+  &:hover{
+    cursor: pointer;
+  }
+`;
 
 export default AppLayout;

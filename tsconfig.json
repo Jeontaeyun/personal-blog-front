@@ -15,6 +15,9 @@
     "paths": {
       "@components/*": [
         "components/*"
+      ],
+      "@public/*": [
+        "public/*"
       ]
     }, 
     "skipLibCheck": true,

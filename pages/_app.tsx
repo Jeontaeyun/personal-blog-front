@@ -1,7 +1,15 @@
 import * as React from "react";
 import AppLayout from "@components/UIComponents/AppLayout";
 import {Container} from 'next/app'
-
+import {ThemeProvider} from 'styled-components';
+import theme from '../styles/theme';
+import { createGlobalStyle } from "styled-components";
+const GlobalStyles = createGlobalStyle`
+  body {
+    @import url("http://fonts.googleapis.com/earlyaccess/nanumgothic.css"); 
+     font-family: 'Nanum Gothic', sans-serif;
+  }
+`;
 interface Props {
     Component: React.FunctionComponent;
     pageProps: any;
@@ -9,10 +17,13 @@ interface Props {
 
 const Index: React.SFC<Props> = ({Component, pageProps}) => {
   return (
-    <Container style= {{margin:0}}>
-      <AppLayout HeaderContents="w" MainContents="f" FooterContents="c">
-        <Component {...pageProps}/>
-      </AppLayout>
+    <Container>
+    <ThemeProvider theme={theme}>
+    <React.Fragment>
+      <GlobalStyles />
+      <AppLayout MainContents={<Component {...pageProps}/>}/>
+      </React.Fragment>
+    </ThemeProvider>
     </Container>
   );
 };
