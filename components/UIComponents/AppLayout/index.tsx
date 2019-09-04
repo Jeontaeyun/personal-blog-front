@@ -40,10 +40,13 @@ const Header = styled.div`
 `;
 
 const Main = styled.div`
-  margin-top: 8rem;
-  width: 100%;
-  height: 400px;
+  margin: 8rem auto;
+  width: 70%;
+  padding: 1rem;
   background: white;
+  @media (max-width: 764px){
+    width: 90%;
+  }
 `;
 
 const Footer = styled.div`

@@ -1,14 +1,22 @@
 import * as React from "react";
 import styled from 'styled-components';
-import NavigatorBar from '@components/UIComponents/NavigationBar'
+import PostCardList from "@components/UIComponents/PostCardList";
 
+interface Props{
+  category?: string[];
+}
 
-const IndexPage: React.FunctionComponent = () => {
+const IndexPage: React.SFC<Props> = (props) => {
+  const {category} = props;
   return (
     <>
-      <NavigatorBar/>
+      {category.map(item=><PostCardList title={item}/>)}
     </>
   );
 };
+
+IndexPage.defaultProps={
+  category : ["프론트엔드", "백엔드", "디자이너"]
+}
 
 export default IndexPage;
