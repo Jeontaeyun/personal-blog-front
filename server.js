@@ -1,7 +1,3 @@
-/*
-Server.js는 Node.js 언어 기반 프레임워크인 Express 위에서 Next를 돌리기 위해
-두 프레임 워크를 연결해주는 파일입니다. 
-*/
 const express = require('express');
 const next = require('next');
 const morgan = require('morgan');
@@ -10,13 +6,13 @@ const expressSession = require('express-session');
 const dotenv = require('dotenv');
 const path = require('path');
 
-/*production이 아닐 때만 개발환경이다.*/
+
 const dev = process.env.NODE_ENV !== 'production';
 const prod = process.env.NODE_ENV === 'production';
 
 const app = next({dev});
 const handle = app.getRequestHandler();
-/*dotenv는 환경변수를 저장하는 환경입니다. 보안이 중요한 환경 변수 등을 따로 분리해 다음과 같이 호출할 수 있습니다.*/
+
 dotenv.config();
 
 app.prepare().then( ()=>{
