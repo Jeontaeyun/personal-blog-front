@@ -1,6 +1,7 @@
 import * as React from "react";
 import styled from 'styled-components';
 import PostCard from "../PostCard";
+import Button from "../Button";
 
 interface Props{
     title: string;
@@ -17,7 +18,7 @@ const PostCardList : React.SFC<Props> = (props) => {
             <CardListContainer>
                 {postList.map((item,idx) => <FlexCard key={idx}/>)}
             </CardListContainer>
-            <div style={{textAlign: "center"}}><PlusButton onClick={onClick}>더보기+</PlusButton></div>
+            <div style={{textAlign: "center"}}><Button>더보기+</Button></div>
         </Container>
     </>
     );
@@ -36,18 +37,7 @@ const FlexCard = styled(PostCard)`
 `;
 const Title = styled.p`
     font-size: 1.5rem;
-`;
-
-const PlusButton = styled.div`
-    display: inline-block;
-    text-align: center;
-    margin:2rem auto;
-    padding: 1rem;
-    background: linear-gradient(45deg, #e45d4c,#eead9e);
-    border-radius: 3rem;
-    font-weight: 700;
-    color: white;
-    cursor:pointer;
+    font-weight: 600;
 `;
 
 const CardListContainer = styled.div`

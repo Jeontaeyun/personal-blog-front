@@ -9,7 +9,7 @@ interface Props{
     postlist? : string[];
 };
 
-const PostCard : React.SFC<Props> = (props) => {
+const AboutCard : React.SFC<Props> = (props) => {
     const {title, description, date} = props;
     return (
     <> 
@@ -25,7 +25,7 @@ const PostCard : React.SFC<Props> = (props) => {
     );
 };
 
-PostCard.defaultProps = {
+AboutCard.defaultProps = {
     title: "최신포스트 제신포스트 제신포스트 제신포스트 제신포스트 제목",
     description: "이글은 최신 글입니다.이글은 최신 글이글은 최신 글입니다.이글은 최신 글이글은 최신 글입니다.이글은 최신 글이글은 최신 글입니다.이글은 최신 글이글은 최신 글입니다.이글은 최신 글이글은 최신 글입니다.이글은 최신 글이글은 최신 글입니다.이글은 최신 글이글은 최신 글입니다.이글은 최신 글입니다.이글은 최신 글입니다.이글은 최신 글입니다.이글은 최신 글입니다.이글은 최신 글입니다.이글은 최신 글입니다.이글은 최신 글입니다.이글은 최신 글입니다.이글은 최신 글입니다.",
     date: "2017년 8월 1일"
@@ -94,4 +94,4 @@ const Date = styled.div`
     font-size: 0.6rem;
 `
 
-export default PostCard;
+export default AboutCard;

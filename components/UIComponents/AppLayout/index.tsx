@@ -1,8 +1,10 @@
 import * as React from "react";
+import {useEffect,useState} from 'react';
 import styled from 'styled-components';
 import SideBottomButton from "../SideBottomButton";
 import ProfileImage from "../ProfileImage";
 import HeaderComponent from "../HeaderComponent";
+import FollowingNavigator from "../FollowingNavigator";
 
 interface Props{
   MainContents : any
@@ -10,19 +12,31 @@ interface Props{
 
 const AppLayout: React.SFC<Props> = (props) => {
   const {MainContents} = props;
+  const  [isFollowingNav, setIsFollowingNav] = useState(false);
+  useEffect(()=>{
+    window.onscroll = (e) => {
+      if (document.documentElement.scrollTop > 400) {
+        setIsFollowingNav(true);
+      }
+      else{
+        setIsFollowingNav(false);
+      }
+    };
+  }, []);
   return (
     <>
-      <Header>
-        <HeaderComponent/>
-        <LayoutProfile size="200px"/>
-      </Header>
-      <Main>
-        {MainContents}
-      </Main>
-      <Footer>
-      w
-      </Footer>
-      <SideBottomButton/>
+        {isFollowingNav&&<FollowingNavigator/>}
+        <Header>
+          <HeaderComponent/>
+          <LayoutProfile size="200px"/>
+        </Header>
+        <Main>
+          {MainContents}
+        </Main>
+        <Footer>
+        w
+        </Footer>
+        <SideBottomButton/>
     </>
   );
 };

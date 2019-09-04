@@ -8,6 +8,7 @@ const GlobalStyles = createGlobalStyle`
   body {
     @import url("http://fonts.googleapis.com/earlyaccess/nanumgothic.css"); 
      font-family: 'Nanum Gothic', sans-serif;
+     margin: 0;
   }
 `;
 interface Props {
