@@ -10,7 +10,7 @@ const IndexPage: React.SFC<Props> = (props) => {
   const {category} = props;
   return (
     <>
-      {category.map(item=><PostCardList title={item}/>)}
+      {category.map((item, idx)=><PostCardList title={item} key={idx}/>)}
     </>
   );
 };

@@ -9,7 +9,6 @@ interface Props{
 const PostPage: React.SFC<Props> = (props) => {
   return (
     <>
-    <p>wefwfwfewf</p><p>wefwfwfewf</p><p>wefwfwfewf</p><p>wefwfwfewf</p><p>wefwfwfewf</p><p>wefwfwfewf</p><p>wefwfwfewf</p><p>wefwfwfewf</p><p>wefwfwfewf</p><p>wefwfwfewf</p><p>wefwfwfewf</p><p>wefwfwfewf</p><p>wefwfwfewf</p><p>wefwfwfewf</p><p>wefwfwfewf</p><p>wefwfwfewf</p><p>wefwfwfewf</p><p>wefwfwfewf</p><p>wefwfwfewf</p><p>wefwfwfewf</p><p>wefwfwfewf</p><p>wefwfwfewf</p><p>wefwfwfewf</p><p>wefwfwfewf</p><p>wefwfwfewf</p><p>wefwfwfewf</p><p>wefwfwfewf</p><p>wefwfwfewf</p><p>wefwfwfewf</p><p>wefwfwfewf</p><p>wefwfwfewf</p><p>wefwfwfewf</p><p>wefwfwfewf</p><p>wefwfwfewf</p><p>wefwfwfewf</p><p>wefwfwfewf</p><p>wefwfwfewf</p><p>wefwfwfewf</p><p>wefwfwfewf</p><p>wefwfwfewf</p><p>wefwfwfewf</p><p>wefwfwfewf</p>
     </>
   );
 };
@@ -17,5 +16,13 @@ const PostPage: React.SFC<Props> = (props) => {
 PostPage.defaultProps={
 
 }
+
+const Contents = styled.div`
+    width: 70%;
+    margin: 0 auto;
+    @media (max-width:800px){
+        width:90%;
+    }
+`;
 
 export default PostPage;

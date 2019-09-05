@@ -9,6 +9,12 @@ const GlobalStyles = createGlobalStyle`
     @import url("http://fonts.googleapis.com/earlyaccess/nanumgothic.css"); 
      font-family: 'Nanum Gothic', sans-serif;
      margin: 0;
+     a {
+        text-decoration: none;
+      }
+      a:focus{
+        text-decoration: none;
+      }
   }
 `;
 interface Props {

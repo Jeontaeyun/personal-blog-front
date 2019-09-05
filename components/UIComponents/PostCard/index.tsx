@@ -6,7 +6,7 @@ interface Props{
     title?: string;
     description?: string;
     date?: string;
-    postlist? : string[];
+    img?: string;
 };
 
 const PostCard : React.SFC<Props> = (props) => {
@@ -53,7 +53,7 @@ const Card = styled.div`
 
 `;
 
-const CardImage = styled.div`
+const CardImage = styled.div<Props>`
     height: 200px;
     width:100%;
     background: url('/dummy.png');
@@ -62,7 +62,7 @@ const CardImage = styled.div`
     background-position: center center;
 `;
 
-const Description = styled.p`
+const Description = styled.div`
     margin: 0.8rem;
 `;
 
@@ -86,7 +86,7 @@ const Contents = styled.p`
     line-height: 1.2em;
     height: 3.6em;
 `;
-const Date = styled.div`
+const Date = styled.p`
     display: absolute;
     margin-bottom:0.3rem;
     right: 2rem;

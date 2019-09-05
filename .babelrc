@@ -10,5 +10,6 @@
           },
           "extensions": [ ".wasm", ".mjs", ".js", ".jsx", ".json", ".ts", ".tsx", ".jpg", ".png" ]
         }
-    ]],
-}
+    ]]
+    
+}    

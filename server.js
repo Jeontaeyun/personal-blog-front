@@ -36,16 +36,7 @@ app.prepare().then( ()=>{
     server.get('/post/:postId', (req, res) => {
         return app.render(req, res, '/post', { postId: req.params.postId });
       });
-
-    server.get('/hashtag/:tag', (req,res)=>{
-        /*Qeury를 설정해서 넘겨주어야 한다.*/
-        return app.render(req, res, '/hashtag',{tag: req.params.tag});
-    });
-    server.get('/user/:id', (req,res)=>{
-        /*Qeury를 설정해서 넘겨주어야 한다.*/
-        return app.render(req, res, '/user',{id: req.params.id});
-    });
-    
+      
     server.get('*', (req, res)=>{
         return handle(req, res);
     });

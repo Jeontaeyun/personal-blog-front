@@ -5,6 +5,7 @@ import SideBottomButton from "../SideBottomButton";
 import ProfileImage from "../ProfileImage";
 import HeaderComponent from "../HeaderComponent";
 import FollowingNavigator from "../FollowingNavigator";
+import FooterComponent from "../FooterComponent";
 
 interface Props{
   MainContents : any
@@ -34,9 +35,9 @@ const AppLayout: React.SFC<Props> = (props) => {
           {MainContents}
         </Main>
         <Footer>
-        w
+          <FooterComponent/>
         </Footer>
-        <SideBottomButton/>
+        {isFollowingNav&&<SideBottomButton/>}
     </>
   );
 };
@@ -55,15 +56,12 @@ const Header = styled.div`
 
 const Main = styled.div`
   margin: 8rem auto;
-  width: 70%;
-  padding: 1rem;
+  width: 100%;
   background: white;
-  @media (max-width: 764px){
-    width: 90%;
-  }
 `;
 
 const Footer = styled.div`
+  position: relative;
   margin: 0;
   width: 100%;
   height: 300px;

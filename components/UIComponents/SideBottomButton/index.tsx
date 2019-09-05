@@ -8,6 +8,7 @@ interface Props{
 
 const SideBottomButton: React.SFC<Props> = (props) => {
     const {onClick, img} = props;
+
     return (
     <>
       <BottomButton onClick={onClick}>
@@ -41,13 +42,17 @@ const BottomButton = styled.div`
   position: fixed;
   bottom: 2rem;
   right: 2rem;
-  width: 60px;
-  height: 60px;
-  border-radius: 100%;
+  width: 50px;
+  height: 50px;
+  border-radius: 20%;
   background: linear-gradient(45deg, #e45d4c,#eead9e);
   -webkit-box-shadow: 0px 0px 58px 0px rgba(148,148,148,1);
   -moz-box-shadow: 0px 0px 58px 0px rgba(148,148,148,1);
   box-shadow: 0px 0px 58px 0px rgba(148,148,148,1);
   cursor: pointer;
+  &:hover{
+    border-radius: 100%;
+    transition: border-radius 0.3s ease-in;
+  }
 `;
 export default SideBottomButton;

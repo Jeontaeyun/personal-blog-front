@@ -10,24 +10,30 @@ interface Props{
 };
 
 const AboutCard : React.SFC<Props> = (props) => {
-    const {title, description, date} = props;
+    const {title, description} = props;
     return (
     <> 
         <Card>
             <CardImage/>
-            <Description>
-                <Title>{title}</Title>
-                <Contents>{" "+description}</Contents>
-                <Date>{date}</Date><ProfileImage size={"30px"}/>
-            </Description>
+            <Pattern/>
+            <Title>{title}</Title>
+            <HalfBackground>
+            <Descriptoin>
+            {
+            /*How to create \n in React*/
+            description.split('\n').map( line => {
+                return (<span>{line}<br/></span>)
+            })}
+            </Descriptoin>
+            </HalfBackground>
         </Card>
     </>
     );
 };
 
 AboutCard.defaultProps = {
-    title: "최신포스트 제신포스트 제신포스트 제신포스트 제신포스트 제목",
-    description: "이글은 최신 글입니다.이글은 최신 글이글은 최신 글입니다.이글은 최신 글이글은 최신 글입니다.이글은 최신 글이글은 최신 글입니다.이글은 최신 글이글은 최신 글입니다.이글은 최신 글이글은 최신 글입니다.이글은 최신 글이글은 최신 글입니다.이글은 최신 글이글은 최신 글입니다.이글은 최신 글입니다.이글은 최신 글입니다.이글은 최신 글입니다.이글은 최신 글입니다.이글은 최신 글입니다.이글은 최신 글입니다.이글은 최신 글입니다.이글은 최신 글입니다.이글은 최신 글입니다.",
+    title: `Lorem, ipsum.`,
+    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti maxime repellendus impedit pariatur quaerat fugiat ut minima illo sint facilis consequatur earum excepturi est nisi veniam incidunt delectus consequuntur nobis exercitationem porro harum tempore, dolorum similique laboriosam. Voluptatem, consectetur ducimus. Dolorem, tempore. Ad, illum obcaecati. Tenetur quos, natus voluptatibus ea sed aliquam cupiditate dolorum optio nemo veniam. Distinctio unde est ullam fuga exercitationem. Enim, saepe? Fugit molestias, placeat tempora obcaecati necessitatibus maiores nostrum. Asperiores nihil reiciendis iure obcaecati quos, molestiae doloremque magni? Unde adipisci sint sapiente doloremque atque fuga, quis maiores, officiis architecto beatae ipsum nostrum expedita alias repellat ratione nemo quisquam cupiditate ullam mollitia molestias, placeat minima! Rem molestiae enim eum aspernatur repellendus ratione impedit incidunt provident, perspiciatis possimus vero nesciunt dignissimos iure dolores quae neque veritatis, molestias laborum soluta perferendis. Dignissimos iste, doloremque natus quidem incidunt impedit porro similique eaque nostrum pariatur commodi ratione. Esse odit, enim dicta commodi corporis quasi! Hic in cumque minus consequatur nostrum? Qui quia recusandae repellat ratione minima ad, quas excepturi adipisci libero doloribus, cum incidunt exercitationem quam quibusdam. Tempore unde officia tempora aliquid vero ea quibusdam dolorum odio iure hic! Modi, vitae. Iusto pariatur quos aliquam sed soluta necessitatibus, placeat assumenda ad.`,
     date: "2017년 8월 1일"
 }
 
@@ -35,63 +41,110 @@ AboutCard.defaultProps = {
 
 const Card = styled.div`
     position: relative;
-    width: 300px;
-    height: 350px;
-    background: white;
+    width: 70%;
+    height: 400px;
+    margin: 0 auto;
+    background: ${props => props.theme.mainColor};
     margin-bottom: 3rem;
-    -webkit-box-shadow: -2px 10px 73px -39px rgba(0,0,0,0.75);
-    -moz-box-shadow: -2px 10px 73px -39px rgba(0,0,0,0.75);
-    box-shadow: -2px 10px 73px -39px rgba(0,0,0,0.75);
+    border-radius: 0.2rem;
+    -webkit-box-shadow: -2px 10px 73px -30px rgba(0,0,0,1);
+    -moz-box-shadow: -2px 10px 73px -30px rgba(0,0,0,1);
+    box-shadow: -2px 10px 73px -30px rgba(0,0,0,1);
     cursor: pointer;
     &:hover{
-        transform: scale(1.05);
+        transform: rotate(-1deg);
         transition: transform 500ms cubic-bezier(0.465, 0.183, 0.153, 0.946);
     }
     @media (max-width: 800px){
-        width: 100%;
+        width: 98%;
     }
-
+`;
+const Title = styled.div`
+    position:absolute;
+    font-weight: 700;
+    font-size: 2rem;
+    right: 0.5em;
+    top: 45%;
+    color: ${props => props.theme.subColor};
+    @media (max-width:800px){
+        font-size: 1.5rem;
+        top:47%;
+    }
 `;
 
-const CardImage = styled.div`
-    height: 200px;
-    width:100%;
-    background: url('/dummy.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-`;
-
-const Description = styled.p`
-    margin: 0.8rem;
-`;
-
-const Title = styled.p`
-    width:100%;
-    font-size: 1.2rem;
-    text-overflow:ellipsis;
-    white-space:nowrap;
-    word-wrap:normal;
-    overflow:hidden;
-`;
-
-const Contents = styled.p`
-    width:100%;
+const Descriptoin = styled.div`
+    position:absolute;
+    letter-spacing: 0.1rem;
+    text-align: right;
+    width: 40%;
+    height:80%;
+    overflow: hidden;
     font-size: 0.8rem;
+    right: 1.5em;
+    top: 2rem;
+    color: ${props => props.theme.mainColor};
+    z-index: 120;
     text-overflow:ellipsis;
     overflow:hidden;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     word-wrap:break-word; 
     line-height: 1.2em;
-    height: 3.6em;
+    height: 4.6em;
+    @media (max-width:800px){
+        font-size: 0.7rem;
+        top: 1.3rem;
+        -webkit-line-clamp: 6;
+        -webkit-box-orient: vertical;
+        word-wrap:break-word; 
+        line-height: 1.2em;
+        height: 7em;
+    }
 `;
-const Date = styled.div`
-    display: absolute;
-    margin-bottom:0.3rem;
-    right: 2rem;
-    width: 100%;
-    font-size: 0.6rem;
+
+const Pattern = styled.div`
+    position: absolute;
+    top: -0.1rem;
+    right: 1rem;
+    width: 20px;
+    height: 30px;
+    border-radius: 0.2rem 0 1rem 1rem;
+    background: ${props => props.theme.pointColor};
+    -webkit-box-shadow: 1px 1px 4px 0px rgba(0,0,0,0.3);
+    -moz-box-shadow: 1px 1px 4px 0px rgba(0,0,0,0.3);
+    box-shadow: 1px 1px 4px 0px rgba(0,0,0,0.3);
 `
+
+const CardImage = styled.div`
+    position: absolute;
+    z-index: 100;
+    bottom: 0;
+    top:50%;
+    transform: translateY(-50%);
+    height: 90%;
+    width:300px;
+    left: 2%;
+    background: url('/dummy.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    -webkit-box-shadow: -2px 10px 73px -39px rgba(0,0,0,1);
+    -moz-box-shadow: -2px 10px 73px -39px rgba(0,0,0,1);
+    box-shadow: -2px 10px 73px -39px rgba(0,0,0,1);
+    @media(max-width:800px){
+        width: 250px;
+    }
+    @media(max-width:600px){
+        width: 50%;
+    }
+`;
+
+const HalfBackground = styled.div`
+    position: absolute;
+    bottom: 0;
+    width:100%;
+    height: 40%;
+    background: ${props => props.theme.pointColor};
+`;
 
 export default AboutCard;

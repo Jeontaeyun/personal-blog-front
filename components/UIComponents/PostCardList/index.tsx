@@ -6,7 +6,7 @@ import Button from "../Button";
 interface Props{
     title: string;
     onClick?(): void;
-    postList?: any[]; 
+    postList?: { "title" :string , "description" : string , "date": string }[];
 };
 
 const PostCardList : React.SFC<Props> = (props) => {
@@ -16,7 +16,7 @@ const PostCardList : React.SFC<Props> = (props) => {
         <Container>
             <Title>{title}</Title>
             <CardListContainer>
-                {postList.map((item,idx) => <FlexCard key={idx}/>)}
+                {postList.map((item,idx) => <FlexCard title={item.title} description={item.description} date={item.date} key={idx}/>)}
             </CardListContainer>
             <div style={{textAlign: "center"}}><Button>더보기+</Button></div>
         </Container>
@@ -26,17 +26,22 @@ const PostCardList : React.SFC<Props> = (props) => {
 
 PostCardList.defaultProps = {
     title: "카테고리",
-    postList: [1,2,3]
+    postList: [{title: "백엔드", description: "본문의 내용입니다.", date:"2017년 01월 02일"},{title: "백엔드", description: "본문의 내용입니다.", date:"2017년 01월 02일"},{title: "백엔드", description: "본문의 내용입니다.", date:"2017년 01월 02일"}]
 }
 
 const Container = styled.div`
-    margin: 6rem 0;
+    margin: 6rem auto;
+    width: 70%;
+    @media (max-width: 800px){
+        width: 90%;
+    }
 `;
 const FlexCard = styled(PostCard)`
     flex:1;
 `;
-const Title = styled.p`
+const Title = styled.div`
     font-size: 1.5rem;
+    margin-bottom: 2rem;
     font-weight: 600;
 `;
 

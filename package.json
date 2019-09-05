@@ -7,8 +7,9 @@
     "dev": "nodemon",
     "build": "BUNDLE_ANALYZE=both next build",
     "start": "NODE_ENV=production next start",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "storybook": "start-storybook -s ./public  -p 6006",
+    "build-storybook": "build-storybook -s ./public",
+    "deploy-storybook": "storybook-to-ghpages"
   },
   "author": "\"Stark\"",
   "license": "MIT",
@@ -17,7 +18,6 @@
     "@types/react": "^16.9.2",
     "@types/react-dom": "^16.9.0",
     "@types/react-router-dom": "^4.3.5",
-    "@types/styled-components": "^4.1.18",
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-typescript": "^1.1.1",
     "cookie-parser": "^1.4.4",
@@ -36,10 +36,12 @@
   "devDependencies": {
     "@babel/core": "^7.5.5",
     "@storybook/addon-actions": "^5.1.11",
+    "@storybook/addon-backgrounds": "^5.1.11",
     "@storybook/addon-info": "^5.1.11",
     "@storybook/addon-links": "^5.1.11",
     "@storybook/addons": "^5.1.11",
     "@storybook/react": "^5.1.11",
+    "@storybook/storybook-deployer": "^2.8.1",
     "@types/node": "^12.7.4",
     "@types/storybook__react": "^4.0.2",
     "awesome-typescript-loader": "^5.2.1",
@@ -51,5 +53,10 @@
     "nodemon": "^1.19.2",
     "react-docgen-typescript-loader": "^3.2.0",
     "typescript": "^3.6.2"
+  },
+  "storybook-deployer": {
+    "gitUsername": "Jeontaeyun",
+    "gitEmail": "jow1813@naver.com",
+    "commitMessage": "Deploy Storybook to GitHub Pages"
   }
 }

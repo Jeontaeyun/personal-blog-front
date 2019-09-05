@@ -2,3 +2,4 @@
 .next
 .env
 node_modules
+*.stories.tsx
