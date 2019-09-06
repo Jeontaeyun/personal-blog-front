@@ -31,7 +31,7 @@ PostCardList.defaultProps = {
 
 const Container = styled.div`
     margin: 6rem auto;
-    width: 70%;
+    width: 60%;
     @media (max-width: 800px){
         width: 90%;
     }

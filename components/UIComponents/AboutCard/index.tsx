@@ -44,7 +44,7 @@ const Card = styled.div`
     width: 70%;
     height: 400px;
     margin: 0 auto;
-    background: ${props => props.theme.mainColor};
+    background: ${props => props.theme.backgroundColor};
     margin-bottom: 3rem;
     border-radius: 0.2rem;
     -webkit-box-shadow: -2px 10px 73px -30px rgba(0,0,0,1);
@@ -56,7 +56,7 @@ const Card = styled.div`
         transition: transform 500ms cubic-bezier(0.465, 0.183, 0.153, 0.946);
     }
     @media (max-width: 800px){
-        width: 98%;
+        width: 90%;
     }
 `;
 const Title = styled.div`
@@ -82,7 +82,7 @@ const Descriptoin = styled.div`
     font-size: 0.8rem;
     right: 1.5em;
     top: 2rem;
-    color: ${props => props.theme.mainColor};
+    color: ${props => props.theme.subColor};
     z-index: 120;
     text-overflow:ellipsis;
     overflow:hidden;
@@ -109,7 +109,7 @@ const Pattern = styled.div`
     width: 20px;
     height: 30px;
     border-radius: 0.2rem 0 1rem 1rem;
-    background: ${props => props.theme.pointColor};
+    background: ${props => props.theme.mainColor};
     -webkit-box-shadow: 1px 1px 4px 0px rgba(0,0,0,0.3);
     -moz-box-shadow: 1px 1px 4px 0px rgba(0,0,0,0.3);
     box-shadow: 1px 1px 4px 0px rgba(0,0,0,0.3);
@@ -144,7 +144,7 @@ const HalfBackground = styled.div`
     bottom: 0;
     width:100%;
     height: 40%;
-    background: ${props => props.theme.pointColor};
+    background: ${props => props.theme.mainColor};
 `;
 
 export default AboutCard;

@@ -1,4 +1,5 @@
 import * as React from "react";
+import {useEffect, useState} from "react";
 import styled from 'styled-components';
 
 interface Props{
@@ -8,12 +9,27 @@ interface Props{
 
 const SideBottomButton: React.SFC<Props> = (props) => {
     const {onClick, img} = props;
-
+    const  [isView, setIsView] = useState<boolean>(false);
+    const scrollEvent = () => {
+      const crossBrowsingTop = document.documentElement.scrollTop || document.body.scrollTop;
+      if ( crossBrowsingTop> 400) {
+        setIsView(true);
+      }
+      else{
+        setIsView(false);
+      }
+  };
+  useEffect(()=>{
+    window.addEventListener('scroll', scrollEvent);
+    window.addEventListener('load', scrollEvent);
+  }, []);
     return (
     <>
+    {isView &&
       <BottomButton onClick={onClick}>
         <Icon img={img}/>
       </BottomButton>
+    }
     </>
     );
 };

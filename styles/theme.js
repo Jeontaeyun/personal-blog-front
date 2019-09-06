@@ -1,9 +1,9 @@
 const theme = {
-    mainColor: 'white',
-    subColor: '#311E18',
-    pointColor: '#e45d4c',
-    gradetionFirst: "#e45d4c",
-    gradetionSecond: "#eead9e"
-  }
-  
-  export default theme;
+	backgroundColor: 'white',
+	achromaticColor: '#efefef',
+	mainColor: '#e45d4c',
+	subColor: '#311E18',
+	smallPoint: '800px'
+};
+
+export default theme;

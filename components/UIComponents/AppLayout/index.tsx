@@ -14,15 +14,14 @@ interface Props{
 const AppLayout: React.SFC<Props> = (props) => {
   const {MainContents} = props;
   const  [isFollowingNav, setIsFollowingNav] = useState(false);
+  const scrollEvent = (e) => {
+    const crossBrowsingTop = document.documentElement.scrollTop || document.body.scrollTop;
+    if (crossBrowsingTop > 400) setIsFollowingNav(true);
+    else setIsFollowingNav(false);
+  };
   useEffect(()=>{
-    window.onscroll = (e) => {
-      if (document.documentElement.scrollTop > 400) {
-        setIsFollowingNav(true);
-      }
-      else{
-        setIsFollowingNav(false);
-      }
-    };
+    window.addEventListener('scroll', scrollEvent);
+    window.addEventListener('load', scrollEvent);
   }, []);
   return (
     <>
@@ -37,7 +36,7 @@ const AppLayout: React.SFC<Props> = (props) => {
         <Footer>
           <FooterComponent/>
         </Footer>
-        {isFollowingNav&&<SideBottomButton/>}
+        <SideBottomButton/>
     </>
   );
 };
@@ -51,7 +50,7 @@ const Header = styled.div`
   margin: 0;
   width: 100%;
   height: 400px;
-  background: ${props=>props.theme.subColor};
+  background: ${props=>props.theme.backgroundColor};
 `;
 
 const Main = styled.div`
@@ -62,10 +61,9 @@ const Main = styled.div`
 
 const Footer = styled.div`
   position: relative;
-  margin: 0;
   width: 100%;
-  height: 300px;
-  background: ${props=>props.theme.subColor};
+  padding: 1rem;
+  background: ${props=>props.theme.mainColor};
 `;
 
 const LayoutProfile = styled(ProfileImage)`

@@ -1,5 +1,6 @@
 import * as React from "react";
 import styled from 'styled-components';
+import PostContent from "@components/UIComponents/PostContent";
 
 
 interface Props{
@@ -9,6 +10,7 @@ interface Props{
 const PostPage: React.SFC<Props> = (props) => {
   return (
     <>
+      <PostContent/>
     </>
   );
 };

@@ -11,10 +11,6 @@ const FooterComponent: React.SFC<Props> = (props) => {
 
   return (
     <>
-      <InlineProfileImage size="150px"/>
-      <FooterList/>
-      <FooterList/>
-      <FooterList/>
       <Copyright>Copyright © JeonTaeyun. All rights reserved.</Copyright>
     </>
   );
@@ -25,17 +21,8 @@ FooterComponent.defaultProps={
 }
 
 const Copyright = styled.div`
-  position : absolute;
-  bottom : 1rem;
-  left : 1rem;
+  font-size: 0.5rem;
   color : white;
-`;
-
-const InlineProfileImage = styled(ProfileImage)`
-  display: inline-block;
-  vertical-align: top;
-  margin-left: 3rem;
-  margin-top: 3rem;
 `;
 
 export default FooterComponent;
