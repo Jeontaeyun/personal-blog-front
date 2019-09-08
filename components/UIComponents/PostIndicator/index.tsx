@@ -47,11 +47,11 @@ const IndicatorList: React.FunctionComponent<ListProps> = (props)=> {
             {nodeName === "H1" ? 
             <IndicatorListP point={isSelected} 
                             onClick={moveTitleAction(offsetTop)}>
-            {textContent}
+            <a>{textContent}</a>
             </IndicatorListP> :
             <IndicatorListP point={isSelected} 
                             onClick={moveTitleAction(offsetTop)} style={{paddingLeft:"1.5rem"}}>
-            {textContent}
+            <a>{textContent}</a>
             </IndicatorListP>}
         </>
     );
@@ -126,6 +126,7 @@ const PostIndicatorContainer = styled.div`
 `;
 
 const IndicatorListP = styled.div`
+    position: relative;
     font-size: 0.5rem;
     padding-top:0.2rem;
     overflow-wrap: break-word;
@@ -142,6 +143,16 @@ const IndicatorListP = styled.div`
     @media(max-width: 900px){
         font-size: 0.3rem
     }
+    ${props => props.point && `& > a::before{
+        content: "";
+        display:block;
+        width: 1px;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        border-left: 1px solid ${props.theme.mainColor};
+    }`}
 `;
 
 export default PostIndicator;
