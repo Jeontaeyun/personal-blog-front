@@ -22,6 +22,7 @@ FooterComponent.defaultProps={
 
 const Copyright = styled.div`
   font-size: 0.5rem;
+  padding-left: 1rem;
   color : white;
 `;
 

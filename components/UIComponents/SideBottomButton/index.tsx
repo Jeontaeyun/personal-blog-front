@@ -5,10 +5,11 @@ import styled from 'styled-components';
 interface Props{
   onClick?() : void;
   img? : string;
+  size? : string;
 };
 
 const SideBottomButton: React.SFC<Props> = (props) => {
-    const {onClick, img} = props;
+    const {onClick, img, size} = props;
     const  [isView, setIsView] = useState<boolean>(false);
     const scrollEvent = () => {
       const crossBrowsingTop = document.documentElement.scrollTop || document.body.scrollTop;
@@ -26,7 +27,7 @@ const SideBottomButton: React.SFC<Props> = (props) => {
     return (
     <>
     {isView &&
-      <BottomButton onClick={onClick}>
+      <BottomButton onClick={onClick} size={size}>
         <Icon img={img}/>
       </BottomButton>
     }
@@ -39,7 +40,8 @@ SideBottomButton.defaultProps = {
     //scroll Event
     window.scrollTo({top: 0, behavior: 'smooth'});
   },
-  img : '/sidebarIcon.svg'
+  img : '/sidebarIcon.svg',
+  size: "50px"
 }
 
 const Icon = styled.div<Props>`
@@ -58,8 +60,8 @@ const BottomButton = styled.div`
   position: fixed;
   bottom: 2rem;
   right: 2rem;
-  width: 50px;
-  height: 50px;
+  width: ${props=>props.size};
+  height: ${props=>props.size};
   border-radius: 20%;
   background: linear-gradient(45deg, #e45d4c,#eead9e);
   -webkit-box-shadow: 0px 0px 58px 0px rgba(148,148,148,1);

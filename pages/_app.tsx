@@ -22,7 +22,12 @@ interface Props {
     pageProps: any;
 }
 
-const Index: React.SFC<Props> = ({Component, pageProps}) => {
+interface StatelessPage<P = {}> extends React.SFC<P> {
+  getInitialProps?: (ctx: any) => Promise<P>
+}
+
+
+const App : StatelessPage<any> = ({Component, pageProps}) => {
   return (
     <Container>
     <ThemeProvider theme={theme}>
@@ -35,4 +40,13 @@ const Index: React.SFC<Props> = ({Component, pageProps}) => {
   );
 };
 
-export default Index;
+App.getInitialProps = async (context) => {
+  const {ctx, Component} = context;
+  let pageProps = {};
+  if(Component.getInitialProps){
+      pageProps = await Component.getInitialProps(ctx);
+  }
+  return {pageProps};
+};
+
+export default App;

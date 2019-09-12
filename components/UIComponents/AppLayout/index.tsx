@@ -6,6 +6,7 @@ import ProfileImage from "../ProfileImage";
 import HeaderComponent from "../HeaderComponent";
 import FollowingNavigator from "../FollowingNavigator";
 import FooterComponent from "../FooterComponent";
+import Progressbar from "../Progressbar";
 
 interface Props{
   MainContents : any
@@ -21,11 +22,11 @@ const AppLayout: React.SFC<Props> = (props) => {
   };
   useEffect(()=>{
     window.addEventListener('scroll', scrollEvent);
-    window.addEventListener('load', scrollEvent);
   }, []);
   return (
     <>
         {isFollowingNav&&<FollowingNavigator/>}
+        <Progressbar/>
         <Header>
           <HeaderComponent/>
           <LayoutProfile size="200px"/>
@@ -36,7 +37,7 @@ const AppLayout: React.SFC<Props> = (props) => {
         <Footer>
           <FooterComponent/>
         </Footer>
-        <SideBottomButton/>
+        <SideBottomButton size="40px"/>
     </>
   );
 };
@@ -62,7 +63,8 @@ const Main = styled.div`
 const Footer = styled.div`
   position: relative;
   width: 100%;
-  padding: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   background: ${props=>props.theme.mainColor};
 `;
 
