@@ -10,7 +10,7 @@ interface Props{
 };
 
 const PostCardList : React.SFC<Props> = (props) => {
-    const {title, postList, onClick} = props;
+    const {title, postList} = props;
     return (
         <>
         <Container>
@@ -31,7 +31,7 @@ PostCardList.defaultProps = {
 
 const Container = styled.div`
     margin: 6rem auto;
-    width: 60%;
+    width: 100%;
     @media (max-width: 800px){
         width: 90%;
     }

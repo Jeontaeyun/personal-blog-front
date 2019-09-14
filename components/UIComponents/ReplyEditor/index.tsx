@@ -7,26 +7,24 @@ interface Props{
     
 }
 
-const Reply: React.SFC<Props> = (props) => {
+const ReplyEditor: React.SFC<Props> = (props) => {
     const [reply, setReply] = useState<string>("댓글을 입력해주세요");
-    const [height, setHeight] = useState<number>(30);
+    const [height, setHeight] = useState<number>(60);
     const textRef = useRef<HTMLInputElement>(null);
     const onChangeReply = useCallback((e)=>{
+        const scrollHeight : number = textRef.current.scrollHeight;
         setReply(e.target.value);
+        if(scrollHeight > 120) setHeight(scrollHeight);
     },[height, textRef]);
-    const onKeyDownReply = useCallback((e) => {
-        //setHeight(textRef.current.scrollHeight);
-        console.log(textRef.current.scrollHeight);
-    },[]);
     const onFocusReply = useCallback((e) => {
         if(reply === "댓글을 입력해주세요"){
-            setHeight(50);
+            setHeight(100);
             setReply("");
         }
     },[reply]);
     const onBlurReply = useCallback((e) => {
         if(reply === "") {
-            setHeight(30);
+            setHeight(60);
             setReply("댓글을 입력해주세요");
         }
     },[reply]);
@@ -34,31 +32,32 @@ const Reply: React.SFC<Props> = (props) => {
         <>
             <ReplyContainer>
                 <Title>00개 댓글</Title>
-                <TextArea
-                            ref = {textRef}
-                            row = "4"
+                <TextArea   ref = {textRef}
+                            rows = "4"
                             value={reply} 
                             height={height} 
                             onChange={onChangeReply} 
-                            onKeyDown={onKeyDownReply}
                             onFocus={onFocusReply}
                             onBlur={onBlurReply}>
                             {reply}
                 </TextArea>
-                <Button>댓글 작성</Button>
+                <RightAlign>
+                    <Button disabled={!!!reply}>
+                        댓글 작성
+                    </Button>
+                </RightAlign>
             </ReplyContainer>
         </>
   );
 };
 
-Reply.defaultProps={
-    color: "#e45d4c"
+ReplyEditor.defaultProps={
 }
 
 const ReplyContainer = styled.div`
     width: 98%;
     position: relative;
-    margin: 2rem auto;
+    margin: 3rem auto;
 `;
 
 const Title = styled.div`
@@ -67,8 +66,14 @@ const Title = styled.div`
     margin-bottom: 2rem;
 `;
 
+const RightAlign = styled.div`
+    position: absolute;
+    right: 0;
+    font-size: 0.8rem;
+`;
 const TextArea = styled.textarea`
     width: 100%;
+    box-sizing: border-box;
     height:${props=>props.height+"px"};
     border: 1px solid ${props=>props.theme.achromaticColor};
     border-radius: 1px;
@@ -83,4 +88,4 @@ const TextArea = styled.textarea`
     }
 `;
 
-export default Reply;
+export default ReplyEditor;

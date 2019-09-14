@@ -3,20 +3,8 @@ import AppLayout from "@components/UIComponents/AppLayout";
 import {Container} from 'next/app'
 import {ThemeProvider} from 'styled-components';
 import theme from '../styles/theme';
-import { createGlobalStyle } from "styled-components";
-const GlobalStyles = createGlobalStyle`
-  body {
-    @import url("http://fonts.googleapis.com/earlyaccess/nanumgothic.css"); 
-     font-family: 'Nanum Gothic', sans-serif;
-     margin: 0;
-     a {
-        text-decoration: none;
-      }
-      a:focus{
-        text-decoration: none;
-      }
-  }
-`;
+import GlobalStyles from '../styles/globalStyle';
+
 interface Props {
     Component: React.FunctionComponent;
     pageProps: any;

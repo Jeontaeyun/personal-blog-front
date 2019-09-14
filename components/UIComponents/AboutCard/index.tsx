@@ -47,9 +47,6 @@ const Card = styled.div`
     background: ${props => props.theme.backgroundColor};
     margin-bottom: 3rem;
     border-radius: 0.2rem;
-    -webkit-box-shadow: -2px 10px 73px -30px rgba(0,0,0,1);
-    -moz-box-shadow: -2px 10px 73px -30px rgba(0,0,0,1);
-    box-shadow: -2px 10px 73px -30px rgba(0,0,0,1);
     cursor: pointer;
     &:hover{
         transform: rotate(-1deg);
@@ -110,9 +107,7 @@ const Pattern = styled.div`
     height: 30px;
     border-radius: 0.2rem 0 1rem 1rem;
     background: ${props => props.theme.mainColor};
-    -webkit-box-shadow: 1px 1px 4px 0px rgba(0,0,0,0.3);
-    -moz-box-shadow: 1px 1px 4px 0px rgba(0,0,0,0.3);
-    box-shadow: 1px 1px 4px 0px rgba(0,0,0,0.3);
+
 `
 
 const CardImage = styled.div`
@@ -128,10 +123,8 @@ const CardImage = styled.div`
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
-    -webkit-box-shadow: -2px 10px 73px -39px rgba(0,0,0,1);
-    -moz-box-shadow: -2px 10px 73px -39px rgba(0,0,0,1);
-    box-shadow: -2px 10px 73px -39px rgba(0,0,0,1);
-    @media(max-width:800px){
+
+    @media(max-width:${props=>props.theme.smallColor}){
         width: 250px;
     }
     @media(max-width:600px){
