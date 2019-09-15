@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from 'styled-components';
 import PostCard from "../PostCard";
-import Button from "../Button";
+import Button from "../../CommonComponents/Button";
 
 interface Props{
     title: string;

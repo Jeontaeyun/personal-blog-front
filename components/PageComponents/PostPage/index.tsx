@@ -1,5 +1,5 @@
 import * as React from "react";
-import PostContent from "@components/UIComponents/PostContent";
+import PostContent from "@components/UIComponents/PostComponents/PostContent";
 
 
 

@@ -1,5 +1,5 @@
 import * as React from "react";
-import AppLayout from "@components/UIComponents/AppLayout";
+import AppLayout from "@components/UIComponents/CommonComponents/AppLayout";
 import {Container} from 'next/app'
 import {ThemeProvider} from 'styled-components';
 import theme from '../styles/theme';

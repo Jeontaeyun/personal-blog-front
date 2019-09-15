@@ -1,7 +1,7 @@
 import * as React from "react";
 import {useEffect, useState, useCallback} from "react";
 import styled from 'styled-components';
-import ProfileImage from "../ProfileImage";
+import ProfileImage from "../../CommonComponents/ProfileImage";
 
 interface Props{
   onClick?() : void;

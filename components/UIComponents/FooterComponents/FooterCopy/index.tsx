@@ -1,13 +1,11 @@
 import * as React from "react";
 import styled from 'styled-components';
-import ProfileImage from "../ProfileImage";
-import FooterList from "../FooterList";
 
 interface Props{
 
 }
 
-const FooterComponent: React.SFC<Props> = (props) => {
+const FooterCopy: React.SFC<Props> = (props) => {
 
   return (
     <>
@@ -16,7 +14,7 @@ const FooterComponent: React.SFC<Props> = (props) => {
   );
 };
 
-FooterComponent.defaultProps={
+FooterCopy.defaultProps={
 
 }
 
@@ -26,4 +24,4 @@ const Copyright = styled.div`
   color : white;
 `;
 
-export default FooterComponent;
+export default FooterCopy;

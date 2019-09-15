@@ -1,11 +1,11 @@
 import * as React from "react";
 import {useEffect,useState} from 'react';
 import styled from 'styled-components';
-import SideBottomButton from "../SideBottomButton";
+import SideBottomButton from "../../PostComponents/SideBottomButton";
 import ProfileImage from "../ProfileImage";
-import HeaderComponent from "../HeaderComponent";
-import FollowingNavigator from "../FollowingNavigator";
-import FooterComponent from "../FooterComponent";
+import HeaderComponent from "../../HeaderComponent";
+import FollowingNavigator from "../../FollowingNavigator";
+import FooterCopy from "../../FooterComponents/FooterCopy";
 import Progressbar from "../Progressbar";
 
 interface Props{
@@ -35,7 +35,7 @@ const AppLayout: React.SFC<Props> = (props) => {
           {MainContents}
         </Main>
         <Footer>
-          <FooterComponent/>
+          <FooterCopy/>
         </Footer>
         <SideBottomButton size="40px"/>
     </>

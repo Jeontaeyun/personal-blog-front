@@ -1,7 +1,7 @@
 import * as React from "react";
 import {useState, useCallback,useRef} from "react";
 import styled from 'styled-components';
-import Button from "../Button";
+import Button from "../../CommonComponents/Button";
 
 interface Props{
     

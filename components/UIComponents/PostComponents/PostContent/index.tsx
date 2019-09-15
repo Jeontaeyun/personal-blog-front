@@ -4,7 +4,7 @@ import PostIndicator from "../PostIndicator";
 import LeftSideButton from "../LeftSideButton";
 import ReplyEditor from "../ReplyEditor";
 import ReplyBox from "../ReplyBox";
-import PostCardList from "../PostCardList";
+import PostCardList from "../../MainComponent/PostCardList";
 
 interface Props{
     post?: {

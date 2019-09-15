@@ -21,23 +21,17 @@ const IndicatorList: React.FunctionComponent<ListProps> = (props)=> {
         // For Cross Browsing It's Important cuz Safari find body srcoll and firsfox and chrome detect documentElement
         const crossBrowsingSroolTop = document.documentElement.scrollTop || document.body.scrollTop;
         if(crossBrowsingSroolTop >= offsetTop){
-            if(offsetTopNext && crossBrowsingSroolTop < offsetTopNext){
-                setIsSelected(true);
-            }else if(!offsetTopNext){
-                setIsSelected(true);
-            }
-            else{
-                setIsSelected(false);
-            }
+            if(offsetTopNext && crossBrowsingSroolTop < offsetTopNext) setIsSelected(true);
+            else if(!offsetTopNext) setIsSelected(true);
+            else setIsSelected(false);
         }
-        else{
-            setIsSelected(false);
-        }
+        else setIsSelected(false);
     };
 
     useEffect(() => {
         window.addEventListener('scroll',scrollEvent);
     }, []);
+    
     const moveTitleAction = useCallback((point)=>(e)=>{
         return window.scrollTo({top: point , behavior: 'smooth'});
     },[]);
@@ -82,7 +76,7 @@ const PostIndicator : React.SFC<Props> = (props) => {
         <>
         {isView &&
             <Container>
-                <Title>Content</Title>
+                <Title>카탈로그</Title>
                 <PostIndicatorContainer>
                     {titleList.map((item,idx) => 
                         (<IndicatorList key={idx} 

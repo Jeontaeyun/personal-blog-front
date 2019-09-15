@@ -1,26 +1,28 @@
 import * as React from "react";
 import {useState, useCallback} from "react";
 import styled from 'styled-components';
-import ProfileImage from "../ProfileImage";
+import ProfileImage from "../../CommonComponents/ProfileImage";
+import ReReply from "../ReReplyBox";
 
 interface Props{
     name? : string;
     description?: string;
     date?: string;
-
+    isMe? : boolean;
 }
 
 const ReplyBox: React.SFC<Props> = (props) => {
-    const {description, name, date} = props;
+    const {description, name, date, isMe} = props;
     const [edit,setEdit] = useState<string>("");
     const onClickEdit = useCallback(e=>{
-        setEdit(description);
-    },[description]);
+        if(edit === "" ) setEdit(description);
+        else setEdit("");
+    },[description, edit]);
     const onClickDelete = useCallback(e=>{
 
     },[]);
     const onChangeEdit = useCallback(e=>{
-        setEdit(e.target.value);
+        if(edit === "") setEdit(e.target.value);
     },[]);
     return (
         <>
@@ -30,15 +32,25 @@ const ReplyBox: React.SFC<Props> = (props) => {
                     <Title>{name}</Title>
                     <Date>{date}</Date>
                 </TitleContainer>
-                {!!!edit ?<Description>{description}</Description> :
-                <TextArea   rows = "4"
-                            value={edit}
-                            onChange={onChangeEdit}>
-                            {edit}
-                </TextArea>}
+                {
+                !!!edit ? 
+                <>
+                    <Description>{description}</Description>
+                    <ReReply/>
+                </>
+                :
+                    <TextArea   rows = "4"
+                                value={edit}
+                                onChange={onChangeEdit}>
+                                {edit}
+                    </TextArea>
+                }
                 <ButtonContainer>
-                    <Button onClick={onClickEdit}>수정</Button>
-                    <Button onClick={onClickDelete}>삭제</Button>
+                    {isMe &&
+                    <>
+                        <Button onClick={onClickEdit}>수정</Button>
+                        <Button onClick={onClickDelete}>삭제</Button>
+                    </>}
                 </ButtonContainer>
             </ReplyBoxContainer>
         </>
@@ -48,7 +60,8 @@ const ReplyBox: React.SFC<Props> = (props) => {
 ReplyBox.defaultProps={
     name: "아이디",
     description: "댓글이 있는 부분입니다. 댓글을 입력할 수 있습니다.",
-    date: "2017년 07월 11일"
+    date: "2017년 07월 11일",
+    isMe: false
 }
 
 const ReplyBoxContainer = styled.div`

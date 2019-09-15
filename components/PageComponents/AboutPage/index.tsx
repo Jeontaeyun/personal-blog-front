@@ -1,5 +1,5 @@
 import * as React from "react";
-import AboutCard from "@components/UIComponents/AboutCard";
+import AboutCard from "@components/UIComponents/CommonComponents/AboutCard";
 
 interface Props{
   
