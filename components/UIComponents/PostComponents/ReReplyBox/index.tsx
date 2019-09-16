@@ -23,7 +23,9 @@ const ReReply : React.SFC<Props> = () => {
                                       height = {100}>
                                         {reReply}
                             </TextArea>
-                            <ReplyButtonContainer><Button onClick={onClickReply}>댓글 작성</Button></ReplyButtonContainer>
+                            <ReplyButtonContainer>
+                                <Button onClick={onClickReply}>댓글 작성</Button>
+                            </ReplyButtonContainer>
                         </>;
     return(
         <>

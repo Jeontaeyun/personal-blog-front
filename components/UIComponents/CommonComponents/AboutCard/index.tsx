@@ -17,13 +17,12 @@ const AboutCard : React.SFC<Props> = (props) => {
             <Pattern/>
             <Title>{title}</Title>
             <HalfBackground>
-            <Descriptoin>
-            {
-            /*How to create \n in React*/
-            description.split('\n').map( line => {
-                return (<span>{line}<br/></span>)
-            })}
-            </Descriptoin>
+                <Descriptoin>
+                {/*How to create \n in React*/
+                description.split('\n').map( line => {
+                    return (<span>{line}<br/></span>)
+                })}
+                </Descriptoin>
             </HalfBackground>
         </Card>
     </>

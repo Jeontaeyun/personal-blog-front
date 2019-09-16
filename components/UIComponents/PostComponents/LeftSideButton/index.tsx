@@ -15,12 +15,8 @@ const LeftSideButton: React.SFC<Props> = (props) => {
     const  [isView, setIsView] = useState<boolean>(false);
     const scrollEvent = () => {
       const crossBrowsingTop = document.documentElement.scrollTop || document.body.scrollTop;
-      if ( crossBrowsingTop > 400) {
-        setIsView(true);
-      }
-      else{
-        setIsView(false);
-      }
+      if ( crossBrowsingTop > 400) setIsView(true);
+      else setIsView(false);
   };
   useEffect(()=>{
     window.addEventListener('scroll', scrollEvent);
@@ -30,14 +26,14 @@ const LeftSideButton: React.SFC<Props> = (props) => {
     <>
     {isView &&
         <Container position ={position}>
-        <SideProfile size="120px"/>
-        <Title>{title}</Title>
-        <Description>{description}</Description>
-        <IconContainer>
-          <Icon src="/git.svg"><a></a></Icon>
-          <Icon src="/instagram.svg"><a></a></Icon>
-          <Icon src="/instagram.svg"><a></a></Icon>
-          </IconContainer>
+          <SideProfile size="120px"/>
+          <Title>{title}</Title>
+          <Description>{description}</Description>
+            <IconContainer>
+              <Icon src="/git.svg"><a></a></Icon>
+              <Icon src="/instagram.svg"><a></a></Icon>
+              <Icon src="/instagram.svg"><a></a></Icon>
+            </IconContainer>
       </Container>
     }
     </>
@@ -51,7 +47,8 @@ LeftSideButton.defaultProps = {
   },
   position: {top: "7rem", left:"2rem"},
   title: "타이틀",
-  description: "설명을 기술하는 부분입니부분입니다.설명을 기술하는 부분입니다.설명을 기술하는 부분입니다.설명을 기술하는 부분입니다."
+  description: `설명을 기술하는 부분입니부분입니다.설명을 기술하는 부분입니다.
+                설명을 기술하는 부분입니다.설명을 기술하는 부분입니다.`
 
 }
 
