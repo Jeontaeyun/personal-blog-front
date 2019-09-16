@@ -11,7 +11,10 @@ const Button : React.SFC<Props> = (props) => {
     const {children, onClick, disabled} = props;
     return (
     <>
-        <PlusButton onClick={onClick} disabled={disabled}>{children}</PlusButton>
+        <PlusButton onClick={onClick} 
+                    disabled={disabled}>
+                    {children}
+        </PlusButton>
     </>
     );
 };
@@ -27,7 +30,9 @@ const PlusButton = styled.div<Props>`
     text-align: center;
     margin:2rem auto;
     padding: 0.8rem 1rem;
-    background: ${props => props.disabled? props.theme.achromaticColor : `linear-gradient(45deg, #e45d4c,#eead9e)`};
+    background: ${props => props.disabled? 
+        props.theme.achromaticColor : 
+        `linear-gradient(45deg, #e45d4c,#eead9e)`};
     border-radius: 1.5rem;
     font-weight: 700;
     color: white;

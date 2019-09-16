@@ -6,7 +6,9 @@ import Button from "../../CommonComponents/Button";
 interface Props{
     title: string;
     onClick?(): void;
-    postList?: { "title" :string , "description" : string , "date": string }[];
+    postList?: Array<{  "title"        : string, 
+                        "description"  : string, 
+                        "date"         : string }>;
 };
 
 const PostCardList : React.SFC<Props> = (props) => {
@@ -16,9 +18,15 @@ const PostCardList : React.SFC<Props> = (props) => {
         <Container>
             <Title>{title}</Title>
             <CardListContainer>
-                {postList.map((item,idx) => <FlexCard title={item.title} description={item.description} date={item.date} key={idx}/>)}
+                {postList.map((item,idx) => 
+                    <FlexCard title={item.title} 
+                              description={item.description} 
+                              date={item.date} 
+                              key={idx}/>)}
             </CardListContainer>
-            <div style={{textAlign: "center"}}><Button>더보기+</Button></div>
+            <div style={{textAlign: "center"}}>
+                <Button>더보기+</Button>
+            </div>
         </Container>
     </>
     );
@@ -26,7 +34,15 @@ const PostCardList : React.SFC<Props> = (props) => {
 
 PostCardList.defaultProps = {
     title: "카테고리",
-    postList: [{title: "백엔드", description: "본문의 내용입니다.", date:"2017년 01월 02일"},{title: "백엔드", description: "본문의 내용입니다.", date:"2017년 01월 02일"},{title: "백엔드", description: "본문의 내용입니다.", date:"2017년 01월 02일"}]
+    postList: [{title: "백엔드", 
+                description: "본문의 내용입니다.", 
+                date:"2017년 01월 02일"},
+                {title: "백엔드", 
+                description: "본문의 내용입니다.", 
+                date:"2017년 01월 02일"},
+                {title: "백엔드", 
+                description: "본문의 내용입니다.", 
+                date:"2017년 01월 02일"}]
 }
 
 const Container = styled.div`

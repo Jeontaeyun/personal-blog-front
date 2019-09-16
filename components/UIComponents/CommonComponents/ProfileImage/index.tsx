@@ -1,10 +1,5 @@
 import * as React from "react";
 import styled from 'styled-components';
-
-
-
-
-
 interface Props{
     size : string,
     onClick?() : void
@@ -13,9 +8,9 @@ interface Props{
 const ProfileImage : React.SFC<Props> = (props) => {
     const {onClick} = props;
     return (
-    <>
-            <Profile onClick={onClick} {...props}/>
-    </>
+      <>
+        <Profile onClick={onClick} {...props}/>
+      </>
     );
 };
 

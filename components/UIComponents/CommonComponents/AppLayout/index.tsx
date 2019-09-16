@@ -1,6 +1,6 @@
 import * as React from "react";
 import {useEffect,useState} from 'react';
-import styled from 'styled-components';
+import styled, {keyframes} from 'styled-components';
 import SideBottomButton from "../../PostComponents/SideBottomButton";
 import ProfileImage from "../ProfileImage";
 import HeaderComponent from "../../HeaderComponent";
@@ -26,6 +26,7 @@ const AppLayout: React.SFC<Props> = (props) => {
   return (
     <>
         {isFollowingNav&&<FollowingNavigator/>}
+        <Following>{"▼"}</Following>
         <Progressbar/>
         <Header>
           <HeaderComponent/>
@@ -60,10 +61,33 @@ const Main = styled.div`
   background: white;
 `;
 
+const boxFade = keyframes`
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`
+
+const Following = styled.div`
+  position:absolute;
+  color: white;
+  z-index:120;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: ${boxFade} 1s 0s infinite cubic-bezier(0.25, 0.85, 0.55, 0.75) alternate;
+`;
+
 const Footer = styled.div`
   position: relative;
   width: 100%;
   padding-top: 1rem;
+  font-weight: 700;
   padding-bottom: 1rem;
   background: ${props=>props.theme.mainColor};
 `;

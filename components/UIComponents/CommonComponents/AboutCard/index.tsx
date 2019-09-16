@@ -32,7 +32,30 @@ const AboutCard : React.SFC<Props> = (props) => {
 
 AboutCard.defaultProps = {
     title: `Lorem, ipsum.`,
-    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti maxime repellendus impedit pariatur quaerat fugiat ut minima illo sint facilis consequatur earum excepturi est nisi veniam incidunt delectus consequuntur nobis exercitationem porro harum tempore, dolorum similique laboriosam. Voluptatem, consectetur ducimus. Dolorem, tempore. Ad, illum obcaecati. Tenetur quos, natus voluptatibus ea sed aliquam cupiditate dolorum optio nemo veniam. Distinctio unde est ullam fuga exercitationem. Enim, saepe? Fugit molestias, placeat tempora obcaecati necessitatibus maiores nostrum. Asperiores nihil reiciendis iure obcaecati quos, molestiae doloremque magni? Unde adipisci sint sapiente doloremque atque fuga, quis maiores, officiis architecto beatae ipsum nostrum expedita alias repellat ratione nemo quisquam cupiditate ullam mollitia molestias, placeat minima! Rem molestiae enim eum aspernatur repellendus ratione impedit incidunt provident, perspiciatis possimus vero nesciunt dignissimos iure dolores quae neque veritatis, molestias laborum soluta perferendis. Dignissimos iste, doloremque natus quidem incidunt impedit porro similique eaque nostrum pariatur commodi ratione. Esse odit, enim dicta commodi corporis quasi! Hic in cumque minus consequatur nostrum? Qui quia recusandae repellat ratione minima ad, quas excepturi adipisci libero doloribus, cum incidunt exercitationem quam quibusdam. Tempore unde officia tempora aliquid vero ea quibusdam dolorum odio iure hic! Modi, vitae. Iusto pariatur quos aliquam sed soluta necessitatibus, placeat assumenda ad.`,
+    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                  Corrupti maxime repellendus impedit pariatur quaerat fugiat 
+                  ut minima illo sint facilis consequatur earum excepturi est 
+                  nisi veniam incidunt delectus consequuntur nobis exercitatio
+                  nem porro harum tempore, dolorum similique laboriosam. Voluptatem,
+                  consectetur ducimus. Dolorem, tempore. Ad, illum obcaecati. Tenetu
+                  r quos, natus voluptatibus ea sed aliquam cupiditate dolorum optio 
+                  nemo veniam. Distinctio unde est ullam fuga exercitationem. Enim, 
+                  saepe? Fugit molestias, placeat tempora obcaecati necessitatibus 
+                  maiores nostrum. Asperiores nihil reiciendis iure obcaecati quos, 
+                  molestiae doloremque magni? Unde adipisci sint sapiente doloremque 
+                  atque fuga, quis maiores, officiis architecto beatae ipsum nostrum 
+                  expedita alias repellat ratione nemo quisquam cupiditate ullam molli
+                  tia molestias, placeat minima! Rem molestiae enim eum aspernatur r
+                  epellendus ratione impedit incidunt provident, perspiciatis possimus v
+                  esciunt dignissimos iure dolores quae neque veritatis, molestias laborum 
+                  soluta perferendis. Dignissimos iste, doloremque natus quidem incidunt 
+                  impedit porro similique eaque nostrum pariatur commodi ratione. Esse odit,
+                  dicta commodi corporis quasi! Hic in cumque minus consequatur nostrum? 
+                  Qui quia recusandae repellat ratione minima ad, quas excepturi adipisci
+                  libero doloribus, cum incidunt exercitationem quam quibusdam. Tempore 
+                  unde officia tempora aliquid vero ea quibusdam dolorum odio 
+                  iure hic! Modi, vitae. Iusto pariatur quos aliquam sed solut
+                  a necessitatibus, placeat assumenda ad.`,
     date: "2017년 8월 1일"
 }
 

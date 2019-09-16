@@ -9,8 +9,11 @@ interface Props {
 const ReReply : React.SFC<Props> = () => {
     const [view, isView] = useState<boolean>(false);
     const [reReply, setReReply] = useState<string>("");
-    const onClickReReply = useCallback(e=>{
+    const onClickReView = useCallback(e=>{
         isView(!view)
+    },[view]);
+    const onClickReply = useCallback(e=>{
+        isView(false);
     },[view]);
     const onChangeReReply = useCallback(e=>{
         setReReply(e.target.value)
@@ -20,11 +23,11 @@ const ReReply : React.SFC<Props> = () => {
                                       height = {100}>
                                         {reReply}
                             </TextArea>
-                            <ReplyButtonContainer><Button>댓글 작성</Button></ReplyButtonContainer>
+                            <ReplyButtonContainer><Button onClick={onClickReply}>댓글 작성</Button></ReplyButtonContainer>
                         </>;
     return(
         <>
-            <ReReplyContainer onClick={onClickReReply}>
+            <ReReplyContainer onClick={onClickReView}>
                 <Button>+</Button>
                 <Reply>답글 달기</Reply>
             </ReReplyContainer>

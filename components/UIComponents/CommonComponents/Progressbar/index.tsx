@@ -23,10 +23,11 @@ const Progressbar: React.SFC<Props> = (props) => {
     });
     return (
         <>
-        { !!progress && <ProgressbarContainer>
-            <Progress progress = {progress} color={color}/>
-        </ProgressbarContainer>
-    }
+            { !!progress && 
+                <ProgressbarContainer>
+                    <Progress progress = {progress} color={color}/>
+                </ProgressbarContainer>
+            }
         </>
   );
 };

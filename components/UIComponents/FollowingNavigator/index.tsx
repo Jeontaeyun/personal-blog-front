@@ -11,13 +11,25 @@ const FollowingNavigator: React.SFC<Props> = (props) => {
      <Container>
       <MenuContainer>
           <Logo/>
-          <Link href="/"><a><Menu><p>Home</p></Menu></a></Link>
-          <Link href="/about"><a><Menu><p>About</p></Menu></a></Link>
-          <Link href="/Archives"><a><Menu><p>Archives</p></Menu></a></Link>
-          <Link href="/post"><a><Menu><p>Post</p></Menu></a></Link>
+          <Link href="/"><a>
+            <Menu><p>Home</p></Menu>
+          </a></Link>
+          <Link href="/about"><a>
+            <Menu><p>About</p></Menu>
+            </a></Link>
+          <Link href="/Archives"><a>
+            <Menu><p>Archives</p></Menu>
+          </a></Link>
+          <Link href="/post"><a>
+            <Menu><p>Post</p></Menu>
+          </a></Link>
           <IconList>
-            <Icon src="/git.svg"><Link href="https://github.com/Jeontaeyun"><a></a></Link></Icon>
-            <Icon src="/instagram.svg"><Link href="https://www.instagram.com/stark_jeon_/?hl=ko"><a></a></Link></Icon>
+            <Icon src="/git.svg">
+            <Link href="https://github.com/Jeontaeyun"><a>
+            </a></Link></Icon>
+            <Icon src="/instagram.svg">
+            <Link href="https://www.instagram.com/stark_jeon_/?hl=ko"><a>
+            </a></Link></Icon>
           </IconList>
       </MenuContainer>
       </Container>

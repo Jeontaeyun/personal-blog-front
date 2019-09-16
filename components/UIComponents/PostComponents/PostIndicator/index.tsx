@@ -44,7 +44,8 @@ const IndicatorList: React.FunctionComponent<ListProps> = (props)=> {
             <a>{textContent}</a>
             </IndicatorListP> :
             <IndicatorListP point={isSelected} 
-                            onClick={moveTitleAction(offsetTop)} style={{paddingLeft:"1.5rem"}}>
+                            onClick={moveTitleAction(offsetTop)} 
+                            style={{paddingLeft:"1.5rem"}}>
             <a>{textContent}</a>
             </IndicatorListP>}
         </>
@@ -65,7 +66,11 @@ const PostIndicator : React.SFC<Props> = (props) => {
     }, []);
     useEffect(() => {
         const title : any[] = Array.from(document.querySelectorAll("h1,h2"));
-        const titleArray : Array<ListProps> = title.map(item=>({ offsetTop : item.offsetTop, nodeName: item.nodeName, textContent : item.textContent}));
+        const titleArray : Array<ListProps> = title.map(item=>(
+            {offsetTop : item.offsetTop, 
+             nodeName: item.nodeName, 
+             textContent : item.textContent}));
+
         for(let i = 0 ; i < titleArray.length-1; i++){
             titleArray[i]["offsetTopNext"] = titleArray[i+1]["offsetTop"];
         }

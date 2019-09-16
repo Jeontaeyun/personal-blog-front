@@ -12,10 +12,10 @@ const HeaderComponent : React.SFC<Props> = (props) => {
     const {onClick, title, img, date} = props;
     return (
     <> 
-            <TextContiner>
+            <TextContainer>
                 <Title>{title}</Title>
                 <Date>{date}</Date>
-            </TextContiner>
+            </TextContainer>
             <HeaderContainer/>
             <Header onClick={onClick} img={img}/>     
     </>
@@ -27,10 +27,11 @@ HeaderComponent.defaultProps = {
   img: "/dummy.png",
   //타이틀 20자 제한을 걸어야 겠다.
   title: "DEVELOPER JOURNAL",
-  date: "안녕하세요 개발자 전태윤입니다. \n 새로운 기술을 배우는 것을 즐기며, 어제 보다 나은 사람이 되기 위해 고군분투합니다. "
+  date: `안녕하세요 개발자 전태윤입니다. \n 
+         새로운 기술을 배우는 것을 즐기며, 어제 보다 나은 사람이 되기 위해 고군분투합니다. `
 }
 
-const TextContiner = styled.div`
+const TextContainer = styled.div`
     width: 100%;
     text-align: center;
     color: white;

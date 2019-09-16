@@ -9,10 +9,16 @@ interface Props{
     description?: string;
     date?: string;
     isMe? : boolean;
+    reple?: Array<{
+        "name" : string,
+        "description" : string,
+        "date": string
+    }>
 }
 
 const ReplyBox: React.SFC<Props> = (props) => {
     const {description, name, date, isMe} = props;
+    const reple = [{name: "아이디", description:"대대슬 대댓글", date: "2018년 1월 3일"}];
     const [edit,setEdit] = useState<string>("");
     const onClickEdit = useCallback(e=>{
         if(edit === "" ) setEdit(description);
@@ -61,6 +67,7 @@ ReplyBox.defaultProps={
     name: "아이디",
     description: "댓글이 있는 부분입니다. 댓글을 입력할 수 있습니다.",
     date: "2017년 07월 11일",
+    reple: [],
     isMe: false
 }
 
@@ -140,6 +147,12 @@ const TextArea = styled.textarea`
     &:focus{
         outline: none;
     }
+`;
+
+const ReReplyContainer = styled.div`
+    width: 90%;
+    margin-top: 1rem;
+    margin-left: 2rem;
 `;
 
 export default ReplyBox;
