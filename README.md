@@ -206,3 +206,15 @@ module.exports = ({config}) => {
 ```
 
 이후 components파일과 pages파일을 생성해 프로젝트를 진행하면 된다. components는 자동적으로 @components라는 네임스페이스를 가지며 절대 경로를 사용할 수 있다.
+
+### GraphQL | Apollo-client
+
+클라이언트 측에서 그래프 큐엘을 사용하기 위해서 다음의 패키지를 설치해준다.
+
+```bash
+$npm i apollo-boost react-apollo graphql
+```
+
+- apollo-boost 는 Apollo Client를 설정하는데 필요한 것들이 들어있는 패키지
+- react-apollo 는 React를 위한 apollo 서버입니다
+- graphqll 은 GraphQL 쿼리를 사용할 수 있게 해주는 패키지입니다.
