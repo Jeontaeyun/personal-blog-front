@@ -2,7 +2,7 @@ import * as React from "react";
 import AppLayout from "@components/UIComponents/CommonComponents/AppLayout";
 import {Container} from 'next/app'
 import withApolloCient from "../lib/withApolloClient";
-import {ApolloProvider} from "react-apollo-hooks";
+import {ApolloProvider} from "@apollo/react-hooks";
 import {ApolloClient} from "apollo-boost";
 import {ThemeProvider} from 'styled-components';
 import theme from '../styles/theme';

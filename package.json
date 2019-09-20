@@ -14,6 +14,8 @@
   "author": "\"Stark\"",
   "license": "MIT",
   "dependencies": {
+    "@apollo/react-hooks": "^3.1.1",
+    "@apollo/react-ssr": "^3.1.1",
     "@types/next": "^8.0.6",
     "@types/react": "^16.9.2",
     "@types/react-dom": "^16.9.0",
@@ -32,7 +34,6 @@
     "path": "^0.12.7",
     "react": "^16.9.0",
     "react-apollo": "^3.1.1",
-    "react-apollo-hooks": "^0.5.0",
     "react-dom": "^16.9.0",
     "react-router-dom": "^5.0.1",
     "styled-components": "^4.3.2",

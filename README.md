@@ -218,3 +218,22 @@ $npm i apollo-boost react-apollo graphql
 - apollo-boost 는 Apollo Client를 설정하는데 필요한 것들이 들어있는 패키지
 - react-apollo 는 React를 위한 apollo 서버입니다
 - graphqll 은 GraphQL 쿼리를 사용할 수 있게 해주는 패키지입니다.
+
+```bash
+$npm i react-apollo-hooks
+$npm i @apollo/react-hooks
+```
+
+- react-apollo-hooks는 Apollo Client에서 Hooks를 사용하려는 프로젝트입니다.
+- Apollo Hooks인 **@apollo/react-hooks**가 출시되어 현재는 이를 도입합니다.
+- @apollo/react-hooks는 useQuery, useMutation, useApolloClient와 같은 React Hooks 함수를 제공하며, 이 함수들을 활용하면 React 앱에서 GraphQL API를 훨씬 쉽게 호출할 수 있습ㄴ디ㅏ. 
+- 클래스 대신에 함수 컴포넌트를 사용하게 되면서 **가독성**이나 **유지보수** 측면에서도 이점이 있습니다.
+
+
+### GraphQL SSR | @apollo/react-ssr
+
+Next를 사용한다고 해서 Apollo의 데이터가 바로 서버측에서 렌더링되는 것은 아니다. Next에서도 서버측에서 데이터를 넣은 후 렌더링을 하기 위한 조작을 따로 해주어야한다.
+
+```bash
+$npm i @apollo/react-ssr
+```

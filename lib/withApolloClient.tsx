@@ -1,9 +1,8 @@
 import React from 'react';
 import initApolloClient from './initApolloClient';
 import Head from 'next/head';
-import { renderToString } from 'react-dom/server';
 import { ApolloClient } from 'apollo-boost';
-import { getMarkupFromTree } from 'react-apollo-hooks';
+import { getDataFromTree } from '@apollo/react-ssr';
 
 // Apollo Client와 NextAPP을 연결해주는 HOC
 export default (App: React.ComponentType<any> & { getInitialProps?: Function }) => {
@@ -21,14 +20,14 @@ export default (App: React.ComponentType<any> & { getInitialProps?: Function }) 
 			// apolloClient객체를 생성해 apollo 변수에 넣음
 			const apollo = initApolloClient();
 			if (!process.browser) {
-				// browser가 아니면
+				// when it is server side
+				// The getDataFromTree function takes your React tree, 
+				// determines which queries are needed to render them, and then fetches them all.
 				try {
-					await getMarkupFromTree({
-						renderFunction: renderToString,
-						tree: <App {...appProps} 	Component={Component} 
-													router={router} 
-													apolloClient={apollo}/>
-					});
+					await getDataFromTree(
+						<App {...appProps} 	Component={Component} 
+											router={router} 
+											apolloClient={apollo}/>);
 				} catch (e) {
 					console.error('Error while running `getDataFromTree`', e);
 				}
