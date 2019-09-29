@@ -40,7 +40,7 @@ SideBottomButton.defaultProps = {
     //scroll Event
     window.scrollTo({top: 0, behavior: 'smooth'});
   },
-  img : '/sidebarIcon.svg',
+  img : '/icon/sidebarIcon.svg',
   size: "50px"
 }
 

@@ -13,11 +13,12 @@ if (!process.browser) {
 // Creating ApoloClient InitialState
 function createApolloClient(initialState: NormalizedCacheObject) {
 	// CreateApoloClient는 ApolloClient를 생성하는 함수
+	const { GRAPHQL_URI } = process.env;
 	return new ApolloClient({
 		connectToDevTools: process.browser,
 		ssrMode: !process.browser,
 		link: new HttpLink({
-			uri: process.env.GRAPHQL_URI,
+			uri: `${GRAPHQL_URI}/graphql`,
 			credentials: 'same-origin'
 		}),
 		cache: new InMemoryCache().restore(initialState)

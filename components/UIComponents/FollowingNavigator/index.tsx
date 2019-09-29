@@ -24,10 +24,10 @@ const FollowingNavigator: React.SFC<Props> = (props) => {
             <Menu><p>Post</p></Menu>
           </a></Link>
           <IconList>
-            <Icon src="/git.svg">
+            <Icon src="/icon/git.svg">
             <Link href="https://github.com/Jeontaeyun"><a>
             </a></Link></Icon>
-            <Icon src="/instagram.svg">
+            <Icon src="/icon/instagram.svg">
             <Link href="https://www.instagram.com/stark_jeon_/?hl=ko"><a>
             </a></Link></Icon>
           </IconList>

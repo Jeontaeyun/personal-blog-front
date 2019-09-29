@@ -30,9 +30,9 @@ const LeftSideButton: React.SFC<Props> = (props) => {
           <Title>{title}</Title>
           <Description>{description}</Description>
             <IconContainer>
-              <Icon src="/git.svg"><a></a></Icon>
-              <Icon src="/instagram.svg"><a></a></Icon>
-              <Icon src="/instagram.svg"><a></a></Icon>
+              <Icon src="/icon/git.svg"><a></a></Icon>
+              <Icon src="/icon/like.svg"><a></a></Icon>
+              <Icon src="/icon/share.svg"><a></a></Icon>
             </IconContainer>
       </Container>
     }
