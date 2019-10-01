@@ -142,10 +142,15 @@ const Icon = styled.div<{ src: string }>`
     transform: translate(-50%,-50%);
     width: 20px;
     height: 20px;
-    background: url("${props => props.src}");
+    -webkit-mask-image: url("${props => props.src}");
+    mask-image: url("${props => props.src}");
+    background-color: black;
   }
   &:hover{
     background: ${props => props.theme.achromaticColor};
+    a{
+      background-color: ${props => props.theme.mainColor};
+    }
   }
   @media(max-width:${props => props.theme.smallPoint}){
       height: 50px;
