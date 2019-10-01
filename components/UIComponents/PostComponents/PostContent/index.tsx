@@ -21,8 +21,8 @@ interface Props {
 
 const PostContent: React.SFC<Props> = props => {
   const { post } = props;
-  console.log(post);
   const { title, description, id } = post;
+  console.log(post);
   return (
     <>
       <PostIndicator />

@@ -1,18 +1,12 @@
-import * as React from "react";
+import * as React from 'react';
 import styled from 'styled-components';
 
-interface Props{
+interface Props {}
+
+const LoginForm: React.SFC<Props> = props => {
+  return <></>;
 };
 
-const LoginForm: React.SFC<Props> = (props) => {
-    return (
-    <>
-    </>
-    );
-};
-
-LoginForm.defaultProps = {
-
-}
+LoginForm.defaultProps = {};
 
 export default LoginForm;

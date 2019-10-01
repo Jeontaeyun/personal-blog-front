@@ -1,11 +1,7 @@
-import * as React from "react";
-
+import * as React from 'react';
 
 const taeyun: React.FunctionComponent = () => {
-  return (
-    <>
-    </>
-  );
+  return <></>;
 };
 
 export default taeyun;

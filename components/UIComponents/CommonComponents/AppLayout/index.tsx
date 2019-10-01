@@ -1,58 +1,57 @@
-import * as React from "react";
-import {useEffect,useState} from 'react';
-import styled, {keyframes} from 'styled-components';
-import SideBottomButton from "../../PostComponents/SideBottomButton";
-import ProfileImage from "../ProfileImage";
-import HeaderComponent from "../../HeaderComponent";
-import FollowingNavigator from "../../FollowingNavigator";
-import FooterCopy from "../../FooterComponents/FooterCopy";
-import Progressbar from "../Progressbar";
+import * as React from 'react';
+import { useEffect, useState } from 'react';
+import styled, { keyframes } from 'styled-components';
+import SideBottomButton from '../../PostComponents/SideBottomButton';
+import ProfileImage from '../ProfileImage';
+import HeaderComponent from '../../HeaderComponent';
+import FollowingNavigator from '../../FollowingNavigator';
+import FooterCopy from '../../FooterComponents/FooterCopy';
+import Progressbar from '../Progressbar';
 
-interface Props{
-  MainContents : any
-};
+interface Props {
+  MainContents: any;
+}
 
-const AppLayout: React.SFC<Props> = (props) => {
-  const {MainContents} = props;
-  const  [isFollowingNav, setIsFollowingNav] = useState(false);
-  const scrollEvent = (e) => {
-    const crossBrowsingTop = document.documentElement.scrollTop || document.body.scrollTop;
+const AppLayout: React.SFC<Props> = props => {
+  const { MainContents } = props;
+  const [isFollowingNav, setIsFollowingNav] = useState(false);
+  const scrollEvent = e => {
+    const crossBrowsingTop =
+      document.documentElement.scrollTop || document.body.scrollTop;
     if (crossBrowsingTop > 400) setIsFollowingNav(true);
     else setIsFollowingNav(false);
   };
-  useEffect(()=>{
+  useEffect(() => {
     window.addEventListener('scroll', scrollEvent);
   }, []);
   return (
     <>
-        {isFollowingNav&&<FollowingNavigator/>}
-        <Following>{"▼"}</Following>
-        <Progressbar/>
-        <Header>
-          <HeaderComponent/>
-          <LayoutProfile size="200px"/>
-        </Header>
-        <Main>
-          {MainContents}
-        </Main>
-        <Footer>
-          <FooterCopy/>
-        </Footer>
-        <SideBottomButton size="40px"/>
+      {isFollowingNav && <FollowingNavigator />}
+      <Following>{'▼'}</Following>
+      <Progressbar />
+      <Header>
+        <HeaderComponent />
+        <LayoutProfile size="200px" />
+      </Header>
+      <Main>{MainContents}</Main>
+      <Footer>
+        <FooterCopy />
+      </Footer>
+      <SideBottomButton size="40px" />
     </>
   );
 };
 
 AppLayout.defaultProps = {
-  MainContents: "Main",
-}
+  MainContents: 'Main',
+};
 
 const Header = styled.div`
   position: relative;
   margin: 0;
   width: 100%;
   height: 400px;
-  background: ${props=>props.theme.backgroundColor};
+  background: ${props => props.theme.backgroundColor};
 `;
 
 const Main = styled.div`
@@ -71,16 +70,17 @@ const boxFade = keyframes`
   100% {
     opacity: 1;
   }
-`
+`;
 
 const Following = styled.div`
-  position:absolute;
+  position: absolute;
   color: white;
-  z-index:120;
+  z-index: 120;
   top: 1rem;
   left: 50%;
   transform: translateX(-50%);
-  animation: ${boxFade} 1s 0s infinite cubic-bezier(0.25, 0.85, 0.55, 0.75) alternate;
+  animation: ${boxFade} 1s 0s infinite cubic-bezier(0.25, 0.85, 0.55, 0.75)
+    alternate;
 `;
 
 const Footer = styled.div`
@@ -89,7 +89,7 @@ const Footer = styled.div`
   padding-top: 1rem;
   font-weight: 700;
   padding-bottom: 1rem;
-  background: ${props=>props.theme.mainColor};
+  background: ${props => props.theme.mainColor};
 `;
 
 const LayoutProfile = styled(ProfileImage)`
@@ -98,7 +98,7 @@ const LayoutProfile = styled(ProfileImage)`
   bottom: -100px;
   left: 50%;
   transform: translate(-50%);
-  &:hover{
+  &:hover {
     cursor: pointer;
   }
 `;

@@ -1,12 +1,9 @@
-import * as React from "react";
+import * as React from 'react';
 import styled from 'styled-components';
 
-interface Props{
+interface Props {}
 
-}
-
-const FooterCopy: React.SFC<Props> = (props) => {
-
+const FooterCopy: React.SFC<Props> = props => {
   return (
     <>
       <Copyright>Copyright © JeonTaeyun. All rights reserved.</Copyright>
@@ -14,14 +11,12 @@ const FooterCopy: React.SFC<Props> = (props) => {
   );
 };
 
-FooterCopy.defaultProps={
-
-}
+FooterCopy.defaultProps = {};
 
 const Copyright = styled.div`
   font-size: 0.5rem;
   padding-left: 1rem;
-  color : white;
+  color: white;
 `;
 
 export default FooterCopy;

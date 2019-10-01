@@ -24,8 +24,11 @@ IndexPage.defaultProps = {
 };
 
 const Container = styled.div`
-  width: 60%;
+  width: 80%;
   margin: 1rem auto;
+  @media (max-width: ${props => props.theme.smallPoint}) {
+    width: 96%;
+  }
 `;
 
 export default IndexPage;

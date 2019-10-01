@@ -9,6 +9,7 @@ export const GET_POST = gql`
 			createdAt
 			User {
 				id
+				nickname
 			}
 			Tags {
 				id

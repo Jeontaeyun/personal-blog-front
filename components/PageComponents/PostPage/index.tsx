@@ -13,12 +13,11 @@ const PostPage: React.SFC<Props> = props => {
   const { loading, error, data } = useQuery(GET_POST, {
     variables: { post_id: postId },
   });
-  console.log(data);
   if (loading) return <>로딩 중</>;
   if (error) return <>에러</>;
   return (
     <>
-      <PostContent post={data} />
+      <PostContent post={data.post} />
     </>
   );
 };

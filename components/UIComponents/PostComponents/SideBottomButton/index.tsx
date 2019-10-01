@@ -1,48 +1,48 @@
-import * as React from "react";
-import {useEffect, useState} from "react";
+import * as React from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-interface Props{
-  onClick?() : void;
-  img? : string;
-  size? : string;
-};
+interface Props {
+  onClick?(): void;
+  img?: string;
+  size?: string;
+}
 
-const SideBottomButton: React.SFC<Props> = (props) => {
-    const {onClick, img, size} = props;
-    const  [isView, setIsView] = useState<boolean>(false);
-    const scrollEvent = () => {
-      const crossBrowsingTop = document.documentElement.scrollTop || document.body.scrollTop;
-      if ( crossBrowsingTop> 400) {
-        setIsView(true);
-      }
-      else{
-        setIsView(false);
-      }
+const SideBottomButton: React.SFC<Props> = props => {
+  const { onClick, img, size } = props;
+  const [isView, setIsView] = useState<boolean>(false);
+  const scrollEvent = () => {
+    const crossBrowsingTop =
+      document.documentElement.scrollTop || document.body.scrollTop;
+    if (crossBrowsingTop > 400) {
+      setIsView(true);
+    } else {
+      setIsView(false);
+    }
   };
-  useEffect(()=>{
+  useEffect(() => {
     window.addEventListener('scroll', scrollEvent);
     window.addEventListener('load', scrollEvent);
   }, []);
-    return (
+  return (
     <>
-    {isView &&
-      <BottomButton onClick={onClick} size={size}>
-        <Icon img={img}/>
-      </BottomButton>
-    }
+      {isView && (
+        <BottomButton onClick={onClick} size={size}>
+          <Icon img={img} />
+        </BottomButton>
+      )}
     </>
-    );
+  );
 };
 
 SideBottomButton.defaultProps = {
-  onClick: ()=>{
+  onClick: () => {
     //scroll Event
-    window.scrollTo({top: 0, behavior: 'smooth'});
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   },
-  img : '/icon/sidebarIcon.svg',
-  size: "50px"
-}
+  img: '/icon/sidebarIcon.svg',
+  size: '50px',
+};
 
 const Icon = styled.div<Props>`
   position:absolute;
@@ -60,15 +60,15 @@ const BottomButton = styled.div`
   position: fixed;
   bottom: 2rem;
   right: 2rem;
-  width: ${props=>props.size};
-  height: ${props=>props.size};
+  width: ${props => props.size};
+  height: ${props => props.size};
   border-radius: 20%;
-  background: linear-gradient(45deg, #e45d4c,#eead9e);
-  -webkit-box-shadow: 0px 0px 58px 0px rgba(148,148,148,1);
-  -moz-box-shadow: 0px 0px 58px 0px rgba(148,148,148,1);
-  box-shadow: 0px 0px 58px 0px rgba(148,148,148,1);
+  background: linear-gradient(45deg, #e45d4c, #eead9e);
+  -webkit-box-shadow: 0px 0px 58px 0px rgba(148, 148, 148, 1);
+  -moz-box-shadow: 0px 0px 58px 0px rgba(148, 148, 148, 1);
+  box-shadow: 0px 0px 58px 0px rgba(148, 148, 148, 1);
   cursor: pointer;
-  &:hover{
+  &:hover {
     border-radius: 100%;
     transition: border-radius 0.3s ease-in;
   }
