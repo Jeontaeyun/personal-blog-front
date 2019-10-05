@@ -2,6 +2,7 @@ import * as React from 'react';
 import { useState, useCallback, useRef } from 'react';
 import styled from 'styled-components';
 import Button from '../../CommonComponents/Button';
+import ProfileImage from '@components/UIComponents/CommonComponents/ProfileImage';
 
 interface Props {}
 
@@ -39,6 +40,7 @@ const ReplyEditor: React.SFC<Props> = props => {
     <>
       <ReplyContainer>
         <Title>00개 댓글</Title>
+        <Profile size="30px" />
         <TextArea
           ref={textRef}
           rows="4"
@@ -92,6 +94,14 @@ const TextArea = styled.textarea`
   &:focus {
     outline: none;
   }
+`;
+
+const Profile = styled(ProfileImage)`
+  position: absolute;
+  border: none;
+  right: 0;
+  top: 0;
+  cursor: pointer;
 `;
 
 export default ReplyEditor;

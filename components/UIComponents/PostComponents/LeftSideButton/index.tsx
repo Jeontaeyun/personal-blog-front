@@ -13,6 +13,7 @@ interface Props {
 const LeftSideButton: React.SFC<Props> = props => {
   const { title, description, position } = props;
   const [isView, setIsView] = useState<boolean>(false);
+  const [sharing, setSharing] = useState<boolean>(false);
   const scrollEvent = () => {
     const crossBrowsingTop =
       document.documentElement.scrollTop || document.body.scrollTop;
@@ -23,6 +24,14 @@ const LeftSideButton: React.SFC<Props> = props => {
     window.addEventListener('scroll', scrollEvent);
     window.addEventListener('load', scrollEvent);
   }, []);
+
+  const onClickSharing = useCallback(
+    e => {
+      e.preventDefault();
+      setSharing(!sharing);
+    },
+    [sharing],
+  );
   return (
     <>
       {isView && (
@@ -37,9 +46,20 @@ const LeftSideButton: React.SFC<Props> = props => {
             <Icon src="/icon/like.svg">
               <a></a>
             </Icon>
-            <Icon src="/icon/share.svg">
+            <Icon src="/icon/share.svg" onClick={onClickSharing}>
               <a></a>
             </Icon>
+            <SharingList visible={sharing}>
+              <SharingIcon src="/icon/instagram.svg" visible={sharing}>
+                <a></a>
+              </SharingIcon>
+              <SharingIcon src="/icon/twitter.svg" visible={sharing}>
+                <a></a>
+              </SharingIcon>
+              <SharingIcon src="/icon/facebook.svg" visible={sharing}>
+                <a></a>
+              </SharingIcon>
+            </SharingList>
           </IconContainer>
         </Container>
       )}
@@ -96,12 +116,45 @@ const IconContainer = styled.div`
   width: 100%;
   height: 40px;
 `;
+
 const Icon = styled.div`
   display: inline-block;
   position : relative;
   width: 33.3333%;
   border-radius: 3px;
   height: 100%;
+  cursor: pointer;
+  a{
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 20px;
+    height: 20px;
+    -webkit-mask-image: url("${props => props.src}");
+    mask-image: url("${props => props.src}");
+    background-color: black;
+  }
+  &:hover{
+    background: ${props => props.theme.achromaticColor};
+    a{
+      background-color: ${props => props.theme.mainColor};
+    }
+  }
+`;
+
+const SharingList = styled.ul`
+  display: ${props => (props.visible ? 'block' : 'none')};
+  list-style-type: none;
+  position: absolute;
+  padding-left: -40px;
+  right: 0;
+`;
+
+const SharingIcon = styled.li`
+  display: ${props => (props.visible ? 'block' : 'none')};
+  margin-top: 1rem;
   a{
     display: block;
     position: absolute;
