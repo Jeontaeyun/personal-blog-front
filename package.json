@@ -72,11 +72,7 @@
 		"commitMessage": "Deploy Storybook to GitHub Pages"
 	},
 	"eslintConfig": {
-		"extends": [
-			"react-app",
-			"airbnb",
-			"prettier"
-		],
+		"extends": [ "react-app", "airbnb", "prettier" ],
 		"rules": {
 			"react/prefer-stateless-function": 0,
 			"react/jsx-filename-extension": 0,
@@ -85,5 +81,13 @@
 		"env": {
 			"browser": true
 		}
+	},
+	"prettier": {
+		"singleQuote": true,
+		"semi": true,
+		"useTabs": false,
+		"tabWidth": 2,
+		"trailingComma": "all",
+		"printWidth": 80
 	}
 }
