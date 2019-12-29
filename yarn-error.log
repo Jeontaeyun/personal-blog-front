@@ -1,8 +1,8 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/bin/yarn add @types/react
+  /usr/local/bin/node /usr/local/bin/yarn add express@latest
 
 PATH: 
-  /Library/Frameworks/Python.framework/Versions/3.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Library/Frameworks/Python.framework/Versions/3.7/bin
+  /Users/jeontaeyun/.rbenv/shims:/Users/jeontaeyun/.rbenv/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/Users/jeontaeyun/.rbenv/shims:/Users/jeontaeyun/.rbenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Users/jeontaeyun/.rbenv/shims:/Users/jeontaeyun/.rbenv/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin
 
 Yarn version: 
   1.17.3
@@ -14,39 +14,73 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: EACCES: permission denied, mkdir '/Users/jeontaeyun/Desktop/Jeon Taeyun/Programmer Life/Project/Personal Branding Blog/personal-branding-front/node_modules/@babel/core/node_modules/ms'
+  Error: https://registry.yarnpkg.com/es-abstract/-/es-abstract-1.14.0.tgz: Request failed "404 Not Found"
+      at ResponseError.ExtendableBuiltin (/usr/local/lib/node_modules/yarn/lib/cli.js:696:66)
+      at new ResponseError (/usr/local/lib/node_modules/yarn/lib/cli.js:802:124)
+      at Request.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:66900:16)
+      at Request.emit (events.js:198:13)
+      at Request.module.exports.Request.onRequestResponse (/usr/local/lib/node_modules/yarn/lib/cli.js:141341:10)
+      at ClientRequest.emit (events.js:203:15)
+      at HTTPParser.parserOnIncomingClient [as onIncoming] (_http_client.js:556:21)
+      at HTTPParser.parserOnHeadersComplete (_http_common.js:109:17)
+      at TLSSocket.socketOnData (_http_client.js:442:20)
+      at TLSSocket.emit (events.js:198:13)
 
 npm manifest: 
   {
     "name": "personal-branding-front",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
+    "version": "0.0.1",
+    "description": "Personal Blog Front-End with Next.js, React-Apollo, Typescript",
+    "keywords": [
+      "Next.js",
+      "React-Apollo",
+      "Typescript",
+      "React"
+    ],
+    "main": "src/server.js",
     "scripts": {
-      "dev": "NODE_PATH=components nodemon",
-      "build": "NODE_PATH=components BUNDLE_ANALYZE=both next build",
-      "start": "NODE_PATH=components NODE_ENV=production next start",
-      "storybook": "start-storybook -p 6006",
-      "build-storybook": "build-storybook"
+      "dev": "nodemon",
+      "build": "BUNDLE_ANALYZE=both next build",
+      "start": "NODE_ENV=production next start",
+      "storybook": "start-storybook -s ./public  -p 6006",
+      "build-storybook": "build-storybook -s ./public",
+      "deploy-storybook": "storybook-to-ghpages"
     },
-    "author": "\"Stark\"",
+    "author": {
+      "name": "Stark Jeon",
+      "email": "a01058406602@gmail.com"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/Jeontaeyun/personal-blog-front"
+    },
     "license": "MIT",
     "dependencies": {
+      "@apollo/react-hooks": "^3.1.1",
+      "@apollo/react-ssr": "^3.1.1",
+      "@types/express": "^4.17.2",
+      "@types/helmet": "0.0.44",
       "@types/next": "^8.0.6",
       "@types/react": "^16.9.2",
       "@types/react-dom": "^16.9.0",
       "@types/react-router-dom": "^4.3.5",
       "@zeit/next-css": "^1.0.1",
       "@zeit/next-typescript": "^1.1.1",
+      "apollo-boost": "^0.4.4",
       "cookie-parser": "^1.4.4",
       "dotenv": "^8.1.0",
       "express": "^4.17.1",
       "express-session": "^1.16.2",
+      "graphql": "^14.5.6",
+      "graphql-tag": "^2.10.1",
+      "isomorphic-unfetch": "^3.0.0",
       "morgan": "^1.9.1",
-      "next": "^9.0.5",
+      "next": "^9.1.6",
       "path": "^0.12.7",
       "react": "^16.9.0",
+      "react-apollo": "^3.1.1",
       "react-dom": "^16.9.0",
+      "react-helmet": "^5.2.1",
       "react-router-dom": "^5.0.1",
       "styled-components": "^4.3.2",
       "ts-loader": "^6.0.4"
@@ -54,20 +88,39 @@ npm manifest:
     "devDependencies": {
       "@babel/core": "^7.5.5",
       "@storybook/addon-actions": "^5.1.11",
+      "@storybook/addon-backgrounds": "^5.1.11",
       "@storybook/addon-info": "^5.1.11",
       "@storybook/addon-links": "^5.1.11",
       "@storybook/addons": "^5.1.11",
       "@storybook/react": "^5.1.11",
-      "@types/node": "^12.7.3",
+      "@storybook/storybook-deployer": "^2.8.1",
+      "@types/node": "^12.7.4",
       "@types/storybook__react": "^4.0.2",
       "awesome-typescript-loader": "^5.2.1",
       "babel-loader": "^8.0.6",
+      "babel-plugin-module-resolver": "^3.2.0",
       "babel-plugin-styled-components": "^1.10.6",
       "babel-preset-react-app": "^9.0.1",
+      "eslint-config": "^0.3.0",
+      "eslint-config-airbnb": "^18.0.1",
+      "eslint-config-prettier": "^6.3.0",
       "fork-ts-checker-webpack-plugin": "^1.5.0",
       "nodemon": "^1.19.2",
       "react-docgen-typescript-loader": "^3.2.0",
       "typescript": "^3.6.2"
+    },
+    "storybook-deployer": {
+      "gitUsername": "Jeontaeyun",
+      "gitEmail": "jow1813@naver.com",
+      "commitMessage": "Deploy Storybook to GitHub Pages"
+    },
+    "prettier": {
+      "singleQuote": false,
+      "semi": true,
+      "useTabs": false,
+      "tabWidth": 2,
+      "trailingComma": "all",
+      "printWidth": 80
     }
   }
 
