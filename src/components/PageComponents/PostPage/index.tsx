@@ -1,8 +1,8 @@
 import * as React from 'react';
-import PostContent from '@components/UIComponents/PostComponents/PostContent';
+import PostContent from 'components/UIComponents/PostComponents/PostContent';
 
 import { useQuery } from '@apollo/react-hooks';
-import { GET_POST } from './postpageGQL.js';
+import { GET_POST } from './postpageGQL';
 
 interface Props {
   postId: number;

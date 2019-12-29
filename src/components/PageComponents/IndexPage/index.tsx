@@ -1,5 +1,5 @@
 import * as React from 'react';
-import PostCardList from '@components/UIComponents/MainComponents/PostCardList';
+import PostCardList from 'components/UIComponents/MainComponents/PostCardList';
 import styled from 'styled-components';
 
 interface Props {

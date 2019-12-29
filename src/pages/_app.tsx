@@ -1,5 +1,5 @@
 import * as React from 'react';
-import AppLayout from '@components/UIComponents/CommonComponents/AppLayout';
+import AppLayout from 'components/UIComponents/CommonComponents/AppLayout';
 import { Container } from 'next/app';
 import withApolloCient from '../lib/withApolloClient';
 import { ApolloProvider } from '@apollo/react-hooks';

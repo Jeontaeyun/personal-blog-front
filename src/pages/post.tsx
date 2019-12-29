@@ -1,6 +1,6 @@
 import { NextPageContext, NextPage } from 'next';
 import * as React from 'react';
-import PostPage from '@components/PageComponents/PostPage';
+import PostPage from 'components/PageComponents/PostPage';
 
 interface Props {
   postId: number;

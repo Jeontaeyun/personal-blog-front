@@ -1,9 +1,9 @@
 import * as React from 'react';
-import IndexPage from '@components/PageComponents/IndexPage';
+import EditorPage from 'components/PageComponents/EditorPage';
 const Index: React.FunctionComponent = () => {
   return (
     <>
-      <IndexPage />
+      <EditorPage />
     </>
   );
 };

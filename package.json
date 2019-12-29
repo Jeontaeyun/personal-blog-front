@@ -1,8 +1,14 @@
 {
   "name": "personal-branding-front",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "0.0.1",
+  "description": "Personal Blog Front-End with Next.js, React-Apollo, Typescript",
+  "keywords": [
+    "Next.js",
+    "React-Apollo",
+    "Typescript",
+    "React"
+  ],
+  "main": "src/server.js",
   "scripts": {
     "dev": "nodemon",
     "build": "BUNDLE_ANALYZE=both next build",
@@ -11,7 +17,14 @@
     "build-storybook": "build-storybook -s ./public",
     "deploy-storybook": "storybook-to-ghpages"
   },
-  "author": "\"Stark\"",
+  "author": {
+    "name": "Stark Jeon",
+    "email": "a01058406602@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Jeontaeyun/personal-blog-front"
+  },
   "license": "MIT",
   "dependencies": {
     "@apollo/react-hooks": "^3.1.1",
@@ -33,7 +46,7 @@
     "graphql-tag": "^2.10.1",
     "isomorphic-unfetch": "^3.0.0",
     "morgan": "^1.9.1",
-    "next": "^9.0.5",
+    "next": "^9.1.6",
     "path": "^0.12.7",
     "react": "^16.9.0",
     "react-apollo": "^3.1.1",
@@ -72,23 +85,8 @@
     "gitEmail": "jow1813@naver.com",
     "commitMessage": "Deploy Storybook to GitHub Pages"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "airbnb",
-      "prettier"
-    ],
-    "rules": {
-      "react/prefer-stateless-function": 0,
-      "react/jsx-filename-extension": 0,
-      "react/jsx-one-expression-per-line": 0
-    },
-    "env": {
-      "browser": true
-    }
-  },
   "prettier": {
-    "singleQuote": true,
+    "singleQuote": false,
     "semi": true,
     "useTabs": false,
     "tabWidth": 2,
