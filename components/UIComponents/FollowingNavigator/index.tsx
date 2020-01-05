@@ -1,11 +1,11 @@
-import * as React from 'react';
-import styled from 'styled-components';
-import Link from 'next/link';
-interface Props {
+import * as React from "react";
+import styled from "styled-components";
+import Link from "next/link";
+interface IProps {
   children?: React.FunctionComponent;
 }
 
-const FollowingNavigator: React.SFC<Props> = props => {
+const FollowingNavigator: React.FC<IProps> = props => {
   return (
     <>
       <Container>
@@ -54,9 +54,7 @@ const FollowingNavigator: React.SFC<Props> = props => {
   );
 };
 
-FollowingNavigator.defaultProps = {};
-
-const Container = styled.div<Props>`
+const Container = styled.div<IProps>`
   position: fixed;
   z-index: 200;
   width: 100%;
@@ -67,8 +65,10 @@ const Container = styled.div<Props>`
   -webkit-box-shadow: 0px 0px 30px 0px rgba(148, 148, 148, 1);
   -moz-box-shadow: 0px 0px 30px 0px rgba(148, 148, 148, 1);
   box-shadow: 0px 0px 30px 0px rgba(148, 148, 148, 1);
-  @media (max-width: ${props => props.theme.smallPoint}) {
+
+  @media (max-width: ${props => props.theme.mediumPoint}) {
     height: 100px;
+    background: "red";
   }
 `;
 
@@ -77,7 +77,7 @@ const MenuContainer = styled.div`
   width: 80%;
   height: 100%;
   margin: 0 auto;
-  @media (max-width: ${props => props.theme.smallPoint}) {
+  @media (max-width: ${props => props.theme.mediumPoint}) {
     width: 100%;
     text-align: center;
   }
@@ -88,7 +88,7 @@ const IconList = styled.span`
   position: absolute;
   right: 0;
   height: 100%;
-  @media (max-width: ${props => props.theme.smallPoint}) {
+  @media screen and (max-width: ${props => props.theme.mediumPoint}) {
     position: static;
   }
 `;
@@ -97,12 +97,13 @@ const Logo = styled.div`
   display: inline-block;
   height: 100%;
   width: 150px;
-  background: url('./title.png');
+  background: url("./title.png");
   border-radius: 0.1rem;
-  @media (max-width: ${props => props.theme.smallPoint}) {
+  @media (max-width: ${props => props.theme.mediumPoint}) {
     display: block;
     margin: 0 auto;
     width: 150px;
+    background: "red";
     height: 50%;
   }
 `;
@@ -120,7 +121,7 @@ const Menu = styled.div`
     background: ${props => props.theme.achromaticColor};
     color: ${props => props.theme.mainColor};
   }
-  @media (max-width: ${props => props.theme.smallPoint}) {
+  @media (max-width: ${props => props.theme.mediumPoint}) {
     height: 50px;
     padding: 0 0.5rem;
   }
@@ -152,7 +153,7 @@ const Icon = styled.div<{ src: string }>`
       background-color: ${props => props.theme.mainColor};
     }
   }
-  @media(max-width:${props => props.theme.smallPoint}){
+  @media(max-width:${props => props.theme.mediumPoint}){
       height: 50px;
   }
 `;

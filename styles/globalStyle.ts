@@ -1,4 +1,5 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
+
 export default createGlobalStyle`
   body {
     @import url("http://fonts.googleapis.com/earlyaccess/nanumgothic.css"); 
@@ -11,13 +12,13 @@ export default createGlobalStyle`
       a:focus{
         text-decoration: none;
       }
-      @media screen and (min-width: 1024px ){
+      @media screen and (min-width: 1024px){
         font-size: 16px;
       }
       @media screen and (min-width: 764px ){
         font-size: 14px;
       }
-      @media screen and (min-width: 400px ){
+      @media screen and (min-width: 420px ){
         font-size: 12px;
       }
   }
