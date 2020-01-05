@@ -1,33 +1,37 @@
-import * as React from 'react';
-import { useEffect, useState } from 'react';
-import styled, { keyframes } from 'styled-components';
-import SideBottomButton from '../../PostComponents/SideBottomButton';
-import ProfileImage from '../ProfileImage';
-import HeaderComponent from '../../HeaderComponent';
-import FollowingNavigator from '../../FollowingNavigator';
-import FooterCopy from '../../FooterComponents/FooterCopy';
-import Progressbar from '../Progressbar';
+import * as React from "react";
+import { useEffect, useState } from "react";
+import styled, { keyframes } from "styled-components";
+import SideBottomButton from "../../PostComponents/SideBottomButton";
+import ProfileImage from "../ProfileImage";
+import HeaderComponent from "../../HeaderComponent";
+import FollowingNavigator from "../../FollowingNavigator";
+import FooterCopy from "../../FooterComponents/FooterCopy";
+import Progressbar from "../Progressbar";
 
-interface Props {
+interface IProps {
   MainContents: any;
 }
 
-const AppLayout: React.SFC<Props> = props => {
+const AppLayout: React.FC<IProps> = props => {
   const { MainContents } = props;
   const [isFollowingNav, setIsFollowingNav] = useState(false);
-  const scrollEvent = e => {
+  const scrollEvent = (event: any) => {
     const crossBrowsingTop =
       document.documentElement.scrollTop || document.body.scrollTop;
     if (crossBrowsingTop > 400) setIsFollowingNav(true);
     else setIsFollowingNav(false);
   };
   useEffect(() => {
-    window.addEventListener('scroll', scrollEvent);
+    window.addEventListener("scroll", scrollEvent);
+    return () => {
+      window.removeEventListener("scroll", scrollEvent);
+    };
   }, []);
+
   return (
     <>
       {isFollowingNav && <FollowingNavigator />}
-      <Following>{'▼'}</Following>
+      <Following>{"▼"}</Following>
       <Progressbar />
       <Header>
         <HeaderComponent />
@@ -43,7 +47,7 @@ const AppLayout: React.SFC<Props> = props => {
 };
 
 AppLayout.defaultProps = {
-  MainContents: 'Main',
+  MainContents: "Main",
 };
 
 const Header = styled.div`

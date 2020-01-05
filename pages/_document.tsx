@@ -1,7 +1,7 @@
-import React from 'react';
-import Document, { Main, NextScript, DocumentContext } from 'next/document';
-import { ServerStyleSheet } from 'styled-components';
-import Helmet from 'react-helmet';
+import React from "react";
+import Document, { Main, NextScript, DocumentContext } from "next/document";
+import { ServerStyleSheet } from "styled-components";
+import Helmet from "react-helmet";
 class MyDocument extends Document<{ helmet: any }> {
   static async getInitialProps(context: DocumentContext) {
     const sheet = new ServerStyleSheet();

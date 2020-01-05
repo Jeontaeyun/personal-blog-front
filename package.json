@@ -10,9 +10,9 @@
   ],
   "main": "src/server.js",
   "scripts": {
-    "dev": "nodemon",
-    "build": "BUNDLE_ANALYZE=both next build",
+    "start:dev": "nodemon",
     "start": "NODE_ENV=production next start",
+    "build": "BUNDLE_ANALYZE=both next build",
     "storybook": "start-storybook -s ./public  -p 6006",
     "build-storybook": "build-storybook -s ./public",
     "deploy-storybook": "storybook-to-ghpages"
