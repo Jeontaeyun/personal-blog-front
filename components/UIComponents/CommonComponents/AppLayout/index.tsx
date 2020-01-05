@@ -30,9 +30,8 @@ const AppLayout: React.FC<IProps> = props => {
 
   return (
     <>
-      {isFollowingNav && <FollowingNavigator />}
+      <FollowingNavigator isView={isFollowingNav} />
       <Following>{"▼"}</Following>
-      <Progressbar />
       <Header>
         <HeaderComponent />
         <LayoutProfile size="200px" />

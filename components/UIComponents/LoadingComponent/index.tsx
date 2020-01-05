@@ -1,17 +1,9 @@
 import styled from "styled-components";
 
-interface IProps {
-  isLoading: boolean;
-  children: React.ReactChild;
-}
+interface IProps {}
 
 const LoadingComponent: React.FC<IProps> = props => {
-  const { isLoading, children } = props;
-  if (isLoading) {
-    <Container></Container>;
-  } else {
-    return <>{children}</>;
-  }
+  return <Container />;
 };
 
 const Container = styled.div`

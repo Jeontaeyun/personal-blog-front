@@ -1,37 +1,37 @@
-import * as React from 'react';
-import { useState, useCallback, useRef } from 'react';
-import styled from 'styled-components';
-import Button from '../../CommonComponents/Button';
-import ProfileImage from 'components/UIComponents/CommonComponents/ProfileImage';
+import * as React from "react";
+import { useState, useCallback, useRef } from "react";
+import styled from "styled-components";
+import Button from "../../CommonComponents/Button";
+import ProfileImage from "components/UIComponents/CommonComponents/ProfileImage";
 
 interface Props {}
 
 const ReplyEditor: React.SFC<Props> = props => {
-  const [reply, setReply] = useState<string>('댓글을 입력해주세요');
+  const [reply, setReply] = useState<string>("댓글을 입력해주세요");
   const [height, setHeight] = useState<number>(60);
-  const textRef = useRef<HTMLInputElement>(null);
+  const textRef = useRef<HTMLTextAreaElement>(null);
   const onChangeReply = useCallback(
-    e => {
+    event => {
       const scrollHeight: number = textRef.current.scrollHeight;
-      setReply(e.target.value);
+      setReply(event.target.value);
       if (scrollHeight > 120) setHeight(scrollHeight);
     },
     [height, textRef],
   );
   const onFocusReply = useCallback(
-    e => {
-      if (reply === '댓글을 입력해주세요') {
+    event => {
+      if (reply === "댓글을 입력해주세요") {
         setHeight(100);
-        setReply('');
+        setReply("");
       }
     },
     [reply],
   );
   const onBlurReply = useCallback(
     e => {
-      if (reply === '') {
+      if (reply === "") {
         setHeight(60);
-        setReply('댓글을 입력해주세요');
+        setReply("댓글을 입력해주세요");
       }
     },
     [reply],
@@ -43,7 +43,7 @@ const ReplyEditor: React.SFC<Props> = props => {
         <Profile size="30px" />
         <TextArea
           ref={textRef}
-          rows="4"
+          rows={4}
           value={reply}
           height={height}
           onChange={onChangeReply}
@@ -79,10 +79,10 @@ const RightAlign = styled.div`
   right: 0;
   font-size: 0.8rem;
 `;
-const TextArea = styled.textarea`
+const TextArea = styled.textarea<{ height: number }>`
   width: 100%;
   box-sizing: border-box;
-  height: ${props => props.height + 'px'};
+  height: ${props => props.height + "px"};
   border: 1px solid ${props => props.theme.achromaticColor};
   border-radius: 1px;
   resize: none;
