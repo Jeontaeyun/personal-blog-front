@@ -11,7 +11,7 @@
   "main": "src/server.js",
   "scripts": {
     "start:dev": "nodemon",
-    "start": "NODE_ENV=production next start",
+    "start": "NODE_ENV=production ts-node server.ts",
     "build": "BUNDLE_ANALYZE=both next build",
     "storybook": "start-storybook -s ./public  -p 6006",
     "build-storybook": "build-storybook -s ./public",
@@ -35,6 +35,7 @@
     "@types/react": "^16.9.2",
     "@types/react-dom": "^16.9.0",
     "@types/react-router-dom": "^4.3.5",
+    "@types/styled-components": "^4.4.1",
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-typescript": "^1.1.1",
     "apollo-boost": "^0.4.4",

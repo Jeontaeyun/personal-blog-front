@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import expressSession from "express-session";
 import dotenv from "dotenv";
 import path from "path";
+import { parse } from "url";
 
 dotenv.config();
 
@@ -39,18 +40,20 @@ app.prepare().then(() => {
     }),
   );
 
-  server.get("*", (req: NextApiRequest, res: NextApiResponse) => {
-    return handle(req, res);
+  server.get("*", (req: Express.Request, res: Express.Response) => {
+    const parsedURL = parse(req.url, true);
+    const { pathname, query } = parsedURL;
+    console.log(pathname, query);
+    return handle(req, res, parsedURL);
   });
 
-  server.get(
-    "/post/:postId",
-    (req: NextApiRequest & Express.Request, res: NextApiResponse) => {
-      return app.render(req, res, "/post", { postId: req.params.postId });
-    },
-  );
+  server.get("/post/:postId", (req: Express.Request, res: Express.Response) => {
+    return app.render(req, res, "/post", { postId: req.params.postId });
+  });
 
   server.listen(3060, () => {
-    console.log("next+express running on port 3060");
+    console.log(
+      `next+express running on port 3060 on ${__DEV__ ? "dev" : "production"}`,
+    );
   });
 });

@@ -8,7 +8,6 @@ import theme from "../styles/theme";
 import GlobalStyles from "../styles/globalStyle";
 import Helmet from "react-helmet";
 import AppLayout from "components/UIComponents/CommonComponents/AppLayout";
-import { NextPage } from "next";
 import { Router } from "next/dist/client/router";
 
 interface IProps extends Router {
