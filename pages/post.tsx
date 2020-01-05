@@ -1,12 +1,12 @@
-import { NextPageContext, NextPage } from 'next';
-import * as React from 'react';
-import PostPage from 'components/PageComponents/PostPage';
+import { NextPageContext, NextPage } from "next";
+import * as React from "react";
+import PostPage from "components/PageComponents/PostPage";
 
-interface Props {
+interface IProps {
   postId: number;
 }
 
-const Post: NextPage<Props> = props => {
+const Post: NextPage<IProps> = props => {
   const { postId } = props;
   console.log(postId);
   return (

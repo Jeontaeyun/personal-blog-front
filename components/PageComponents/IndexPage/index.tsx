@@ -1,12 +1,12 @@
-import * as React from 'react';
-import PostCardList from 'components/UIComponents/MainComponents/PostCardList';
-import styled from 'styled-components';
+import * as React from "react";
+import PostCardList from "components/UIComponents/MainComponents/PostCardList";
+import styled from "styled-components";
 
-interface Props {
+interface IProps {
   category?: string[];
 }
 
-const IndexPage: React.SFC<Props> = props => {
+const IndexPage: React.FC<IProps> = props => {
   const { category } = props;
   return (
     <>
@@ -20,7 +20,7 @@ const IndexPage: React.SFC<Props> = props => {
 };
 
 IndexPage.defaultProps = {
-  category: ['프론트엔드', '백엔드', '디자이너'],
+  category: ["프론트엔드", "백엔드", "디자이너"],
 };
 
 const Container = styled.div`
