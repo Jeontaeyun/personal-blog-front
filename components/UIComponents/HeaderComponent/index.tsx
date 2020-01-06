@@ -1,5 +1,5 @@
-import * as React from 'react';
-import styled from 'styled-components';
+import * as React from "react";
+import styled from "styled-components";
 
 interface Props {
   title?: string;
@@ -24,9 +24,9 @@ const HeaderComponent: React.SFC<Props> = props => {
 
 HeaderComponent.defaultProps = {
   onClick: () => {},
-  img: '/dummy.png',
+  img: "/dummy.png",
   //타이틀 20자 제한을 걸어야 겠다.
-  title: 'CONNECT DOT',
+  title: "CONNECT DOT",
   date: `안녕하세요 개발자 전태윤입니다. \n 
          새로운 기술을 배우는 것을 즐기며, 어제 보다 나은 사람이 되기 위해 고군분투합니다. `,
 };
@@ -41,7 +41,7 @@ const TextContainer = styled.div`
   &:p {
     margin-top: 1.2rem;
   }
-  @media (max-width: 764px) {
+  @media screen and (max-width: ${props => props.theme.mediumPoint}) {
     margin-top: 6rem;
   }
 `;
@@ -51,7 +51,7 @@ const Title = styled.p`
   padding-left: 1rem;
   padding-right: 1rem;
   font-weight: 800;
-  @media (max-width: 764px) {
+  @media screen and (max-width: ${props => props.theme.mediumPoint}) {
     font-weight: 700;
     font-size: 1.5rem;
   }
@@ -59,7 +59,7 @@ const Title = styled.p`
 
 const Date = styled.p`
   font-size: 1rem;
-  @media (max-width: 764px) {
+  @media screen and (max-width: ${props => props.theme.mediumPoint}) {
     font-size: 0.7rem;
   }
   padding-left: 4rem;

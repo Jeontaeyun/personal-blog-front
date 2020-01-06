@@ -1,10 +1,10 @@
-import * as React from 'react';
-import styled from 'styled-components';
-import PostIndicator from '../PostIndicator';
-import LeftSideButton from '../LeftSideButton';
-import ReplyEditor from '../ReplyEditor';
-import ReplyBox from '../ReplyBox';
-import PostCardList from '../../MainComponents/PostCardList';
+import * as React from "react";
+import styled from "styled-components";
+import PostIndicator from "../PostIndicator";
+import LeftSideButton from "../LeftSideButton";
+import ReplyEditor from "../ReplyEditor";
+import ReplyBox from "../ReplyBox";
+import PostCardList from "../../MainComponents/PostCardList";
 
 interface Props {
   post?: {
@@ -44,7 +44,7 @@ PostContent.defaultProps = {};
 const PostContainer = styled.div`
   width: 60%;
   margin: 1rem auto;
-  @media (max-width: 800px) {
+  @media screen and (max-width: ${props => props.theme.mediumPoint}) {
     width: 80%;
   }
 `;

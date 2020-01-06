@@ -1,6 +1,6 @@
-import * as React from 'react';
-import styled from 'styled-components';
-import ProfileImage from '../../CommonComponents/ProfileImage';
+import * as React from "react";
+import styled from "styled-components";
+import ProfileImage from "../../CommonComponents/ProfileImage";
 
 interface Props {
   title?: string;
@@ -16,9 +16,9 @@ const PostCard: React.SFC<Props> = props => {
       <Card>
         <CardImage />
         <Description>
-          <PositioningProfile size={'30px'} />
+          <PositioningProfile size={"30px"} />
           <Title>{title}</Title>
-          <Contents>{' ' + description}</Contents>
+          <Contents>{" " + description}</Contents>
           <Date>{date}</Date>
         </Description>
       </Card>
@@ -27,7 +27,7 @@ const PostCard: React.SFC<Props> = props => {
 };
 
 PostCard.defaultProps = {
-  title: '최신포스트 제신포스트 제신포스트 제신포스트 제신포스트 제목',
+  title: "최신포스트 제신포스트 제신포스트 제신포스트 제신포스트 제목",
   description: `이글은 최신 글입니다.이글은 최신 글이글은 최신 글입니다.
                   이글은 최신 글이글은 최신 글입니다.이글은 최신 글이글은 최신 글입니다.
                   이글은 최신 글이글은 최신 글입니다.이글은 최신 글이글은 최신 글입니다.이글은 
@@ -35,7 +35,7 @@ PostCard.defaultProps = {
                   니다.이글은 최신 글입니다.이글은 최신 글입니다.이글은 최신 글입니다.이글은 최신 
                   글입니다.이글은 최신 글입니다.이글은 최신 글입니다.이글은 최신 글입니다.이글은 최
                   신 글입니다.`,
-  date: '2017년 8월 1일',
+  date: "2017년 8월 1일",
 };
 
 const Card = styled.div`
@@ -53,7 +53,7 @@ const Card = styled.div`
   &:hover {
     transform: scale(1.03);
   }
-  @media (max-width: ${props => props.theme.smallPoint}) {
+  @media screen and (max-width: ${props => props.theme.smallPoint}) {
     width: 100%;
   }
 `;
@@ -61,7 +61,7 @@ const Card = styled.div`
 const CardImage = styled.div<Props>`
   height: 200px;
   width: 100%;
-  background: url('/dummy.png');
+  background: url("/dummy.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;

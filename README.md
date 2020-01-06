@@ -97,7 +97,7 @@ Next는 내부적으로 Babel.js를 이용하며, next와 typescript를 이용�
   "compileOnSave": false,
   "compilerOptions": {
     "target": "esnext",
-    "module": "esnext",
+    "module": "commonjs",
     "jsx": "preserve",
     "allowJs": true,
     "moduleResolution": "node",

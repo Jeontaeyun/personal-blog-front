@@ -1,7 +1,7 @@
-import * as React from 'react';
-import styled from 'styled-components';
-import PostCard from '../PostCard';
-import Button from '../../CommonComponents/Button';
+import * as React from "react";
+import styled from "styled-components";
+import PostCard from "../PostCard";
+import Button from "../../CommonComponents/Button";
 
 interface Props {
   title: string;
@@ -25,7 +25,7 @@ const PostCardList: React.SFC<Props> = props => {
             />
           ))}
         </CardListContainer>
-        <div style={{ textAlign: 'center' }}>
+        <div style={{ textAlign: "center" }}>
           <Button>더보기+</Button>
         </div>
       </Container>
@@ -34,22 +34,22 @@ const PostCardList: React.SFC<Props> = props => {
 };
 
 PostCardList.defaultProps = {
-  title: '카테고리',
+  title: "카테고리",
   postList: [
     {
-      title: '백엔드',
-      description: '본문의 내용입니다.',
-      date: '2017년 01월 02일',
+      title: "백엔드",
+      description: "본문의 내용입니다.",
+      date: "2017년 01월 02일",
     },
     {
-      title: '백엔드',
-      description: '본문의 내용입니다.',
-      date: '2017년 01월 02일',
+      title: "백엔드",
+      description: "본문의 내용입니다.",
+      date: "2017년 01월 02일",
     },
     {
-      title: '백엔드',
-      description: '본문의 내용입니다.',
-      date: '2017년 01월 02일',
+      title: "백엔드",
+      description: "본문의 내용입니다.",
+      date: "2017년 01월 02일",
     },
   ],
 };
@@ -57,7 +57,7 @@ PostCardList.defaultProps = {
 const Container = styled.div`
   margin: 6rem auto;
   width: 100%;
-  @media (max-width: 800px) {
+  @media screen and (max-width: ${props => props.theme.mediumPoint}) {
     width: 98%;
   }
 `;
@@ -78,7 +78,7 @@ const CardListContainer = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: stretch;
-  @media (max-width: 800px) {
+  @media screen and (max-width: ${props => props.theme.mediumPoint}) {
     flex-direction: column;
     align-content: center;
   }

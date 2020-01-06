@@ -26,7 +26,7 @@ IndexPage.defaultProps = {
 const Container = styled.div`
   width: 80%;
   margin: 1rem auto;
-  @media (max-width: ${props => props.theme.smallPoint}) {
+  @media screen and (max-width: ${props => props.theme.mediumPoint}) {
     width: 96%;
   }
 `;

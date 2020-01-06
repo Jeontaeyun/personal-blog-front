@@ -111,7 +111,7 @@ const Container = styled.div`
   top: 8rem;
   right: 1rem;
   width: 15%;
-  @media (max-width: 800px) {
+  @media screen and (max-width: ${props => props.theme.mediumPoint}) {
     display: none;
   }
 `;
@@ -145,7 +145,7 @@ const IndicatorListP = styled.div<{ point: boolean }>`
     color: ${props => props.theme.mainColor};
     transition: all 0.3s ease-in-out;
   }
-  @media (max-width: 900px) {
+  @media screen and (max-width: ${props => props.theme.mediumPoint}) {
     font-size: 0.3rem;
   }
   ${props =>

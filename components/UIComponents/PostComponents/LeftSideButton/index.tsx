@@ -85,7 +85,7 @@ const Container = styled.div<Partial<IProps>>`
   left: ${props => props.position.left};
   bottom: ${props => props.position.bottom};
   right: ${props => props.position.right};
-  @media (max-width: ${props => props.theme.smallPoint}) {
+  @media screen and (max-width: ${props => props.theme.smallPoint}) {
     display: none;
   }
 `;

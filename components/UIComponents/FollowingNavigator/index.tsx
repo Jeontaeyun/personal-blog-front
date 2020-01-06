@@ -78,7 +78,7 @@ const Container = styled.div<{ view: boolean }>`
   -ms-transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -o-transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  @media (max-width: ${props => props.theme.mediumPoint}) {
+  @media screen and (max-width: ${props => props.theme.mediumPoint}) {
     height: 100px;
     background: "red";
   }
@@ -90,7 +90,7 @@ const MenuContainer = styled.div`
   width: 80%;
   height: 100%;
   margin: 0 auto;
-  @media (max-width: ${props => props.theme.mediumPoint}) {
+  @media screen and (max-width: ${props => props.theme.mediumPoint}) {
     width: 100%;
     text-align: center;
   }
@@ -112,7 +112,7 @@ const Logo = styled.div`
   width: 150px;
   background: url("./title.png");
   border-radius: 0.1rem;
-  @media (max-width: ${props => props.theme.mediumPoint}) {
+  @media screen and (max-width: ${props => props.theme.mediumPoint}) {
     display: block;
     margin: 0 auto;
     width: 150px;
@@ -134,7 +134,7 @@ const Menu = styled.div`
     background: ${props => props.theme.achromaticColor};
     color: ${props => props.theme.mainColor};
   }
-  @media (max-width: ${props => props.theme.mediumPoint}) {
+  @media screen and (max-width: ${props => props.theme.mediumPoint}) {
     height: 50px;
     padding: 0 0.5rem;
   }
@@ -166,7 +166,7 @@ const Icon = styled.div<{ src: string }>`
       background-color: ${props => props.theme.mainColor};
     }
   }
-  @media(max-width:${props => props.theme.mediumPoint}){
+  @media screen and (max-width: ${props => props.theme.mediumPoint}) {
       height: 50px;
   }
 `;
