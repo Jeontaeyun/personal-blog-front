@@ -1,18 +1,18 @@
-# 타입스크립트 + 넥스트 + 그래프 큐엘을 이용한 퍼스널 브랜딩 블로그
+# Personal Branding Blog Project with Typescript, Next.js and GraphQL
 
-## 프로젝트 목적
+## Goal of Project
 
-2019년 떠오르는 기술인 타입스크립트와 그래프 큐엘을 사용하여 개인 블로그를 만들기 위한 프로젝트입니다. 이를 통해 다음과 같은 목적을 달성할 것입니다.
+I am going to make some blog project with Typescript, GraphQL(Apollo-Client) and Next.js. The purpose of this project is that,
 
-1. 동적 타입 언어인 자바스크립트의 타입 취약성을 보완해주는 타입스크립트 도입
+1. Studying and Using Typescript
 
-2. REST API를 대체하는 GraphQL의 설계 패턴을 익힌 후 프론트 엔드에 적용
+2. Learn GraphQL and Get the gist of difference between GraphQL and REST API.
 
-3. 아키텍쳐 설계 - 프로젝트 환경 설정 - 개발 - 배포의 과정
+3. Get the experience with design -> develope -> deploy
 
-## 프로젝트 Setting
+## Project Setting
 
-NEXT+타입스크립트+스타일드 컴포넌트+스토리북(UI 스냅샷테스트)를 위한 프로젝트의 설정은 다음과 같습니다.
+For setting this project, we need to install next, typescript, styled-components, storybook(UI testing) package.
 
 ```bash
    $mkdir (projectName)
@@ -27,7 +27,7 @@ NEXT+타입스크립트+스타일드 컴포넌트+스토리북(UI 스냅샷테�
    $npm i -D fork-ts-checker-webpack-plugin
 ```
 
-다음은 package.json파일의 스크립트 부분입니다.
+And write scripts for developing this project
 
 ```javascript
    "scripts": {
@@ -38,7 +38,7 @@ NEXT+타입스크립트+스타일드 컴포넌트+스토리북(UI 스냅샷테�
  }
 ```
 
-프로젝트의 진행을 위해 nodemon을 설치한 후 다음과 같이 설정해줍니다.
+For **hot loading**, we have to install nodemon.
 
 ```javascript
 
@@ -52,7 +52,7 @@ NEXT+타입스크립트+스타일드 컴포넌트+스토리북(UI 스냅샷테�
 
 ```
 
-나중에 NEXT의 SSR을 위해 server.ts를 생성해주어야 합니다. 다음은 next.config.json설정입니다.
+For **SSR(Server-Side-Rendering)**, we need to create **server.ts** and make some configuration for next in next.config.json.
 
 ```javascript
 const withTypescript = require("@zeit/next-typescript");
@@ -263,4 +263,47 @@ Next를 사용한다고 해서 Apollo의 데이터가 바로 서버측에서 렌
 
 ```bash
 $npm i @apollo/react-ssr
+```
+
+## Reviewing Project
+
+### 01. Storybook Addon
+
+When I keep going this project, I am participated in [dooboolab meetup](https://www.meetup.com/ko-KR/react-native-seoul/events/267467315/) and learn storybook Addon.
+So, I started to find Addon and [some good blog post from korea](https://velog.io/@velopert/start-storybook).
+
+First add _@storybook/addon-knobs_, this is addon for manipulating prpos
+
+```bash
+$yarn add --dev @storybook/addon-knobs
+```
+
+And next is adding it in addon.js.
+
+```javascript
+import "@storybook/addon-knobs/register";
+```
+
+And usage of this is that
+
+```javascript
+import React from "react";
+import Component from "./index.ts";
+import { withKnobs, text, boolean } from "@storybook/addon-knobs";
+
+export default {
+  title: "Components|basic/LeftSideButton", // Storybook Path
+  component: Component, // Documented Component
+  decorators: [withKnobs], // Apply Addon
+};
+
+export const LeftSideButton = () => {
+  // knobs 만들기
+  const big = boolean("big", false);
+  const name = text("name", "Storybook");
+  return <Component name={name} big={big} />;
+};
+LeftSideButton.story = {
+  name: "Default",
+};
 ```

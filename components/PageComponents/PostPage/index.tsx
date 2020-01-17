@@ -11,9 +11,9 @@ interface IProps {
 
 const PostPage: React.FC<IProps> = props => {
   const { postId } = props;
-  // const { loading, error, data } = useQuery(GET_POST, {
-  //   variables: { post_id: postId },
-  // });
+  const { loading, error, data } = useQuery(GET_POST, {
+    variables: { post_id: postId },
+  });
   return <LoadingComponent />;
   return (
     <>
