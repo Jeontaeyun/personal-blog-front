@@ -6,7 +6,7 @@ import ReplyEditor from "../ReplyEditor";
 import ReplyBox from "../ReplyBox";
 import PostCardList from "../../MainComponents/PostCardList";
 
-interface Props {
+interface IProps {
   post?: {
     id: string;
     title: string;
@@ -19,7 +19,7 @@ interface Props {
   }>;
 }
 
-const PostContent: React.SFC<Props> = props => {
+const PostContent: React.FC<IProps> = props => {
   const { post } = props;
   const { title, description, id } = post;
   console.log(post);
@@ -28,6 +28,7 @@ const PostContent: React.SFC<Props> = props => {
       <PostIndicator />
       <LeftSideButton />
       <PostContainer>
+        <Title>{title}</Title>
         {description}
         <ReplyEditor />
         <ReplyBox />
@@ -47,6 +48,12 @@ const PostContainer = styled.div`
   @media screen and (max-width: ${props => props.theme.mediumPoint}) {
     width: 80%;
   }
+`;
+
+const Title = styled.div`
+  font-size: 2.4rem;
+  font-weight: 900;
+  margin : 1rem 0;
 `;
 
 export default PostContent;
