@@ -1,23 +1,23 @@
-import * as React from 'react';
-import { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import * as React from "react";
+import { useState, useEffect } from "react";
+import styled from "styled-components";
 
-interface Props {
+interface IProps {
   color?: string;
 }
 
-const Progressbar: React.SFC<Props> = props => {
+const Progressbar: React.FC<IProps> = props => {
   const { color } = props;
-  const [progress, setProgress] = useState<number | boolean>(false);
+  const [progress, setProgress] = useState<number>(0);
   useEffect(() => {
-    window.addEventListener('loadstart', () => setProgress(0.1));
-    if (typeof progress === 'number' && progress <= 1) {
+    window.addEventListener("loadstart", () => setProgress(0.1));
+    if (typeof progress === "number" && progress <= 1) {
       setInterval(() => setProgress(progress + 0.1), 200);
-      window.addEventListener('load', () => {
+      window.addEventListener("load", () => {
         setTimeout(() => setProgress(1), 2000);
       });
-    } else if (typeof progress === 'number' && progress > 1) {
-      setProgress(false);
+    } else if (typeof progress === "number" && progress > 1) {
+      setProgress(0);
     }
   });
   return (
@@ -32,7 +32,7 @@ const Progressbar: React.SFC<Props> = props => {
 };
 
 Progressbar.defaultProps = {
-  color: '#e45d4c',
+  color: "#e45d4c",
 };
 
 const ProgressbarContainer = styled.div`
@@ -43,7 +43,7 @@ const ProgressbarContainer = styled.div`
   z-index: 100000;
 `;
 
-const Progress = styled.div`
+const Progress = styled.div<{ progress: number }>`
   width: ${props => props.progress * 100}%;
   height: 100%;
   background: ${props => props.color};

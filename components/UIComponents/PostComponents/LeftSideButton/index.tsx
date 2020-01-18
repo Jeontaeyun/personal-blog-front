@@ -1,16 +1,16 @@
-import * as React from 'react';
-import { useEffect, useState, useCallback } from 'react';
-import styled from 'styled-components';
-import ProfileImage from '../../CommonComponents/ProfileImage';
+import * as React from "react";
+import { useEffect, useState, useCallback } from "react";
+import styled from "styled-components";
+import ProfileImage from "../../CommonComponents/ProfileImage";
 
-interface Props {
+interface IProps {
   onClick?(): void;
   position?: { top?: string; left?: string; right?: string; bottom?: string };
   title?: string;
   description?: string;
 }
 
-const LeftSideButton: React.SFC<Props> = props => {
+const LeftSideButton: React.FC<IProps> = props => {
   const { title, description, position } = props;
   const [isView, setIsView] = useState<boolean>(false);
   const [sharing, setSharing] = useState<boolean>(false);
@@ -21,8 +21,8 @@ const LeftSideButton: React.SFC<Props> = props => {
     else setIsView(false);
   };
   useEffect(() => {
-    window.addEventListener('scroll', scrollEvent);
-    window.addEventListener('load', scrollEvent);
+    window.addEventListener("scroll", scrollEvent);
+    window.addEventListener("load", scrollEvent);
   }, []);
 
   const onClickSharing = useCallback(
@@ -70,22 +70,22 @@ const LeftSideButton: React.SFC<Props> = props => {
 LeftSideButton.defaultProps = {
   onClick: () => {
     //scroll Event
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   },
-  position: { top: '7rem', left: '2rem' },
-  title: '타이틀',
+  position: { top: "7rem", left: "2rem" },
+  title: "타이틀",
   description: `설명을 기술하는 부분입니부분입니다.설명을 기술하는 부분입니다.
                 설명을 기술하는 부분입니다.설명을 기술하는 부분입니다.`,
 };
 
-const Container = styled.div`
+const Container = styled.div<Partial<IProps>>`
   position: fixed;
   width: 14%;
   top: ${props => props.position.top};
   left: ${props => props.position.left};
   bottom: ${props => props.position.bottom};
   right: ${props => props.position.right};
-  @media (max-width: ${props => props.theme.smallPoint}) {
+  @media screen and (max-width: ${props => props.theme.smallPoint}) {
     display: none;
   }
 `;
@@ -117,7 +117,7 @@ const IconContainer = styled.div`
   height: 40px;
 `;
 
-const Icon = styled.div`
+const Icon = styled.div<{ src: string }>`
   display: inline-block;
   position : relative;
   width: 33.3333%;
@@ -144,16 +144,16 @@ const Icon = styled.div`
   }
 `;
 
-const SharingList = styled.ul`
-  display: ${props => (props.visible ? 'block' : 'none')};
+const SharingList = styled.ul<{ visible: boolean }>`
+  display: ${props => (props.visible ? "block" : "none")};
   list-style-type: none;
   position: absolute;
   padding-left: -40px;
   right: 0;
 `;
 
-const SharingIcon = styled.li`
-  display: ${props => (props.visible ? 'block' : 'none')};
+const SharingIcon = styled.li<{ visible: boolean; src: string }>`
+  display: ${props => (props.visible ? "block" : "none")};
   margin-top: 1rem;
   a{
     display: block;

@@ -1,30 +1,30 @@
-import * as React from 'react';
-import { useState, useCallback } from 'react';
-import styled from 'styled-components';
+import * as React from "react";
+import { useState, useCallback } from "react";
+import styled from "styled-components";
 
-interface Props {}
+interface IProps {}
 
-const ReReply: React.SFC<Props> = () => {
+const ReReply: React.FC<IProps> = () => {
   const [view, isView] = useState<boolean>(false);
-  const [reReply, setReReply] = useState<string>('');
+  const [reReply, setReReply] = useState<string>("");
   const onClickReView = useCallback(
-    e => {
+    event => {
       isView(!view);
     },
     [view],
   );
   const onClickReply = useCallback(
-    e => {
+    event => {
       isView(false);
     },
     [view],
   );
-  const onChangeReReply = useCallback(e => {
-    setReReply(e.target.value);
+  const onChangeReReply = useCallback((event: any) => {
+    setReReply(event.target.value);
   }, []);
   const ReplyEditor = (
     <>
-      <TextArea onChnage={onChangeReReply} height={100}>
+      <TextArea onChange={onChangeReReply} height={100}>
         {reReply}
       </TextArea>
       <ReplyButtonContainer>
@@ -77,13 +77,13 @@ const ReplyButtonContainer = styled.div`
   margin-left: 2.8rem;
 `;
 
-const TextArea = styled.textarea`
+const TextArea = styled.textarea<{ height: number }>`
   display: block;
   width: 90%;
   margin-top: 1rem;
   margin-left: 2.5rem;
   box-sizing: border-box;
-  height: ${props => props.height + 'px'};
+  height: ${props => props.height + "px"};
   border: 1px solid ${props => props.theme.achromaticColor};
   border-radius: 1px;
   resize: none;

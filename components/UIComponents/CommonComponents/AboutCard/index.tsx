@@ -76,7 +76,7 @@ const Card = styled.div`
     transform: rotate(-1deg);
     transition: transform 500ms cubic-bezier(0.465, 0.183, 0.153, 0.946);
   }
-  @media (max-width: 800px) {
+  @media screen and (max-width: ${props => props.theme.mediumPoint}) {
     width: 90%;
   }
 `;
@@ -87,7 +87,7 @@ const Title = styled.div`
   right: 0.5em;
   top: 45%;
   color: ${props => props.theme.subColor};
-  @media (max-width: 800px) {
+  @media screen and (max-width: ${props => props.theme.mediumPoint}) {
     font-size: 1.5rem;
     top: 47%;
   }
@@ -112,7 +112,7 @@ const Descriptoin = styled.div`
   word-wrap: break-word;
   line-height: 1.2em;
   height: 4.6em;
-  @media (max-width: 800px) {
+  @media screen and (max-width: ${props => props.theme.mediumPoint}) {
     font-size: 0.7rem;
     top: 1.3rem;
     -webkit-line-clamp: 6;
@@ -147,10 +147,10 @@ const CardImage = styled.div`
   background-size: cover;
   background-position: center center;
 
-  @media (max-width: ${props => props.theme.smallColor}) {
+  @media screen and (max-width: ${props => props.theme.mediumPoint}) {
     width: 250px;
   }
-  @media (max-width: 600px) {
+  @media screen and (max-width: ${props => props.theme.smallPoint}) {
     width: 50%;
   }
 `;
