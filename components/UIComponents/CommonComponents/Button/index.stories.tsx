@@ -4,15 +4,22 @@
  */
 import React from "react";
 import Component from "./index";
+import { withKnobs, text, date } from "@storybook/addon-knobs";
 
 export default {
-  title: "COMPONENTS|Common/Button",
-  component: Component,
-  parameter:{
-    componentSubtitle: "Global common botton"
-  }
+    title: "COMPONENTS|Common/Button",
+    component: Component,
+    decorators: [withKnobs],
+    parameter: {
+        componentSubtitle: "Global common botton"
+    }
 };
 
-
-export const standard = () => <Component />;
-export const disabled = () => <Component disabled={true} />;
+export const standard = () => {
+    const title = text("buttonText", "DEFAULT");
+    return <Component>{title}</Component>;
+};
+export const disabled = () => {
+    const title = text("buttonText", "DEFAULT");
+    return <Component disabled={true}>{title}</Component>;
+};

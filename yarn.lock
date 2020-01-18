@@ -1776,6 +1776,16 @@
     react "^16.8.3"
     util-deprecate "^1.0.2"
 
+"@storybook/addon-centered@^5.3.6":
+  version "5.3.6"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-centered/-/addon-centered-5.3.6.tgz#180dd7fa9f93bf302b44067fc0952264642213f1"
+  integrity sha512-wIyblxP6+u9Ey5OxlanHDSNMBfRGkCYdKZk0NmjY4EPEnyETVw3PZ+xw6Y+cKButWlpAARAub1EyhCPA1tttYg==
+  dependencies:
+    "@storybook/addons" "5.3.6"
+    core-js "^3.0.1"
+    global "^4.3.2"
+    util-deprecate "^1.0.2"
+
 "@storybook/addon-docs@^5.3.6":
   version "5.3.6"
   resolved "https://registry.yarnpkg.com/@storybook/addon-docs/-/addon-docs-5.3.6.tgz#c597bf6daabb32c2e3434c498d586d1fba818d19"
@@ -2485,6 +2495,13 @@
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/@types/mime/-/mime-2.0.1.tgz#dc488842312a7f075149312905b5e3c0b054c79d"
   integrity sha512-FwI9gX75FgVBJ7ywgnq/P7tw+/o1GUbtP0KzbtusLigAOgIgNISRK0ZPl4qertvXSIE8YbsVJueQ90cDt9YYyw==
+
+"@types/moment@^2.13.0":
+  version "2.13.0"
+  resolved "https://registry.yarnpkg.com/@types/moment/-/moment-2.13.0.tgz#604ebd189bc3bc34a1548689404e61a2a4aac896"
+  integrity sha1-YE69GJvDvDShVIaJQE5hoqSqyJY=
+  dependencies:
+    moment "*"
 
 "@types/next-server@*":
   version "9.0.0"
@@ -9623,7 +9640,7 @@ mkdirp@0.5.1, mkdirp@^0.5.1, mkdirp@~0.5.1:
   dependencies:
     minimist "0.0.8"
 
-moment@^2.18.1:
+moment@*, moment@^2.18.1, moment@^2.24.0:
   version "2.24.0"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.24.0.tgz#0d055d53f5052aa653c9f6eb68bb5d12bf5c2b5b"
   integrity sha512-bV7f+6l2QigeBBZSM/6yTNq4P2fNpSWj/0e7jQcy87A8e7o2nAfP/34/2ky5Vw4B9S446EtIhodAzkFCcR4dQg==

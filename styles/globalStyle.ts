@@ -2,8 +2,7 @@ import { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
   body {
-    @import url("http://fonts.googleapis.com/earlyaccess/nanumgothic.css"); 
-     font-family: 'Nanum Gothic', sans-serif;
+    @font-face { font-family: 'RIDIBatang'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/RIDIBatang.woff') format('woff'); font-weight: normal; font-style: normal; }
      margin: 0;
      a {
         text-decoration: none;
