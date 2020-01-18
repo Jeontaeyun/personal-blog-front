@@ -1,8 +1,8 @@
-import * as React from 'react';
-import { useEffect, useState, useCallback } from 'react';
-import styled from 'styled-components';
+import * as React from "react";
+import { useEffect, useState, useCallback } from "react";
+import styled from "styled-components";
 
-interface ListProps {
+interface IListProps {
   nodeName: string;
   textContent: string;
   offsetTop: number;
@@ -12,7 +12,7 @@ interface ListProps {
 
 interface Props {}
 
-const IndicatorList: React.FunctionComponent<ListProps> = props => {
+const IndicatorList: React.FunctionComponent<IListProps> = props => {
   const { nodeName, textContent, offsetTop, offsetTopNext } = props;
   const [isSelected, setIsSelected] = useState<boolean | null>(false);
   const scrollEvent = e => {
@@ -28,19 +28,19 @@ const IndicatorList: React.FunctionComponent<ListProps> = props => {
   };
 
   useEffect(() => {
-    window.addEventListener('scroll', scrollEvent);
+    window.addEventListener("scroll", scrollEvent);
   }, []);
 
   const moveTitleAction = useCallback(
     point => e => {
-      return window.scrollTo({ top: point, behavior: 'smooth' });
+      return window.scrollTo({ top: point, behavior: "smooth" });
     },
     [],
   );
 
   return (
     <>
-      {nodeName === 'H1' ? (
+      {nodeName === "H1" ? (
         <IndicatorListP point={isSelected} onClick={moveTitleAction(offsetTop)}>
           <a>{textContent}</a>
         </IndicatorListP>
@@ -48,7 +48,7 @@ const IndicatorList: React.FunctionComponent<ListProps> = props => {
         <IndicatorListP
           point={isSelected}
           onClick={moveTitleAction(offsetTop)}
-          style={{ paddingLeft: '1.5rem' }}
+          style={{ paddingLeft: "1.5rem" }}
         >
           <a>{textContent}</a>
         </IndicatorListP>
@@ -58,7 +58,7 @@ const IndicatorList: React.FunctionComponent<ListProps> = props => {
 };
 
 const PostIndicator: React.SFC<Props> = props => {
-  const [titleList, setTitleList] = useState<Array<ListProps> | null>([]);
+  const [titleList, setTitleList] = useState<Array<IListProps> | null>([]);
   const [isView, setIsView] = useState<boolean>(false);
   const scrollEvent = e => {
     const crossBrowsingTop =
@@ -67,19 +67,19 @@ const PostIndicator: React.SFC<Props> = props => {
     else setIsView(false);
   };
   useEffect(() => {
-    window.addEventListener('scroll', scrollEvent);
-    window.addEventListener('load', scrollEvent);
+    window.addEventListener("scroll", scrollEvent);
+    window.addEventListener("load", scrollEvent);
   }, []);
   useEffect(() => {
-    const title: any[] = Array.from(document.querySelectorAll('h1,h2'));
-    const titleArray: Array<ListProps> = title.map(item => ({
+    const title: any[] = Array.from(document.querySelectorAll("h1,h2"));
+    const titleArray: Array<IListProps> = title.map(item => ({
       offsetTop: item.offsetTop,
       nodeName: item.nodeName,
       textContent: item.textContent,
     }));
 
     for (let i = 0; i < titleArray.length - 1; i++) {
-      titleArray[i]['offsetTopNext'] = titleArray[i + 1]['offsetTop'];
+      titleArray[i]["offsetTopNext"] = titleArray[i + 1]["offsetTop"];
     }
     setTitleList(titleList.concat(titleArray));
   }, []);
@@ -111,7 +111,7 @@ const Container = styled.div`
   top: 8rem;
   right: 1rem;
   width: 15%;
-  @media (max-width: 800px) {
+  @media screen and (max-width: ${props => props.theme.mediumPoint}) {
     display: none;
   }
 `;
@@ -130,7 +130,7 @@ const PostIndicatorContainer = styled.div`
   border-left: 1px solid ${props => props.theme.achromaticColor};
 `;
 
-const IndicatorListP = styled.div`
+const IndicatorListP = styled.div<{ point: boolean }>`
   position: relative;
   font-size: 0.5rem;
   padding-top: 0.2rem;
@@ -145,7 +145,7 @@ const IndicatorListP = styled.div`
     color: ${props => props.theme.mainColor};
     transition: all 0.3s ease-in-out;
   }
-  @media (max-width: 900px) {
+  @media screen and (max-width: ${props => props.theme.mediumPoint}) {
     font-size: 0.3rem;
   }
   ${props =>

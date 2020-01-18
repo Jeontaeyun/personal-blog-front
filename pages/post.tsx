@@ -8,7 +8,6 @@ interface IProps {
 
 const Post: NextPage<IProps> = props => {
   const { postId } = props;
-  console.log(postId);
   return (
     <>
       <PostPage postId={postId} />
