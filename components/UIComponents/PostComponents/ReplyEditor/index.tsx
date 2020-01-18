@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useState, useCallback, useRef } from 'react';
 import styled from 'styled-components';
 import Button from '../../CommonComponents/Button';
-import ProfileImage from '@components/UIComponents/CommonComponents/ProfileImage';
+import ProfileImage from 'components/UIComponents/CommonComponents/ProfileImage';
 
 interface Props {}
 

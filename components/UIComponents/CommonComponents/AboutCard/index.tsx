@@ -1,5 +1,5 @@
-import * as React from 'react';
-import styled from 'styled-components';
+import * as React from "react";
+import styled from "styled-components";
 
 interface Props {
   title?: string;
@@ -19,7 +19,7 @@ const AboutCard: React.SFC<Props> = props => {
         <HalfBackground>
           <Descriptoin>
             {/*How to create \n in React*/
-            description.split('\n').map(line => {
+            description.split("\n").map(line => {
               return (
                 <span>
                   {line}
@@ -60,7 +60,7 @@ AboutCard.defaultProps = {
                   unde officia tempora aliquid vero ea quibusdam dolorum odio 
                   iure hic! Modi, vitae. Iusto pariatur quos aliquam sed solut
                   a necessitatibus, placeat assumenda ad.`,
-  date: '2017년 8월 1일',
+  date: "2017년 8월 1일",
 };
 
 const Card = styled.div`
@@ -142,7 +142,7 @@ const CardImage = styled.div`
   height: 90%;
   width: 300px;
   left: 2%;
-  background: url('/dummy.png');
+  background: url("/dummy.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;

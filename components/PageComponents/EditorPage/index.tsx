@@ -1,9 +1,9 @@
-import * as React from 'react';
-import AboutCard from '@components/UIComponents/CommonComponents/AboutCard';
+import * as React from "react";
+import AboutCard from "components/UIComponents/CommonComponents/AboutCard";
 
-interface Props {}
+interface IProps {}
 
-const EditorPage: React.SFC<Props> = props => {
+const EditorPage: React.FC<IProps> = props => {
   return (
     <>
       <AboutCard />

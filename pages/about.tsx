@@ -1,7 +1,10 @@
-import * as React from 'react';
-import AboutPage from '@components/PageComponents/AboutPage';
+import { NextPage } from "next";
+import * as React from "react";
+import AboutPage from "components/PageComponents/AboutPage";
 
-const about: React.FunctionComponent = () => {
+interface IProps {}
+
+const about: NextPage<IProps> = () => {
   return (
     <>
       <AboutPage />

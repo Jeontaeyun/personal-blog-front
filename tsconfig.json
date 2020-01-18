@@ -1,28 +1,35 @@
 {
-  "compileOnSave": false,
   "compilerOptions": {
     "outDir": "dist",
     "target": "es6",
     "module": "commonjs",
     "jsx": "preserve",
     "allowJs": true,
-    "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true,
-    "lib": ["es6", "dom"],
-    "baseUrl": ".",
-    "paths": {
-      "@components/*": ["./components/*"],
-      "@public/*": ["./public/*"]
-    },
+    "skipLibCheck": true,
     "strict": false,
     "noEmit": true,
     "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
     "resolveJsonModule": true,
-    "noImplicitReturns": true,
     "isolatedModules": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "jsx": "preserve",
+    "baseUrl": "./",
+    "paths": {
+      "@components": [
+        "./components/"
+      ],
+      "@public": [
+        "./public/"
+      ]
+    }
   },
-  "exclude": ["node_modules"],
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
+  "exclude": [
+    "node_modules"
+  ],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ]
 }
