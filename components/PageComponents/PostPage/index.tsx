@@ -14,7 +14,6 @@ const PostPage: React.FC<IProps> = props => {
     const { loading, error, data } = useQuery(GET_POST, {
         variables: { post_id: postId }
     });
-    return <LoadingComponent />;
     return (
         <>
             <PostContent post={{ id: "1", title: "hi", description: "hiij" }} />
