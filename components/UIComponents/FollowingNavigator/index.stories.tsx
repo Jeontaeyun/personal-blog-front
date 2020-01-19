@@ -4,19 +4,17 @@
  */
 import React from "react";
 import Component from "./index";
-import { withKnobs, boolean } from "@storybook/addon-knobs";
-import centered from "@storybook/addon-centered";
+import { withKnobs, text } from "@storybook/addon-knobs";
 
 export default {
-    title: "COMPONENTS|Common/LoadingSpinner",
+    title: "COMPONENTS|Common/FollowingNavigator",
     component: Component,
-    decorator: [withKnobs, centered],
+    decorators: [withKnobs],
     parameter: {
         componentSubtitle: "Global common botton"
     }
 };
 
 export const standard = () => {
-    const isLoading = boolean("isLoading", false);
-    return <Component isLoading={isLoading} />;
+    return <Component isView={true} />;
 };

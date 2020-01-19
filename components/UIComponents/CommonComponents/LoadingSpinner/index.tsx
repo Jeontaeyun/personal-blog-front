@@ -7,7 +7,11 @@ interface IProps {
 const LoadingSpinner: React.FC<IProps> = props => {
     const { isLoading } = props;
     if (isLoading) {
-        return <></>;
+        return (
+            <>
+                <div>hi</div>
+            </>
+        );
     } else {
         return null;
     }

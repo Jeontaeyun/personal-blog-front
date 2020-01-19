@@ -4,12 +4,13 @@
  */
 import React from "react";
 import Component from "./index";
-import { withKnobs, text, date } from "@storybook/addon-knobs";
+import { withKnobs, text } from "@storybook/addon-knobs";
+import centered from "@storybook/addon-centered";
 
 export default {
     title: "COMPONENTS|Common/Button",
     component: Component,
-    decorators: [withKnobs],
+    decorators: [withKnobs, centered],
     parameter: {
         componentSubtitle: "Global common botton"
     }

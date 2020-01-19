@@ -3,7 +3,6 @@ import PostContent from "components/UIComponents/PostComponents/PostContent";
 
 import { useQuery } from "@apollo/react-hooks";
 import { GET_POST } from "./postpageGQL";
-import LoadingComponent from "components/UIComponents/LoadingComponent";
 
 interface IProps {
     postId: number;
