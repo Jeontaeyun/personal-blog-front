@@ -10,13 +10,13 @@ import centered from "@storybook/addon-centered";
 export default {
     title: "COMPONENTS|Common/LoadingSpinner",
     component: Component,
-    decorator: [withKnobs, centered],
+    decorators: [withKnobs, centered],
     parameter: {
         componentSubtitle: "Global common botton"
     }
 };
 
 export const standard = () => {
-    const isLoading = boolean("isLoading", false);
+    const isLoading = boolean("isLoading", true);
     return <Component isLoading={isLoading} />;
 };

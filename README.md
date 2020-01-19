@@ -305,3 +305,12 @@ LeftSideButton.story = {
     name: "Default"
 };
 ```
+
+### 02. JEST and React
+
+I implement test environment with [JEST]("https://jestjs.io/docs/en/tutorial-react"). First of all, we need to install react-test-renderer for rendering snapshots.
+
+```bash
+    $yarn add --dev react-test-renderer
+    $yarn add --dev babel-jest jest @babel/preset-react @babel/preset-env
+```
