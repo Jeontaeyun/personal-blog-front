@@ -322,13 +322,14 @@ module.exports = {
     testEnvironment: "node",
     roots: ["<rootDir>/components"],
     preset: "ts-jest",
-    //setupFilesAfterEnv: ["<rootDir>/tests/setupTests.ts"],
+    setupFilesAfterEnv: ["<rootDir>/tests/setupTests.ts"],
     transform: {
         "^.+\\.tsx?$": "ts-jest"
     },
     testRegex: "(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$",
     moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
     testPathIgnorePatterns: ["<rootDir>/.next/", "<rootDir>/node_modules/"]
+    //snapshotSerializers: ["enzyme-to-json/serializer"]
 };
 ```
 
@@ -336,4 +337,21 @@ and if you have snapshots already, you can update snapshots with this command
 
 ```bash
 $jest --updateSnapshot or -u
+```
+
+For DOM Testing, you can use react-testing-library and Enzyme
+
+```bash
+$yarn add --dev @testing-library/react enzyme
+```
+
+Enzyme help to test DOM event and rendering. And we write setupTests.ts file
+
+```typescript
+// setupTests.ts
+
+import { configure } from "enzyme";
+import Adapter from "enzyme-adapter-react-16";
+
+configure({ adapter: new Adapter() });
 ```
