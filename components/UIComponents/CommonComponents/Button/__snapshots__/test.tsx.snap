@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button Component Rendering 1`] = `
+<div
+  className="sc-bdVaJa bRgoTr"
+  disabled={false}
+  onClick={[Function]}
+>
+  Default
+</div>
+`;

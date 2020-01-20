@@ -20,6 +20,7 @@ export const standard = () => {
     const title = text("buttonText", "DEFAULT");
     return <Component>{title}</Component>;
 };
+
 export const disabled = () => {
     const title = text("buttonText", "DEFAULT");
     return <Component disabled={true}>{title}</Component>;

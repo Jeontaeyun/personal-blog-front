@@ -308,9 +308,32 @@ LeftSideButton.story = {
 
 ### 02. JEST and React
 
-I implement test environment with [JEST]("https://jestjs.io/docs/en/tutorial-react"). First of all, we need to install react-test-renderer for rendering snapshots.
+I implement test environment with [JEST]("https://jestjs.io/docs/en/tutorial-react"). And [This post]("https://medium.com/@kjaer/setting-up-jest-and-enzyme-for-typescript-next-js-apps-ce383167643") is really helpful to me. First of all, we need to install react-test-renderer for rendering snapshots.
 
 ```bash
     $yarn add --dev react-test-renderer
-    $yarn add --dev babel-jest jest @babel/preset-react @babel/preset-env
+    $yarn add --dev babel-jest ts-jest jest @babel/preset-react @babel/preset-env
+```
+
+And make jest.config.js file
+
+```javascript
+module.exports = {
+    testEnvironment: "node",
+    roots: ["<rootDir>/components"],
+    preset: "ts-jest",
+    //setupFilesAfterEnv: ["<rootDir>/tests/setupTests.ts"],
+    transform: {
+        "^.+\\.tsx?$": "ts-jest"
+    },
+    testRegex: "(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$",
+    moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
+    testPathIgnorePatterns: ["<rootDir>/.next/", "<rootDir>/node_modules/"]
+};
+```
+
+and if you have snapshots already, you can update snapshots with this command
+
+```bash
+$jest --updateSnapshot or -u
 ```
