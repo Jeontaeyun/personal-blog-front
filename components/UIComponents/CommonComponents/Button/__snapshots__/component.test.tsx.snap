@@ -1,5 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`[Button] Component Rendering should render disabled without crashing 1`] = `
+<div
+  className="sc-bdVaJa YfLeS"
+  disabled={true}
+  onClick={[Function]}
+>
+  Default
+</div>
+`;
+
 exports[`[Button] Component Rendering should render without crashing 1`] = `
 <div
   className="sc-bdVaJa bRgoTr"
