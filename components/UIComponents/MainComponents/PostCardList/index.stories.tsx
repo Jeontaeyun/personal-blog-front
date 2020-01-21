@@ -7,7 +7,7 @@ import Component from "./index";
 import { withKnobs, text, array, object } from "@storybook/addon-knobs";
 
 export default {
-    title: "COMPONENTS|Common/PostCardList",
+    title: "PAGES|Main/PostCardList",
     component: Component,
     decorators: [withKnobs],
     parameter: {

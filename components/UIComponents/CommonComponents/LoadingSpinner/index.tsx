@@ -25,18 +25,18 @@ const rotateRightAnimation = keyframes`
         transform: rotate(0deg);
     }
     20%{
-        transform: rotate(180deg);
+        transform: rotate(360deg);
     }
 `;
 
 const rotateAnimation = keyframes`
     0%{
-        transform: translateY(-20px);
-    }20%{
+        transform: translateY(-40px);
+    }50%{
         transform: translateY(0px);
     }
     100%{
-        transform: translateY(-20px);
+        transform: translateY(40px);
     }
 `;
 
@@ -45,7 +45,7 @@ const rotateLeftAnimation = keyframes`
         transform: rotate(0deg);
     }
     20%{
-        transform: rotate(-180deg);
+        transform: rotate(-360deg);
     }
 `;
 
@@ -57,17 +57,17 @@ const Circle = styled.div`
     border-radius: 15px;
     background-color: red;
     transform-origin: center;
-    animation: ${rotateAnimation} 3s cubic-bezier(0.86, 0, 0.07, 1) infinite;
+    animation: ${rotateAnimation} 3s cubic-bezier(0.86, 0, 0.07, 1) infinite alternate;
 `;
 
 const CircleRight = styled(Circle)`
-    transform-origin: right;
-    animation: ${rotateRightAnimation} 3s cubic-bezier(0.86, 0, 0.07, 1) infinite;
+    transform-origin: left;
+    animation: ${rotateRightAnimation} 3s cubic-bezier(0.86, 0, 0.07, 1) infinite alternate;
 `;
 
 const CircleLeft = styled(Circle)`
-    transform-origin: left;
-    animation: ${rotateLeftAnimation} 3s cubic-bezier(0.86, 0, 0.07, 1) infinite;
+    transform-origin: right;
+    animation: ${rotateLeftAnimation} 3s cubic-bezier(0.86, 0, 0.07, 1) infinite alternate;
 `;
 
 export default LoadingSpinner;

@@ -5,13 +5,21 @@ import moment from "moment";
 import "moment/locale/ko";
 import { ITag } from "interface/common/Tag";
 interface IProps {
+    /**Title for post card */
     title?: string;
+    /**Description for post card */
     description?: string;
+    /**Registered date for post card */
     date?: number;
+    /**Thumbnail image for post card */
     image?: string;
+    /**Tags for post card */
     tags?: Array<ITag>;
 }
 
+/**
+ * PostCard for list
+ */
 const PostCard: React.FC<IProps> = props => {
     const { title, description, date, image, tags } = props;
 

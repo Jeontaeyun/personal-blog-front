@@ -10,8 +10,8 @@ export default {
     title: "COMPONENTS|Common/PostCard",
     component: Component,
     decorators: [withKnobs],
-    parameter: {
-        componentSubtitle: "Global common botton"
+    parameters: {
+        componentSubtitle: "Main component for render post in post, main page"
     }
 };
 
