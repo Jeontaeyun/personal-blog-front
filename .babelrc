@@ -1,5 +1,11 @@
 {
-    "presets": ["next/babel", "@babel/preset-env", "@babel/preset-react", "@babel/preset-typescript"],
+    "presets": [
+        "next/babel",
+        "@zeit/next-typescript/babel",
+        "@babel/preset-env",
+        "@babel/preset-react",
+        "@babel/preset-typescript"
+    ],
     "plugins": [
         "babel-plugin-styled-components",
         [

@@ -16,7 +16,7 @@ export default {
 
 export const standard = () => {
     const [value, setValue] = useState("");
-    const placeholder = text("placeholder", "placeholder");
+    const placeholder = text("placeholder", "아이디");
     const width = text("width", "200px");
     const limit = number("limit", 10);
 
@@ -32,6 +32,6 @@ export const standard = () => {
 
 export const actionTest = () => {
     const [value, setValue] = useState("");
-    const placeholder = text("placeholder", "placeholder");
+    const placeholder = text("placeholder", "아이디");
     return <Component value={value} onChange={action("onChange")} placeholder={placeholder} />;
 };

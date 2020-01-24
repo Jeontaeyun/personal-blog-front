@@ -63,15 +63,19 @@ const Container = styled.div<{ width: string }>`
 `;
 
 const Input = styled.input`
-    text-align: center;
     padding: 0.8rem 1rem;
+    letter-spacing: 4;
     width: 100%;
     border: 1px solid ${props => props.theme.achromaticColor};
     border-radius: 0.2rem;
     font-weight: 700;
     color: "black";
+    text-align: left;
     &:focus {
         outline: none;
+    }
+    &::placeholder {
+        letter-spacing: 3;
     }
 `;
 

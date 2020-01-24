@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 interface IProps {
     children?: string;
-    onClick?: () => void;
+    onClick?: (event) => void;
     disabled?: boolean;
 }
 

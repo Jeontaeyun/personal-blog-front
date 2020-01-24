@@ -13,7 +13,8 @@
         "start:dev": "nodemon",
         "start": "NODE_ENV=production ts-node server.ts",
         "build": "BUNDLE_ANALYZE=both next build",
-        "test": "jest",
+        "test": "jest --config ./jest.config.js",
+        "test:watch": "yarn test -- --watch",
         "storybook": "start-storybook -s ./public  -p 6006",
         "build-storybook": "build-storybook -s ./public",
         "deploy-storybook": "storybook-to-ghpages"
@@ -99,6 +100,8 @@
         "eslint-plugin-import": "^2.20.0",
         "fork-ts-checker-webpack-plugin": "^1.5.0",
         "jest": "^24.9.0",
+        "jsdom": "^16.0.1",
+        "jsdom-global": "^3.0.2",
         "nodemon": "^1.19.2",
         "react-docgen-typescript-loader": "^3.6.0",
         "react-test-renderer": "^16.12.0",

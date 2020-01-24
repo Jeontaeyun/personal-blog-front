@@ -6,7 +6,7 @@ exports[`[Button] Component Rendering should render disabled without crashing 1`
   disabled={true}
   onClick={[Function]}
 >
-  Default
+  Button
 </div>
 `;
 
