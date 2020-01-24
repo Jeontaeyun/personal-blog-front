@@ -8,13 +8,13 @@ module.exports = {
     },
     verbose: true,
     displayName: {
-        name: "JEST",
-        color: "red"
+        name: "STARK",
+        color: "blue"
     },
     notify: true,
-    notifyMode: "failure-chang",
+    notifyMode: "always",
     testRegex: "(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$",
-    moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
+    moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json"],
     testPathIgnorePatterns: ["<rootDir>/.next/", "<rootDir>/node_modules/"]
     //snapshotSerializers: ["enzyme-to-json/serializer"]
 };

@@ -6,7 +6,7 @@ exports[`[TYTextInput] Component Rendering should render without crashing 1`] = 
   width="200px"
 >
   <input
-    className="sc-bwzfXH fEwxIh"
+    className="sc-bwzfXH dVJTUB"
     onBlur={[Function]}
     onChange={[Function]}
     onFocus={[Function]}

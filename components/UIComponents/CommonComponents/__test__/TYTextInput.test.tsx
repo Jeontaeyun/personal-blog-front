@@ -1,4 +1,4 @@
-import React, {useState, useCallback} from "react";
+import React from "react";
 import TYTextInput from "../TYTextInput";
 import renderer from "react-test-renderer";
 import { mount } from "enzyme";
