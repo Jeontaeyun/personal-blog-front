@@ -1,27 +1,17 @@
 {
-  "presets": ["next/babel", "@zeit/next-typescript/babel"],
-  "plugins": [
-    "babel-plugin-styled-components",
-    [
-      "module-resolver",
-      {
-        "root": ["./"],
-        "alias": {
-          "@components": ["./components"],
-          "@public": ["./public"]
-        },
-        "extensions": [
-          ".wasm",
-          ".mjs",
-          ".js",
-          ".jsx",
-          ".json",
-          ".ts",
-          ".tsx",
-          ".jpg",
-          ".png"
+    "presets": ["next/babel", "@babel/preset-react", "@babel/preset-typescript"],
+    "plugins": [
+        "babel-plugin-styled-components",
+        [
+            "module-resolver",
+            {
+                "root": ["./"],
+                "alias": {
+                    "@components": ["./components"],
+                    "@public": ["./public"]
+                },
+                "extensions": [".wasm", ".mjs", ".js", ".jsx", ".json", ".ts", ".tsx", ".jpg", ".png"]
+            }
         ]
-      }
     ]
-  ]
 }

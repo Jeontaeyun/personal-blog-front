@@ -6,7 +6,6 @@ import ProfileImage from "../ProfileImage";
 import HeaderComponent from "../../HeaderComponent";
 import FollowingNavigator from "../../FollowingNavigator";
 import FooterCopy from "../../FooterComponents/FooterCopy";
-import Progressbar from "../Progressbar";
 
 interface IProps {
     MainContents: any;
@@ -17,7 +16,8 @@ const AppLayout: React.FC<IProps> = props => {
     const [isFollowingNav, setIsFollowingNav] = useState(false);
     const scrollEvent = (event: any) => {
         const crossBrowsingTop = document.documentElement.scrollTop || document.body.scrollTop;
-        if (crossBrowsingTop > 400) setIsFollowingNav(true);
+        const shouldSetVisible = crossBrowsingTop > 400;
+        if (shouldSetVisible) setIsFollowingNav(true);
         else setIsFollowingNav(false);
     };
     useEffect(() => {
