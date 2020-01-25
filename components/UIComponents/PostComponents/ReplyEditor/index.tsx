@@ -7,7 +7,7 @@ import ProfileImage from "components/UIComponents/CommonComponents/ProfileImage"
 interface Props {}
 
 const ReplyEditor: React.SFC<Props> = props => {
-    const [reply, setReply] = useState<string>("댓글을 입력해주세요");
+    const [reply, setReply] = useState<string>("");
     const [height, setHeight] = useState<number>(60);
     const textRef = useRef<HTMLTextAreaElement>(null);
     const onChangeReply = useCallback(
@@ -19,11 +19,8 @@ const ReplyEditor: React.SFC<Props> = props => {
         [height, textRef]
     );
     const onFocusReply = useCallback(
-        event => {
-            if (reply === "댓글을 입력해주세요") {
-                setHeight(100);
-                setReply("");
-            }
+        (event: React.FocusEvent<HTMLTextAreaElement>) => {
+            setHeight(100);
         },
         [reply]
     );
@@ -45,6 +42,7 @@ const ReplyEditor: React.SFC<Props> = props => {
                     ref={textRef}
                     rows={4}
                     value={reply}
+                    placeholder={"댓글을 입력해주세요"}
                     height={height}
                     onChange={onChangeReply}
                     onFocus={onFocusReply}

@@ -72,8 +72,9 @@ const App: StatelessPage<any> = props => {
 
 App.getInitialProps = async context => {
     const { ctx, Component } = context;
+    const hasGetInitialProps = Component.getInitialProps;
     let pageProps = {};
-    if (Component.getInitialProps) {
+    if (hasGetInitialProps) {
         pageProps = await Component.getInitialProps(ctx);
     }
     return { pageProps };

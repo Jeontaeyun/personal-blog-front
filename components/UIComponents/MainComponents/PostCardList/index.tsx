@@ -57,7 +57,7 @@ PostCardList.defaultProps = {
 };
 
 const Container = styled.div`
-    margin: 6rem auto;
+    margin: 3rem auto;
     width: 100%;
     @media screen and (max-width: ${props => props.theme.mediumPoint}) {
         width: 98%;

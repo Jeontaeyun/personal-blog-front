@@ -16,7 +16,8 @@ const TYTextInput: React.FC<IProps> = props => {
 
     const _onChange = useCallback(
         (event: any) => {
-            if (!!!limit || event.target.value.length <= limit) {
+            const shouldLimit = !!!limit || event.target.value.length <= limit;
+            if (shouldLimit) {
                 onChange(event);
             }
         },

@@ -2,6 +2,11 @@ module.exports = {
     testEnvironment: "jsdom",
     roots: ["<rootDir>/components"],
     preset: "ts-jest",
+    globals: {
+        "ts-jest": {
+            tsConfig: "tsconfig.prod.json"
+        }
+    },
     setupFilesAfterEnv: ["<rootDir>/tests/setupTests.ts"],
     transform: {
         "^.+\\.tsx?$": "ts-jest"

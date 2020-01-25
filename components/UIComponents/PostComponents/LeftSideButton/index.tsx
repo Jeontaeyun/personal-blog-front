@@ -1,5 +1,4 @@
-import * as React from "react";
-import { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import styled from "styled-components";
 import ProfileImage from "../../CommonComponents/ProfileImage";
 
@@ -16,9 +15,14 @@ const LeftSideButton: React.FC<IProps> = props => {
     const [sharing, setSharing] = useState<boolean>(false);
     const scrollEvent = () => {
         const crossBrowsingTop = document.documentElement.scrollTop || document.body.scrollTop;
-        if (crossBrowsingTop > 400) setIsView(true);
-        else setIsView(false);
+        const shouldSetVisible = crossBrowsingTop > 400;
+        if (shouldSetVisible) {
+            setIsView(true);
+        } else {
+            setIsView(false);
+        }
     };
+
     useEffect(() => {
         window.addEventListener("scroll", scrollEvent);
         window.addEventListener("load", scrollEvent);

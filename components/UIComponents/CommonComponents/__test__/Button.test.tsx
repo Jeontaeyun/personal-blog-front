@@ -1,15 +1,14 @@
-
 import React from "react";
 import Button from "../Button";
 import renderer from "react-test-renderer";
-import { shallow , mount } from "enzyme";
+import { shallow, mount } from "enzyme";
 
 describe("[Button] Component Rendering", () => {
     it("should render without crashing", () => {
         const snapshot = renderer.create(<Button>Default</Button>).toJSON();
         expect(snapshot).toMatchSnapshot();
     });
-    
+
     it("should render disabled without crashing", () => {
         const snapshot = renderer.create(<Button disabled={true}>Button</Button>).toJSON();
         expect(snapshot).toMatchSnapshot();
@@ -27,8 +26,8 @@ describe("[Button] Component Rendering", () => {
 
     it('rendering Text well with "로그인 버튼"', () => {
         let isClicked = false;
-        
-        const onClick = (event) => {
+
+        const onClick = event => {
             isClicked = true;
         };
 
