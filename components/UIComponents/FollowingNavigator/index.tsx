@@ -80,6 +80,7 @@ const Container = styled.div<{ view: boolean }>`
     transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     @media screen and (max-width: ${props => props.theme.mediumPoint}) {
         height: 100px;
+        transform: translateY(${props => (props.view ? 0 : "-100px")});
         background: "red";
     }
     will-change: transform, opacity;
@@ -90,7 +91,6 @@ const MenuContainer = styled.div`
     width: 80%;
     height: 100%;
     margin: 0 auto;
-
     @media screen and (max-width: ${props => props.theme.mediumPoint}) {
         width: 100%;
         text-align: center;
@@ -112,6 +112,7 @@ const Logo = styled.div`
     height: 100%;
     width: 150px;
     background: url("./title.png");
+    border-radius: 0.1rem;
     @media screen and (max-width: ${props => props.theme.mediumPoint}) {
         display: block;
         margin: 0 auto;

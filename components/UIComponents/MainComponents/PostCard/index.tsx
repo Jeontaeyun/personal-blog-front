@@ -1,109 +1,154 @@
 import * as React from "react";
 import styled from "styled-components";
 import ProfileImage from "../../CommonComponents/ProfileImage";
-
-interface Props {
-  title?: string;
-  description?: string;
-  date?: string;
-  img?: string;
+import moment from "moment";
+import "moment/locale/ko";
+import { ITag } from "interface/common/Tag";
+interface IProps {
+    /**Title for post card */
+    title?: string;
+    /**Description for post card */
+    description?: string;
+    /**Registered date for post card */
+    date?: number;
+    /**Thumbnail image for post card */
+    image?: string;
+    /**Tags for post card */
+    tags?: Array<ITag>;
 }
 
-const PostCard: React.SFC<Props> = props => {
-  const { title, description, date } = props;
-  return (
-    <>
-      <Card>
-        <CardImage />
-        <Description>
-          <PositioningProfile size={"30px"} />
-          <Title>{title}</Title>
-          <Contents>{" " + description}</Contents>
-          <Date>{date}</Date>
-        </Description>
-      </Card>
-    </>
-  );
+/**
+ * PostCard for list
+ */
+const PostCard: React.FC<IProps> = props => {
+    const { title, description, date, image, tags } = props;
+
+    const renderTag = () => {
+        return tags.map(tag => <Tag key={tag.id}>{tag.name.slice(0, 12)}</Tag>);
+    };
+
+    return (
+        <>
+            <Card>
+                <TagConatiner>{renderTag()}</TagConatiner>
+                <CardImage image={image}>
+                    <PositioningProfile size={"40px"} />
+                </CardImage>
+                <Description>
+                    <Title>{title}</Title>
+                    <Date>{moment(date).format("YYYY년 MM월 DD일")}</Date>
+                    <Contents>{" " + description}</Contents>
+                </Description>
+            </Card>
+        </>
+    );
 };
 
 PostCard.defaultProps = {
-  title: "최신포스트 제신포스트 제신포스트 제신포스트 제신포스트 제목",
-  description: `이글은 최신 글입니다.이글은 최신 글이글은 최신 글입니다.
+    title: "최신포스트 제신포스트 제신포스트 제신포스트 제신포스트 제목",
+    description: `이글은 최신 글입니다.이글은 최신 글이글은 최신 글입니다.
                   이글은 최신 글이글은 최신 글입니다.이글은 최신 글이글은 최신 글입니다.
                   이글은 최신 글이글은 최신 글입니다.이글은 최신 글이글은 최신 글입니다.이글은 
                   최신 글이글은 최신 글입니다.이글은 최신 글이글은 최신 글입니다.이글은 최신 글입
                   니다.이글은 최신 글입니다.이글은 최신 글입니다.이글은 최신 글입니다.이글은 최신 
                   글입니다.이글은 최신 글입니다.이글은 최신 글입니다.이글은 최신 글입니다.이글은 최
                   신 글입니다.`,
-  date: "2017년 8월 1일",
+    date: 12323,
+    tags: [
+        { name: "Javascript", id: "1" },
+        { name: "Backend", id: "2" },
+        { name: "Docker", id: "3" }
+    ]
 };
 
 const Card = styled.div`
-  position: relative;
-  width: 420px;
-  height: 360px;
-  background: white;
-  margin-bottom: 3rem;
-  border: 1px solid ${props => props.theme.achromaticColor};
-  -webkit-box-shadow: -2px 10px 73px -39px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: -2px 10px 73px -39px rgba(0, 0, 0, 0.75);
-  box-shadow: -2px 10px 73px -39px rgba(0, 0, 0, 0.75);
-  transition: transform 500ms cubic-bezier(0.465, 0.183, 0.153, 0.946);
-  cursor: pointer;
-  &:hover {
-    transform: scale(1.03);
-  }
-  @media screen and (max-width: ${props => props.theme.smallPoint}) {
-    width: 100%;
-  }
+    position: relative;
+    width: 420px;
+    height: 400px;
+    background: white;
+    margin-bottom: 3rem;
+    cursor: pointer;
+    @media screen and (max-width: ${props => props.theme.mediumPoint}) {
+        height: 430px;
+        width: 100%;
+        margin-bottom: 4rem;
+    }
 `;
 
-const CardImage = styled.div<Props>`
-  height: 200px;
-  width: 100%;
-  background: url("/dummy.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
+const CardImage = styled.div<IProps>`
+    position: relative;
+    height: 200px;
+    width: 100%;
+    border-radius: ${props => props.theme.BORDER_RADIUS};
+    background: url(${props => props.image || "/dummy.png"});
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    @media screen and (max-width: ${props => props.theme.mediumPoint}) {
+        height: 250px;
+        width: 100%;
+    }
 `;
 
 const PositioningProfile = styled(ProfileImage)`
-  position: absolute;
-  top: -40px;
-  right: 40px;
+    position: absolute;
+    bottom: -20px;
+    right: 40px;
+`;
+
+const TagConatiner = styled.div`
+    width: 100%;
+    height: 30px;
+    margin: 0 1rem;
+`;
+
+const Tag = styled.span`
+    height: 30px;
+    width: auto;
+    text-align: center;
+    padding: 0.2rem 1rem;
+    margin-right: 0.6rem;
+    border-radius: ${props => props.theme.BORDER_RADIUS};
+    font-size: 0.8rem;
+    border: 0.6px solid #ced4da;
+    color: ${props => props.theme.mainColor};
+    font-weight: 800;
 `;
 
 const Description = styled.div`
-  position: relative;
-  margin: 0.8rem;
+    position: relative;
+    margin: 0 0.8rem;
 `;
 
 const Title = styled.p`
-  width: 100%;
-  font-size: 1.2rem;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  word-wrap: normal;
-  overflow: hidden;
+    width: 100%;
+    font-size: 1.2rem;
+    font-weight: 900;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+    overflow: hidden;
+    margin-top: 1.6rem;
+    margin-bottom: 0;
 `;
 
 const Contents = styled.p`
-  width: 100%;
-  font-size: 0.8rem;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  word-wrap: break-word;
-  line-height: 1.2em;
-  height: 3.6em;
+    width: 100%;
+    color: #343a40;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+    line-height: 1.6em;
+    height: 4.8em;
 `;
 const Date = styled.p`
-  display: absolute;
-  margin-bottom: 0.3rem;
-  right: 2rem;
-  width: 100%;
-  font-size: 0.6rem;
+    font-size: 0.6rem;
+    color: #343a40;
+    width: 100%;
 `;
 
 export default PostCard;

@@ -1,10 +1,10 @@
-import * as React from 'react';
-import styled from 'styled-components';
+import * as React from "react";
+import styled from "styled-components";
 
-interface Props {}
+interface IProps {}
 
-const LoginForm: React.SFC<Props> = props => {
-  return <></>;
+const LoginForm: React.FC<IProps> = props => {
+    return <></>;
 };
 
 LoginForm.defaultProps = {};
