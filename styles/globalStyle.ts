@@ -8,11 +8,11 @@ export default createGlobalStyle`
       font-weight: normal; 
       font-style: normal; 
     }
-
   }
   body {
 
     font-family : "Eoe_Zno_M"; 
+    color: #343a40;
     margin: 0;
     a {
       text-decoration: none;

@@ -4,7 +4,7 @@
  */
 import React from "react";
 import Component from "./index";
-import { withKnobs, text, number } from "@storybook/addon-knobs";
+import { withKnobs, text, number, select } from "@storybook/addon-knobs";
 import { useCallback, useState } from "@storybook/addons";
 import { action } from "@storybook/addon-actions";
 
@@ -16,7 +16,17 @@ export default {
 
 export const standard = () => {
     const [value, setValue] = useState("");
+
+    const options = {
+        text: "text",
+        password: "password"
+    };
+
+    const defaultValue = options.text;
+
+    const type = select("type", options, defaultValue);
     const placeholder = text("placeholder", "아이디");
+    const label = text("label", "Label");
     const width = text("width", "200px");
     const limit = number("limit", 10);
 
@@ -27,11 +37,23 @@ export const standard = () => {
         },
         [action]
     );
-    return <Component value={value} width={width} limit={limit} onChange={onChange} placeholder={placeholder} />;
+
+    return (
+        <Component
+            type={type as any}
+            label={label}
+            value={value}
+            width={width}
+            limit={limit}
+            onChange={onChange}
+            placeholder={placeholder}
+        />
+    );
 };
 
 export const actionTest = () => {
     const [value, setValue] = useState("");
     const placeholder = text("placeholder", "아이디");
-    return <Component value={value} onChange={action("onChange")} placeholder={placeholder} />;
+
+    return <Component type={"text"} value={value} onChange={action("onChange")} placeholder={placeholder} />;
 };

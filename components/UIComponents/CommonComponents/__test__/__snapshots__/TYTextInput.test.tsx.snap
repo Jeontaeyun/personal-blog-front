@@ -2,20 +2,29 @@
 
 exports[`[TYTextInput] Component Rendering should render without crashing 1`] = `
 <div
-  className="sc-bdVaJa HISMw"
-  width="200px"
+  className="sc-bdVaJa dteECU"
 >
-  <input
-    className="sc-bwzfXH dVJTUB"
-    onBlur={[Function]}
-    onChange={[Function]}
-    onFocus={[Function]}
-    placeholder="placeholder"
-    type="text"
-    value=""
-  />
   <div
-    className="sc-htpNat gMiaFE"
-  />
+    className="sc-bwzfXH jkQLH"
+  >
+    
+  </div>
+  <div
+    className="sc-htpNat laJtnC"
+    width="200px"
+  >
+    <input
+      className="sc-bxivhb kVQgEY"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      placeholder="placeholder"
+      type="text"
+      value=""
+    />
+    <div
+      className="sc-ifAKCX gDMlau"
+    />
+  </div>
 </div>
 `;

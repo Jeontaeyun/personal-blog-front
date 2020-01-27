@@ -6,20 +6,20 @@ import { mount } from "enzyme";
 describe("[TYTextInput] Component Rendering", () => {
     it("should render without crashing", () => {
         const value = "";
-        const snapshot = renderer.create(<TYTextInput value={value} onChange={()=>{}} placeholder={"placeholder"} />).toJSON();
+        const snapshot = renderer.create(<TYTextInput type={"text"} value={value} onChange={()=>{}} placeholder={"placeholder"} />).toJSON();
         expect(snapshot).toMatchSnapshot();
     });
 
     it("render placholder without crashing", () => {
         const value = "";
-        const wrapper = mount(<TYTextInput value={value} onChange={()=>{}} placeholder={"test-placeholder"} />);
+        const wrapper = mount(<TYTextInput type={"text"}  value={value} onChange={()=>{}} placeholder={"test-placeholder"} />);
         const input = wrapper.find("input");
         expect(wrapper.props().placeholder).toBe("test-placeholder");
     });
 
     it("has an input element", () => {
         const value = ""
-        const wrapper = mount(<TYTextInput value={value} onChange={()=>{}} />);
+        const wrapper = mount(<TYTextInput type={"text"}  value={value} onChange={()=>{}} />);
         const inputElement = wrapper.find("input[type='text']");
         expect(inputElement.exists()).toBe(true);
     });
@@ -31,7 +31,7 @@ describe("[TYTextInput] Component Rendering", () => {
                 value: "It is test data"
             }
         }
-        const wrapper = mount(<TYTextInput value={value} onChange={(event) => {
+        const wrapper = mount(<TYTextInput type={"text"}  value={value} onChange={(event) => {
             value = event.target.value;
         }} />);
         let inputElement = wrapper.find("input[type='text']");

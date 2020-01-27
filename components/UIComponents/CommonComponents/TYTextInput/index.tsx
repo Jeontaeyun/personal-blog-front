@@ -2,15 +2,17 @@ import React, { useRef, useCallback, useState } from "react";
 import styled from "styled-components";
 
 interface IProps {
+    type: "text" | "password";
     value: any;
     onChange: (eveny: any) => void;
+    label?: string;
     placeholder?: string;
     limit?: number;
     width?: string;
 }
 
 const TYTextInput: React.FC<IProps> = props => {
-    const { value, onChange, placeholder, limit, width } = props;
+    const { type, value, onChange, placeholder, limit, width, label } = props;
     const [isFocus, setIsFocus] = useState(false);
     const inputRef = useRef<HTMLInputElement>(null);
 
@@ -33,18 +35,20 @@ const TYTextInput: React.FC<IProps> = props => {
 
     return (
         <>
-            <Container width={width}>
-                <Input
-                    type={"text"}
-                    ref={inputRef}
-                    value={value}
-                    placeholder={placeholder}
-                    onChange={_onChange}
-                    onFocus={_focusInput}
-                    onBlur={_blurInput}
-                />
-                <FocusUnderBar isFocus={isFocus} />
-            </Container>
+            <Wrapper>
+                <Label>{label}</Label>
+                <Container width={width}>
+                    <Input
+                        type={type}
+                        ref={inputRef}
+                        value={value}
+                        placeholder={placeholder}
+                        onChange={_onChange}
+                        onFocus={_focusInput}
+                        onBlur={_blurInput}
+                    />
+                </Container>
+            </Wrapper>
         </>
     );
 };
@@ -52,39 +56,45 @@ const TYTextInput: React.FC<IProps> = props => {
 TYTextInput.defaultProps = {
     onChange: () => {},
     value: "",
+    label: "",
     placeholder: "placeholder",
     width: "200px"
 };
+
+const Wrapper = styled.div`
+    margin: 1rem;
+`;
+
+const Label = styled.label`
+    display: block;
+    margin-bottom: 0.6rem;
+`;
 
 const Container = styled.div<{ width: string }>`
     display: flex;
     position: relative;
     width: ${props => props.width};
-    margin: 1rem;
 `;
 
 const Input = styled.input`
     padding: 0.8rem 1rem;
     width: 100%;
+    border: none;
     border: 1px solid ${props => props.theme.achromaticColor};
     border-radius: 0.2rem;
     font-weight: 700;
     color: "black";
     text-align: left;
+    &:hover {
+        border: 1px solid ${props => props.theme.subColor};
+    }
     &:focus {
+        border: 1px solid ${props => props.theme.mainColor};
         outline: none;
     }
-`;
-
-const FocusUnderBar = styled.div<{ isFocus: boolean }>`
-    width: 100%;
-    height: 2px;
-    transform: scaleX(${props => (props.isFocus ? "1" : "0")});
-    background: ${props => props.theme.mainColor};
-    transition: transform 0.2s cubic-bezier(0.19, 1, 0.22, 1);
-    position: absolute;
-    bottom: 0;
-    border-radius: 2rem;
+    &::placeholder {
+        color: ${props => props.theme.achromaticColor};
+    }
 `;
 
 export default TYTextInput;
