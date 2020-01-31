@@ -4,7 +4,7 @@
  */
 import React from "react";
 import Component from "./index";
-import { withKnobs, text, boolean } from "@storybook/addon-knobs";
+import { withKnobs, text, boolean, select } from "@storybook/addon-knobs";
 
 export default {
     title: "COMPONENTS|TY/TYToast",
@@ -12,8 +12,16 @@ export default {
     decorators: [withKnobs]
 };
 
+const options = {
+    topRight: "topRight",
+    topLeft: "topLeft",
+    bottomRight: "bottomRight",
+    bottomLeft: "bottomLeft"
+};
+
 export const standard = () => {
     const textValue = text("text", "default value", "TY-TOAST-01");
     const isVisible = boolean("isVisibe", true, "TY-TOAST-01");
-    return <Component text={textValue} isVisible={isVisible} />;
+    const position = select("position", options, options.bottomLeft, "TY-TOAST-01");
+    return <Component text={textValue} isVisible={isVisible} position={position as any} />;
 };

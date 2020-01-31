@@ -14,10 +14,12 @@ const TYToast: React.FC<IProps> = props => {
     const { isVisible, text } = props;
     const [visible, setVisible] = useState(true);
     useEffect(() => {
-        setVisible(isVisible);
-        setTimeout(() => {
-            setVisible(false);
-        }, 3000);
+        if (isVisible) {
+            setVisible(isVisible);
+            setTimeout(() => {
+                setVisible(false);
+            }, 3000);
+        }
     }, [isVisible]);
 
     return (
@@ -37,7 +39,10 @@ TYToast.defaultProps = {
     textColor: "#ffffff"
 };
 
-const visibleAnimation = keyframes`
+const visibleAnimation = position => {
+    const isTop = position.indexOf("top") === 0;
+    if (isTop) {
+        return keyframes`
  0%{
   transform: translateY(-60px) scale(0.8);
   opacity: 0;
@@ -48,8 +53,25 @@ const visibleAnimation = keyframes`
  opacity: 1;
  }
 `;
+    } else {
+        return keyframes`
+ 0%{
+  transform: translateY(60px) scale(0.8);
+  opacity: 0;
+  display: none;
+ }
+ 100%{
+ transform: translateY(0) scale(1);
+ opacity: 1;
+ }
+`;
+    }
+};
 
-const unVisibleAnimation = keyframes`
+const unVisibleAnimation = position => {
+    const isTop = position.indexOf("top") === 0;
+    if (isTop) {
+        return keyframes`
  0%{
  transform: translateY(0) scale(1);
  opacity: 1;
@@ -60,6 +82,20 @@ const unVisibleAnimation = keyframes`
  display: none;
  }
 `;
+    } else {
+        return keyframes`
+ 0%{
+ transform: translateY(0) scale(1);
+ opacity: 1;
+ }
+ 100%{
+ transform: translateY(60px) scale(0.8);
+ opacity: 0;
+ display: none;
+ }
+`;
+    }
+};
 
 const Wrapper = styled.div<Partial<IProps> & { visible?: boolean }>`
     display: inline-block;
@@ -96,8 +132,8 @@ const Wrapper = styled.div<Partial<IProps> & { visible?: boolean }>`
     border-radius: 5px;
     background: ${props => props.backgroundColor};
     color: ${props => props.textColor};
-    animation: ${props => (props.visible ? visibleAnimation : unVisibleAnimation)} alternate 0.6s
-        cubic-bezier(0.165, 0.84, 0.44, 1);
+    animation: ${props => (props.visible ? visibleAnimation(props.position) : unVisibleAnimation(props.position))}
+        alternate 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
     animation-fill-mode: forwards;
 `;
 
