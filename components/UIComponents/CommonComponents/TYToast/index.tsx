@@ -8,6 +8,7 @@ interface IProps {
     textColor?: string;
     position?: "topRight" | "topLeft" | "bottomRight" | "bottomLeft";
     onClick?: (event: MouseEvent) => void;
+    priority?: number;
 }
 
 const TYToast: React.FC<IProps> = props => {
@@ -18,9 +19,13 @@ const TYToast: React.FC<IProps> = props => {
             setVisible(isVisible);
             setTimeout(() => {
                 setVisible(false);
-            }, 3000);
+            }, 4000);
         }
     }, [isVisible]);
+
+    if (!isVisible) {
+        return null;
+    }
 
     return (
         <>
@@ -36,7 +41,8 @@ TYToast.defaultProps = {
     text: "default toast",
     backgroundColor: "#e03131",
     position: "topLeft",
-    textColor: "#ffffff"
+    textColor: "#ffffff",
+    priority: 0
 };
 
 const visibleAnimation = position => {
@@ -44,7 +50,7 @@ const visibleAnimation = position => {
     if (isTop) {
         return keyframes`
  0%{
-  transform: translateY(-60px) scale(0.8);
+  transform: translateY(-10px) scale(0.8);
   opacity: 0;
   display: none;
  }
@@ -56,7 +62,7 @@ const visibleAnimation = position => {
     } else {
         return keyframes`
  0%{
-  transform: translateY(60px) scale(0.8);
+  transform: translateY(10px) scale(0.8);
   opacity: 0;
   display: none;
  }
@@ -77,7 +83,7 @@ const unVisibleAnimation = position => {
  opacity: 1;
  }
  100%{
- transform: translateY(-60px) scale(0.8);
+ transform: translateY(-10px) scale(0.8);
  opacity: 0;
  display: none;
  }
@@ -89,13 +95,15 @@ const unVisibleAnimation = position => {
  opacity: 1;
  }
  100%{
- transform: translateY(60px) scale(0.8);
+ transform: translateY(10px) scale(0.8);
  opacity: 0;
  display: none;
  }
 `;
     }
 };
+
+const VERTICAL_POSITION_INTERVAL = 40;
 
 const Wrapper = styled.div<Partial<IProps> & { visible?: boolean }>`
     display: inline-block;
@@ -104,23 +112,23 @@ const Wrapper = styled.div<Partial<IProps> & { visible?: boolean }>`
         switch (props.position) {
             case "topRight":
                 return `
-                top : 0;
+                top : ${props.priority * VERTICAL_POSITION_INTERVAL}px;
                 right: 0;
             `;
             case "topLeft":
                 return `
-                top : 0;
+                top : ${props.priority * VERTICAL_POSITION_INTERVAL}px;
                 left: 0;
             `;
             case "bottomRight":
                 return `
-                bottom : 0;
+                bottom : ${props.priority * VERTICAL_POSITION_INTERVAL}px;
                 right: 0;
             `;
             case "bottomLeft":
             default:
                 return `
-                bottom : 0;
+                bottom : ${props.priority * VERTICAL_POSITION_INTERVAL}px;
                 left: 0;
             `;
         }
