@@ -4,7 +4,7 @@ import PostIndicator from "../PostIndicator";
 import LeftSideButton from "../LeftSideButton";
 import ReplyEditor from "../ReplyEditor";
 import ReplyBox from "../ReplyBox";
-import PostCardList from "../../home/PostCardList";
+import PostCardList from "containers/home/PostCardList";
 
 interface IProps {
     post?: {

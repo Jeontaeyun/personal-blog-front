@@ -31,19 +31,17 @@ const PostCard: React.FC<IProps> = props => {
     };
 
     return (
-        <>
-            <Card>
-                <TagConatiner>{renderTag()}</TagConatiner>
-                <CardImage image={image}>
-                    <PositioningProfile size={"40px"} />
-                </CardImage>
-                <Description>
-                    <Title>{title}</Title>
-                    <Date>{moment(date).format("YYYY년 MM월 DD일")}</Date>
-                    <Contents>{" " + description}</Contents>
-                </Description>
-            </Card>
-        </>
+        <Container>
+            <TagConatiner>{renderTag()}</TagConatiner>
+            <CardImage image={image}>
+                <PositioningProfile size={"40px"} />
+            </CardImage>
+            <Description>
+                <Title>{title}</Title>
+                <Date>{moment(date).format("YYYY년 MM월 DD일")}</Date>
+                <Contents>{" " + description}</Contents>
+            </Description>
+        </Container>
     );
 };
 
@@ -64,110 +62,94 @@ PostCard.defaultProps = {
     ]
 };
 
-const Card = styled.div`
-	) {
-		height: 430px;
-		margin-bottom: 1rem;
-		padding: 0 5px;
-		width: 50%;
-	}
-	) {
-		height: 430px;
-		margin-bottom: 4rem;
-		padding: 0;
-		width: 100%;
-	}
-	background: white;
-	box-sizing: border-box;
-	cursor: pointer;
-	height: 400px;
-	margin-bottom: 1rem;
-	padding: 0 5px;
-	position: relative;
-	width: 33%;
-	
-	@media screen and (max-width: ${props => props.theme.mediumPoint}
-	
-	@media screen and (max-width: ${props => props.theme.widePoint}
+const Container = styled.div`
+    cursor: pointer;
+    position: relative;
+    width: 420px;
+    height: 400px;
+    background: white;
+    margin-bottom: 3rem;
+    box-sizing: border-box;
+    padding: 10px;
+    @media screen and (max-width: ${props => props.theme.mediumPoint}) {
+        height: 430px;
+        width: 100%;
+        margin-bottom: 4rem;
+    }
 `;
 
 const CardImage = styled.div<IProps>`
-	) {
-		height: 250px;
-		width: 100%;
-	}
-	);
-	background-position: center center;
-	background-repeat: no-repeat;
-	background-size: cover;
-	background: url(${props => props.image || "/dummy.png"}
-	border-radius: ${props => props.theme.BORDER_RADIUS};
-	height: 200px;
-	position: relative;
-	width: 100%;
-	
-	@media screen and (max-width: ${props => props.theme.mediumPoint}
+    position: relative;
+    width: 100%;
+    height: 200px;
+    border-radius: ${props => props.theme.BORDER_RADIUS};
+    background: url(${props => props.image || "/dummy.png"});
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    @media screen and (max-width: ${props => props.theme.mediumPoint}) {
+        width: 100%;
+        height: 250px;
+    }
 `;
 
 const PositioningProfile = styled(ProfileImage)`
-    bottom: -20px;
     position: absolute;
+    bottom: -20px;
     right: 40px;
 `;
 
 const TagConatiner = styled.div`
-    height: 30px;
-    margin: 0 1rem;
     width: 100%;
+    height: 30px;
 `;
 
 const Tag = styled.span`
-    border-radius: 100px;
+    height: 30px;
+    width: auto;
+    text-align: center;
+    padding: 0.2rem 1rem;
+    margin-right: 0.6rem;
+    border-radius: ${props => props.theme.BORDER_RADIUS};
+    font-size: 0.8rem;
     border: 0.6px solid #ced4da;
     color: ${props => props.theme.mainColor};
-    font-size: 0.8rem;
     font-weight: 800;
-    height: 30px;
-    margin-right: 0.6rem;
-    padding: 0.2rem 1rem;
-    text-align: center;
-    width: auto;
 `;
 
 const Description = styled.div`
-    margin: 0 0.8rem;
     position: relative;
+    margin: 0 0.8rem;
 `;
 
 const Title = styled.p`
+    width: 100%;
     font-size: 1.2rem;
     font-weight: 900;
-    margin-bottom: 0;
-    margin-top: 1.6rem;
-    overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    width: 100%;
     word-wrap: normal;
+    overflow: hidden;
+    margin-top: 1.6rem;
+    margin-bottom: 0;
 `;
 
 const Contents = styled.p`
+    width: 100%;
     color: #343a40;
     font-size: 0.8rem;
     font-weight: 600;
-    height: 4.8em;
-    line-height: 1.6em;
-    overflow: hidden;
     text-overflow: ellipsis;
-    width: 100%;
-    word-wrap: break-word;
-
-    -webkit-box-orient: vertical;
+    overflow: hidden;
     -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+    line-height: 1.6em;
+    height: 4.8em;
 `;
 const Date = styled.p`
-    color: #343a40;
     font-size: 0.6rem;
+    color: #343a40;
     width: 100%;
 `;
 
