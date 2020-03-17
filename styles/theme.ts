@@ -1,8 +1,8 @@
 const theme = {
     backgroundColor: "white",
-    achromaticColor: "#efefef",
-    mainColor: "#e45d4c",
-    subColor: "#311E18",
+    achromaticColor: "#e9ecef",
+    mainColor: "#e03131",
+    subColor: "#ff6b6b",
     smallPoint: "420px",
     mediumPoint: "764px",
     widePoint: "1024px",

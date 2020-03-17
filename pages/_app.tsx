@@ -16,12 +16,12 @@ interface IProps extends Router {
     pageProps: any;
 }
 
-interface StatelessPage<P = {}> extends React.FC<P> {
+interface IStatelessPage<P = {}> extends React.FC<P> {
     getInitialProps?: (ctx: P) => Promise<P>;
     apolloClient?: ApolloClient<P>;
 }
 
-const App: StatelessPage<any> = props => {
+const App: IStatelessPage<any> = props => {
     const { Component, pageProps, apolloClient } = props;
 
     const FAVICON_INFO = {
