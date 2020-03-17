@@ -1,8 +1,8 @@
 import * as React from "react";
 import styled from "styled-components";
-import PostCard from "../PostCard";
-import Button from "../../CommonComponents/Button";
-import { IPost } from "interface/common/Post";
+import PostCard from "components/UIComponents/home/PostCard";
+import Button from "components/UIComponents/base/Button";
+import { IPost } from "types/common/Post";
 
 interface IProps {
     title: string;
@@ -63,9 +63,8 @@ const Container = styled.div`
         width: 98%;
     }
 `;
-const FlexCard = styled(PostCard)`
-    flex: 1;
-`;
+
+const FlexCard = styled(PostCard)``;
 const Title = styled.div`
     font-size: 1.5rem;
     margin-bottom: 2rem;
@@ -78,8 +77,7 @@ const CardListContainer = styled.div`
     flex-direction: row;
     align-content: center;
     flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: stretch;
+    justify-content: flex-start;
     @media screen and (max-width: ${props => props.theme.mediumPoint}) {
         flex-direction: column;
         align-content: center;

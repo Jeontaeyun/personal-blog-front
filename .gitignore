@@ -1,5 +1,13 @@
+# package & config
 ./node_module
-.next
 .env
 node_modules
+
+#build
+.next
+
+#editor
 .idea
+
+##test
+__snapshots__

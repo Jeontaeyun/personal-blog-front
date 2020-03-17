@@ -1,11 +1,11 @@
 import * as React from "react";
 import { useEffect, useState } from "react";
 import styled, { keyframes } from "styled-components";
-import SideBottomButton from "../../PostComponents/SideBottomButton";
+import SideBottomButton from "../../post/SideBottomButton";
 import ProfileImage from "../ProfileImage";
-import HeaderComponent from "../../HeaderComponent";
-import FollowingNavigator from "../../FollowingNavigator";
-import FooterCopy from "../../FooterComponents/FooterCopy";
+import HeaderComponent from "../HeaderComponent";
+import FollowingNavigator from "../FollowingNavigator";
+import FooterCopy from "../FooterCopy";
 
 interface IProps {
     MainContents: any;

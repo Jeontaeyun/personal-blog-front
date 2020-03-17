@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
 import styled from "styled-components";
-import ProfileImage from "../../CommonComponents/ProfileImage";
+import ProfileImage from "../../base/ProfileImage";
 
 interface IProps {
     onClick?(): void;

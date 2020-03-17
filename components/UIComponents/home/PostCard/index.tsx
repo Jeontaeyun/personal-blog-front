@@ -1,9 +1,12 @@
-import * as React from "react";
-import styled from "styled-components";
-import ProfileImage from "../../CommonComponents/ProfileImage";
-import moment from "moment";
 import "moment/locale/ko";
-import { ITag } from "interface/common/Tag";
+
+import moment from "moment";
+import React from "react";
+import styled from "styled-components";
+import { ITag } from "types/common/Tag";
+
+import ProfileImage from "../../base/ProfileImage";
+
 interface IProps {
     /**Title for post card */
     title?: string;
@@ -62,92 +65,109 @@ PostCard.defaultProps = {
 };
 
 const Card = styled.div`
-    position: relative;
-    width: 420px;
-    height: 400px;
-    background: white;
-    margin-bottom: 3rem;
-    cursor: pointer;
-    @media screen and (max-width: ${props => props.theme.mediumPoint}) {
-        height: 430px;
-        width: 100%;
-        margin-bottom: 4rem;
-    }
+	) {
+		height: 430px;
+		margin-bottom: 1rem;
+		padding: 0 5px;
+		width: 50%;
+	}
+	) {
+		height: 430px;
+		margin-bottom: 4rem;
+		padding: 0;
+		width: 100%;
+	}
+	background: white;
+	box-sizing: border-box;
+	cursor: pointer;
+	height: 400px;
+	margin-bottom: 1rem;
+	padding: 0 5px;
+	position: relative;
+	width: 33%;
+	
+	@media screen and (max-width: ${props => props.theme.mediumPoint}
+	
+	@media screen and (max-width: ${props => props.theme.widePoint}
 `;
 
 const CardImage = styled.div<IProps>`
-    position: relative;
-    height: 200px;
-    width: 100%;
-    border-radius: ${props => props.theme.BORDER_RADIUS};
-    background: url(${props => props.image || "/dummy.png"});
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-    @media screen and (max-width: ${props => props.theme.mediumPoint}) {
-        height: 250px;
-        width: 100%;
-    }
+	) {
+		height: 250px;
+		width: 100%;
+	}
+	);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background: url(${props => props.image || "/dummy.png"}
+	border-radius: ${props => props.theme.BORDER_RADIUS};
+	height: 200px;
+	position: relative;
+	width: 100%;
+	
+	@media screen and (max-width: ${props => props.theme.mediumPoint}
 `;
 
 const PositioningProfile = styled(ProfileImage)`
-    position: absolute;
     bottom: -20px;
+    position: absolute;
     right: 40px;
 `;
 
 const TagConatiner = styled.div`
-    width: 100%;
     height: 30px;
     margin: 0 1rem;
+    width: 100%;
 `;
 
 const Tag = styled.span`
-    height: 30px;
-    width: auto;
-    text-align: center;
-    padding: 0.2rem 1rem;
-    margin-right: 0.6rem;
-    border-radius: ${props => props.theme.BORDER_RADIUS};
-    font-size: 0.8rem;
+    border-radius: 100px;
     border: 0.6px solid #ced4da;
     color: ${props => props.theme.mainColor};
+    font-size: 0.8rem;
     font-weight: 800;
+    height: 30px;
+    margin-right: 0.6rem;
+    padding: 0.2rem 1rem;
+    text-align: center;
+    width: auto;
 `;
 
 const Description = styled.div`
-    position: relative;
     margin: 0 0.8rem;
+    position: relative;
 `;
 
 const Title = styled.p`
-    width: 100%;
     font-size: 1.2rem;
     font-weight: 900;
+    margin-bottom: 0;
+    margin-top: 1.6rem;
+    overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    width: 100%;
     word-wrap: normal;
-    overflow: hidden;
-    margin-top: 1.6rem;
-    margin-bottom: 0;
 `;
 
 const Contents = styled.p`
-    width: 100%;
     color: #343a40;
     font-size: 0.8rem;
     font-weight: 600;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    word-wrap: break-word;
-    line-height: 1.6em;
     height: 4.8em;
+    line-height: 1.6em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    word-wrap: break-word;
+
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
 `;
 const Date = styled.p`
-    font-size: 0.6rem;
     color: #343a40;
+    font-size: 0.6rem;
     width: 100%;
 `;
 
