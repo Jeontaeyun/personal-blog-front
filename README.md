@@ -59,11 +59,11 @@ const withTypescript = require("@zeit/next-typescript");
 const withCss = require("@zeit/next-css");
 
 module.exports = withTypescript(
-  withCss({
-    webpack: config => {
-      return config;
-    },
-  }),
+    withCss({
+        webpack: config => {
+            return config;
+        }
+    })
 );
 ```
 
@@ -73,20 +73,20 @@ Next는 내부적으로 Babel.js를 이용하며, next와 typescript를 이용�
 
 ```json
 {
-  "presets": ["next/babel", "@zeit/next-typescript/babel"],
-  "plugins": [
-    "babel-plugin-styled-components",
-    [
-      "module-resolver",
-      {
-        "root": ["./"],
-        "alias": {
-          "@components": ["./components"]
-        },
-        "extensions": [".wasm", ".mjs", ".js", ".jsx", ".json", ".ts", ".tsx"]
-      }
+    "presets": ["next/babel", "@zeit/next-typescript/babel"],
+    "plugins": [
+        "babel-plugin-styled-components",
+        [
+            "module-resolver",
+            {
+                "root": ["./"],
+                "alias": {
+                    "@components": ["./components"]
+                },
+                "extensions": [".wasm", ".mjs", ".js", ".jsx", ".json", ".ts", ".tsx"]
+            }
+        ]
     ]
-  ]
 }
 ```
 
@@ -145,48 +145,46 @@ const app = next({ dev: __DEV__ });
 const handle = app.getRequestHandler();
 
 app.prepare().then(() => {
-  // NEXT와 EXPRESS를 연결해주는 코드
-  const server = Express();
+    // NEXT와 EXPRESS를 연결해주는 코드
+    const server = Express();
 
-  server.use("/", Express.static(path.join(__dirname, "public")));
+    server.use("/", Express.static(path.join(__dirname, "public")));
 
-  /**
-   * Dev Configure
-   */
-  if (__DEV__) {
-    server.use(morgan("dev"));
-  }
-  server.use(Express.json());
-  server.use(Express.urlencoded({ extended: true }));
-  server.use(cookieParser(process.env.COOKIE_SECRET));
-  server.use(
-    expressSession({
-      resave: false,
-      saveUninitialized: false,
-      secret: process.env.COOKIE_SECRET,
-      cookie: {
-        httpOnly: true,
-        secure: false,
-      },
-    }),
-  );
-
-  server.get("*", (req: Express.Request, res: Express.Response) => {
-    const parsedURL = parse(req.url, true);
-    const { pathname, query } = parsedURL;
-    console.log(pathname, query);
-    return handle(req, res, parsedURL);
-  });
-
-  server.get("/post/:postId", (req: Express.Request, res: Express.Response) => {
-    return app.render(req, res, "/post", { postId: req.params.postId });
-  });
-
-  server.listen(3060, () => {
-    console.log(
-      `next+express running on port 3060 on ${__DEV__ ? "dev" : "production"}`,
+    /**
+     * Dev Configure
+     */
+    if (__DEV__) {
+        server.use(morgan("dev"));
+    }
+    server.use(Express.json());
+    server.use(Express.urlencoded({ extended: true }));
+    server.use(cookieParser(process.env.COOKIE_SECRET));
+    server.use(
+        expressSession({
+            resave: false,
+            saveUninitialized: false,
+            secret: process.env.COOKIE_SECRET,
+            cookie: {
+                httpOnly: true,
+                secure: false
+            }
+        })
     );
-  });
+
+    server.get("*", (req: Express.Request, res: Express.Response) => {
+        const parsedURL = parse(req.url, true);
+        const { pathname, query } = parsedURL;
+        console.log(pathname, query);
+        return handle(req, res, parsedURL);
+    });
+
+    server.get("/post/:postId", (req: Express.Request, res: Express.Response) => {
+        return app.render(req, res, "/post", { postId: req.params.postId });
+    });
+
+    server.listen(3060, () => {
+        console.log(`next+express running on port 3060 on ${__DEV__ ? "dev" : "production"}`);
+    });
 });
 ```
 
@@ -199,7 +197,7 @@ import { configure } from "@storybook/react";
 
 const req = require.context("../components", true, /.stories.tsx$/);
 function loadStories() {
-  req.keys().forEach(filename => req(filename));
+    req.keys().forEach(filename => req(filename));
 }
 
 configure(loadStories, module);
@@ -243,19 +241,19 @@ module.exports = ({config}) => {
 $npm i apollo-boost react-apollo graphql
 ```
 
-- apollo-boost 는 Apollo Client를 설정하는데 필요한 것들이 들어있는 패키지
-- react-apollo 는 React를 위한 apollo 서버입니다
-- graphqll 은 GraphQL 쿼리를 사용할 수 있게 해주는 패키지입니다.
+-   apollo-boost 는 Apollo Client를 설정하는데 필요한 것들이 들어있는 패키지
+-   react-apollo 는 React를 위한 apollo 서버입니다
+-   graphqll 은 GraphQL 쿼리를 사용할 수 있게 해주는 패키지입니다.
 
 ```bash
 $npm i react-apollo-hooks
 $npm i @apollo/react-hooks
 ```
 
-- react-apollo-hooks는 Apollo Client에서 Hooks를 사용하려는 프로젝트입니다.
-- Apollo Hooks인 **@apollo/react-hooks**가 출시되어 현재는 이를 도입합니다.
-- @apollo/react-hooks는 useQuery, useMutation, useApolloClient와 같은 React Hooks 함수를 제공하며, 이 함수들을 활용하면 React 앱에서 GraphQL API를 훨씬 쉽게 호출할 수 있습니다.
-- 클래스 대신에 함수 컴포넌트를 사용하게 되면서 **가독성**이나 **유지보수** 측면에서도 이점이 있습니다.
+-   react-apollo-hooks는 Apollo Client에서 Hooks를 사용하려는 프로젝트입니다.
+-   Apollo Hooks인 **@apollo/react-hooks**가 출시되어 현재는 이를 도입합니다.
+-   @apollo/react-hooks는 useQuery, useMutation, useApolloClient와 같은 React Hooks 함수를 제공하며, 이 함수들을 활용하면 React 앱에서 GraphQL API를 훨씬 쉽게 호출할 수 있습니다.
+-   클래스 대신에 함수 컴포넌트를 사용하게 되면서 **가독성**이나 **유지보수** 측면에서도 이점이 있습니다.
 
 ### GraphQL SSR | @apollo/react-ssr
 
@@ -292,18 +290,68 @@ import Component from "./index.ts";
 import { withKnobs, text, boolean } from "@storybook/addon-knobs";
 
 export default {
-  title: "Components|basic/LeftSideButton", // Storybook Path
-  component: Component, // Documented Component
-  decorators: [withKnobs], // Apply Addon
+    title: "Components|basic/LeftSideButton", // Storybook Path
+    component: Component, // Documented Component
+    decorators: [withKnobs] // Apply Addon
 };
 
 export const LeftSideButton = () => {
-  // knobs 만들기
-  const big = boolean("big", false);
-  const name = text("name", "Storybook");
-  return <Component name={name} big={big} />;
+    // knobs 만들기
+    const big = boolean("big", false);
+    const name = text("name", "Storybook");
+    return <Component name={name} big={big} />;
 };
 LeftSideButton.story = {
-  name: "Default",
+    name: "Default"
 };
+```
+
+### 02. JEST and React
+
+I implement test environment with [JEST]("https://jestjs.io/docs/en/tutorial-react"). And [This post]("https://medium.com/@kjaer/setting-up-jest-and-enzyme-for-typescript-next-js-apps-ce383167643") is really helpful to me. First of all, we need to install react-test-renderer for rendering snapshots.
+
+```bash
+    $yarn add --dev react-test-renderer
+    $yarn add --dev babel-jest ts-jest jest @babel/preset-react @babel/preset-env
+```
+
+And make jest.config.js file
+
+```javascript
+module.exports = {
+    testEnvironment: "node",
+    roots: ["<rootDir>/components"],
+    preset: "ts-jest",
+    setupFilesAfterEnv: ["<rootDir>/tests/setupTests.ts"],
+    transform: {
+        "^.+\\.tsx?$": "ts-jest"
+    },
+    testRegex: "(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$",
+    moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
+    testPathIgnorePatterns: ["<rootDir>/.next/", "<rootDir>/node_modules/"]
+    //snapshotSerializers: ["enzyme-to-json/serializer"]
+};
+```
+
+and if you have snapshots already, you can update snapshots with this command
+
+```bash
+$jest --updateSnapshot or -u
+```
+
+For DOM Testing, you can use react-testing-library and Enzyme
+
+```bash
+$yarn add --dev @testing-library/react enzyme
+```
+
+Enzyme help to test DOM event and rendering. And we write setupTests.ts file
+
+```typescript
+// setupTests.ts
+
+import { configure } from "enzyme";
+import Adapter from "enzyme-adapter-react-16";
+
+configure({ adapter: new Adapter() });
 ```

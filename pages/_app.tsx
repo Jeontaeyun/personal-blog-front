@@ -1,14 +1,15 @@
 import * as React from "react";
 import { Container } from "next/app";
-import withApolloCient from "../lib/withApolloClient";
+import withApolloCient from "../lib/loaders/withApolloClient";
 import { ApolloProvider } from "@apollo/react-hooks";
 import { ApolloClient } from "apollo-boost";
 import { ThemeProvider } from "styled-components";
 import theme from "../styles/theme";
 import GlobalStyles from "../styles/globalStyle";
 import Helmet from "react-helmet";
-import AppLayout from "components/UIComponents/CommonComponents/AppLayout";
+import AppLayout from "components/UIComponents/base/AppLayout";
 import { Router } from "next/dist/client/router";
+import AdminLayout from "components/UIComponents/admin/AdminLayout";
 
 interface IProps extends Router {
     Component: React.FC;
@@ -22,6 +23,13 @@ interface StatelessPage<P = {}> extends React.FC<P> {
 
 const App: StatelessPage<any> = props => {
     const { Component, pageProps, apolloClient } = props;
+
+    const FAVICON_INFO = {
+        rel: "shortcut icon",
+        href: "/favicon.ico",
+        type: "image/x-icon"
+    };
+
     const { pathname }: { pathname: string } = props.router;
     const pathArray = pathname.split("/").filter(item => {
         return item !== "";
@@ -37,14 +45,9 @@ const App: StatelessPage<any> = props => {
                                 <Helmet
                                     title="Connect Dot | Admin"
                                     htmlAttributes={{ lang: "ko" }}
-                                    link={[
-                                        {
-                                            rel: "shortcut icon",
-                                            href: "/favicon.ico",
-                                            type: "image/x-icon"
-                                        }
-                                    ]}
+                                    link={[FAVICON_INFO]}
                                 />
+                                <AdminLayout contents={<Component {...pageProps} />} />
                             </ApolloProvider>
                         </React.Fragment>
                     </ThemeProvider>
@@ -57,17 +60,7 @@ const App: StatelessPage<any> = props => {
                         <React.Fragment>
                             <GlobalStyles />
                             <ApolloProvider client={apolloClient}>
-                                <Helmet
-                                    title="Connect Dot"
-                                    htmlAttributes={{ lang: "ko" }}
-                                    link={[
-                                        {
-                                            rel: "shortcut icon",
-                                            href: "/favicon.ico",
-                                            type: "image/x-icon"
-                                        }
-                                    ]}
-                                />
+                                <Helmet title="Connect Dot" htmlAttributes={{ lang: "ko" }} link={[FAVICON_INFO]} />
                                 <AppLayout MainContents={<Component {...pageProps} />} />
                             </ApolloProvider>
                         </React.Fragment>
@@ -79,8 +72,9 @@ const App: StatelessPage<any> = props => {
 
 App.getInitialProps = async context => {
     const { ctx, Component } = context;
+    const hasGetInitialProps = Component.getInitialProps;
     let pageProps = {};
-    if (Component.getInitialProps) {
+    if (hasGetInitialProps) {
         pageProps = await Component.getInitialProps(ctx);
     }
     return { pageProps };
