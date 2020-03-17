@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[TYTextInput] Component Rendering should render without crashing 1`] = `
+<div
+  className="sc-bdVaJa iWXCSn"
+  label=""
+  onChange={[Function]}
+  placeholder="placeholder"
+  type="text"
+  value=""
+  width="200px"
+>
+  <div
+    className="sc-bwzfXH dedCfl"
+    width="200px"
+  >
+    <label
+      className="sc-htpNat dFNVyK"
+    >
+      
+    </label>
+    <input
+      className="sc-bxivhb jpsEUD"
+      label=""
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      placeholder="placeholder"
+      type="text"
+      value=""
+      width="200px"
+    />
+  </div>
+</div>
+`;

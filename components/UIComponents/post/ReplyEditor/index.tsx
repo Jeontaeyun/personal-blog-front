@@ -1,26 +1,31 @@
-import * as React from "react";
-import { useState, useCallback, useRef } from "react";
+import React, { useState, useCallback, useRef } from "react";
 import styled from "styled-components";
-import Button from "../../CommonComponents/Button";
-import ProfileImage from "components/UIComponents/CommonComponents/ProfileImage";
+import Button from "../../base/Button";
+import ProfileImage from "components/UIComponents/base/ProfileImage";
 
-interface Props {}
+interface IProps {}
 
-const ReplyEditor: React.SFC<Props> = props => {
+const DEFAULT_HEIGHT = 60;
+const FOCUS_HEIGHT = 100;
+
+const ReplyEditor: React.FC<IProps> = props => {
     const [reply, setReply] = useState<string>("");
-    const [height, setHeight] = useState<number>(60);
+    const [height, setHeight] = useState<number>(DEFAULT_HEIGHT);
     const textRef = useRef<HTMLTextAreaElement>(null);
     const onChangeReply = useCallback(
         event => {
             const scrollHeight: number = textRef.current.scrollHeight;
             setReply(event.target.value);
             if (scrollHeight > 120) setHeight(scrollHeight);
+            if (!reply.length) {
+                setHeight(FOCUS_HEIGHT);
+            }
         },
-        [height, textRef]
+        [height, textRef, reply]
     );
     const onFocusReply = useCallback(
         (event: React.FocusEvent<HTMLTextAreaElement>) => {
-            setHeight(100);
+            setHeight(FOCUS_HEIGHT);
         },
         [reply]
     );

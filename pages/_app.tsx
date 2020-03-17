@@ -1,27 +1,27 @@
 import * as React from "react";
 import { Container } from "next/app";
-import withApolloCient from "../lib/withApolloClient";
+import withApolloCient from "../lib/loaders/withApolloClient";
 import { ApolloProvider } from "@apollo/react-hooks";
 import { ApolloClient } from "apollo-boost";
 import { ThemeProvider } from "styled-components";
 import theme from "../styles/theme";
 import GlobalStyles from "../styles/globalStyle";
 import Helmet from "react-helmet";
-import AppLayout from "components/UIComponents/CommonComponents/AppLayout";
+import AppLayout from "components/UIComponents/base/AppLayout";
 import { Router } from "next/dist/client/router";
-import AdminLayout from "components/UIComponents/AdminComponents/AdminLayout";
+import AdminLayout from "components/UIComponents/admin/AdminLayout";
 
 interface IProps extends Router {
     Component: React.FC;
     pageProps: any;
 }
 
-interface IStatelessPage<P = {}> extends React.FC<P> {
+interface StatelessPage<P = {}> extends React.FC<P> {
     getInitialProps?: (ctx: P) => Promise<P>;
     apolloClient?: ApolloClient<P>;
 }
 
-const App: IStatelessPage<any> = props => {
+const App: StatelessPage<any> = props => {
     const { Component, pageProps, apolloClient } = props;
 
     const FAVICON_INFO = {
