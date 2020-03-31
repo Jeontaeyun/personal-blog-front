@@ -45,7 +45,7 @@
         "isomorphic-unfetch": "^3.0.0",
         "moment": "^2.24.0",
         "morgan": "^1.9.1",
-        "next": "^9.1.6",
+        "next": "^9.3.2",
         "path": "^0.12.7",
         "react": "^16.9.0",
         "react-apollo": "^3.1.1",
