@@ -13,8 +13,8 @@ const IndexPage: React.FC<IProps> = props => {
     return (
         <>
             <Container>
-                {postList}
                 <Modal />
+                {postList}
             </Container>
         </>
     );
