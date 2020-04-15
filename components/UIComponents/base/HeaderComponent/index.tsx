@@ -1,14 +1,14 @@
 import * as React from "react";
 import styled from "styled-components";
 
-interface Props {
+interface IProps {
     title?: string;
     img?: string;
     date?: string;
     onClick?(): void;
 }
 
-const HeaderComponent: React.SFC<Props> = props => {
+const HeaderComponent: React.FC<IProps> = props => {
     const { onClick, title, img, date } = props;
     return (
         <>
@@ -38,7 +38,7 @@ const TextContainer = styled.div`
     position: absolute;
     z-index: 110;
     margin-top: 4rem;
-    &:p {
+    p {
         margin-top: 1.2rem;
     }
     @media screen and (max-width: ${props => props.theme.mediumPoint}) {
@@ -77,7 +77,7 @@ const HeaderContainer = styled.div`
     opacity: 0.6;
 `;
 
-const Header = styled.div<Props>`
+const Header = styled.div<IProps>`
   width: 100%;
   height: 100%;
   margin: 0 auto;

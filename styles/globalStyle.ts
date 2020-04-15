@@ -1,6 +1,8 @@
 import { createGlobalStyle } from "styled-components";
+import reset from "styled-reset";
 
 export default createGlobalStyle`
+  ${reset}
   html{
     @font-face { 
       font-family: 'Eoe_Zno_M'; 
@@ -20,15 +22,6 @@ export default createGlobalStyle`
     }
     a:focus{
       text-decoration: none;
-    }
-    @media screen and (min-width: 1024px){
-      font-size: 16px;
-    }
-    @media screen and (min-width: 764px ){
-      font-size: 14px;
-    }
-    @media screen and (min-width: 420px ){
-      font-size: 12px;
     }
   }
 `;

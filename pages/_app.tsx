@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Container } from "next/app";
+import App from "next/app";
 import withApolloCient from "../lib/loaders/withApolloClient";
 import { ApolloProvider } from "@apollo/react-hooks";
 import { ApolloClient } from "apollo-boost";
@@ -21,7 +21,7 @@ interface IStatelessPage<P = {}> extends React.FC<P> {
     apolloClient?: ApolloClient<P>;
 }
 
-const App: IStatelessPage<any> = props => {
+const MyApp: IStatelessPage<any> = props => {
     const { Component, pageProps, apolloClient } = props;
 
     const FAVICON_INFO = {
@@ -37,40 +37,32 @@ const App: IStatelessPage<any> = props => {
     switch (pathArray[0]) {
         case "admin":
             return (
-                <Container>
-                    <ThemeProvider theme={theme}>
-                        <React.Fragment>
-                            <GlobalStyles />
-                            <ApolloProvider client={apolloClient}>
-                                <Helmet
-                                    title="Connect Dot | Admin"
-                                    htmlAttributes={{ lang: "ko" }}
-                                    link={[FAVICON_INFO]}
-                                />
-                                <AdminLayout contents={<Component {...pageProps} />} />
-                            </ApolloProvider>
-                        </React.Fragment>
-                    </ThemeProvider>
-                </Container>
+                <ThemeProvider theme={theme}>
+                    <React.Fragment>
+                        <GlobalStyles />
+                        <ApolloProvider client={apolloClient}>
+                            <Helmet title="Connect Dot | Admin" htmlAttributes={{ lang: "ko" }} link={[FAVICON_INFO]} />
+                            <AdminLayout contents={<Component {...pageProps} />} />
+                        </ApolloProvider>
+                    </React.Fragment>
+                </ThemeProvider>
             );
         default:
             return (
-                <Container>
-                    <ThemeProvider theme={theme}>
-                        <React.Fragment>
-                            <GlobalStyles />
-                            <ApolloProvider client={apolloClient}>
-                                <Helmet title="Connect Dot" htmlAttributes={{ lang: "ko" }} link={[FAVICON_INFO]} />
-                                <AppLayout MainContents={<Component {...pageProps} />} />
-                            </ApolloProvider>
-                        </React.Fragment>
-                    </ThemeProvider>
-                </Container>
+                <ThemeProvider theme={theme}>
+                    <React.Fragment>
+                        <GlobalStyles />
+                        <ApolloProvider client={apolloClient}>
+                            <Helmet title="Connect Dot" htmlAttributes={{ lang: "ko" }} link={[FAVICON_INFO]} />
+                            <AppLayout MainContents={<Component {...pageProps} />} />
+                        </ApolloProvider>
+                    </React.Fragment>
+                </ThemeProvider>
             );
     }
 };
 
-App.getInitialProps = async context => {
+MyApp.getInitialProps = async context => {
     const { ctx, Component } = context;
     const hasGetInitialProps = Component.getInitialProps;
     let pageProps = {};
@@ -80,4 +72,4 @@ App.getInitialProps = async context => {
     return { pageProps };
 };
 
-export default withApolloCient(App);
+export default withApolloCient(MyApp);

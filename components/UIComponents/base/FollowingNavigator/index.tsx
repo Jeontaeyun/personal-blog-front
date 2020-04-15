@@ -117,19 +117,24 @@ const Logo = styled.div`
         display: block;
         margin: 0 auto;
         width: 150px;
-        background: "red";
         height: 50%;
     }
 `;
 
 const Menu = styled.div`
-    font-size: 1rem;
+    font-size: 16px;
     display: inline-block;
     vertical-align: top;
     margin: 0;
     height: 100%;
     padding: 0 1rem;
     border-radius: 0.1rem;
+    p {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
     cursor: pointer;
     &:hover {
         background: ${props => props.theme.color.achromatic};

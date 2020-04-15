@@ -1,5 +1,5 @@
-import * as React from "react";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+
 import styled, { keyframes } from "styled-components";
 import SideBottomButton from "../../post/SideBottomButton";
 import ProfileImage from "../ProfileImage";

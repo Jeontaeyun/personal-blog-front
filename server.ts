@@ -14,10 +14,6 @@ const __DEV__ = process.env.NODE_ENV === "development";
 const app = next({ dev: __DEV__ });
 const handle = app.getRequestHandler();
 
-/**
- * Connect Express and Next
- */
-
 app.prepare().then(() => {
     const server = Express();
 
@@ -26,6 +22,7 @@ app.prepare().then(() => {
     if (__DEV__) {
         server.use(morgan("dev"));
     }
+
     server.use(Express.json());
     server.use(Express.urlencoded({ extended: true }));
     server.use(cookieParser(process.env.COOKIE_SECRET));
@@ -41,13 +38,13 @@ app.prepare().then(() => {
         })
     );
 
+    server.get("/post/:postId", (req: Express.Request, res: Express.Response) => {
+        return app.render(req, res, "/post", { postId: req.params.postId });
+    });
+
     server.get("*", (req: Express.Request, res: Express.Response) => {
         const parsedURL = parse(req.url, true);
         return handle(req, res, parsedURL);
-    });
-
-    server.get("/post/:postId", (req: Express.Request, res: Express.Response) => {
-        return app.render(req, res, "/post", { postId: req.params.postId });
     });
 
     server.listen(3060, () => {

@@ -6,7 +6,7 @@ class MyDocument extends Document<{ helmet: any }> {
     static async getInitialProps(context: DocumentContext) {
         const sheet = new ServerStyleSheet();
         try {
-            context.renderPage(App => props => sheet.collectStyles(<App {...props} />));
+            const page = context.renderPage(App => props => sheet.collectStyles(<App {...props} />));
             const initialProps = await Document.getInitialProps(context);
             return {
                 ...initialProps,
@@ -30,9 +30,9 @@ class MyDocument extends Document<{ helmet: any }> {
         return (
             <html {...htmlAttrs}>
                 <head>
+                    {this.props.styles}
                     <meta charSet="utf-8" />
                     <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-                    {this.props.styles}
                 </head>
                 <body {...bodyAttrs}>
                     <Main />

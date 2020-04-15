@@ -107,7 +107,6 @@ const TagConatiner = styled.div`
 
 const Description = styled.div`
     position: relative;
-    margin: 0 0.8rem;
 `;
 
 const Title = styled.p`
@@ -120,6 +119,7 @@ const Title = styled.p`
     overflow: hidden;
     margin-top: 1.6rem;
     margin-bottom: 0;
+    line-height: 1.2;
 `;
 
 const Contents = styled.p`
@@ -134,11 +134,13 @@ const Contents = styled.p`
     word-wrap: break-word;
     line-height: 1.6em;
     height: 4.8em;
+    line-height: 1.6;
 `;
 const Date = styled.p`
     font-size: 0.6rem;
     color: #343a40;
     width: 100%;
+    line-height: 2.4;
 `;
 
 export default PostCard;
