@@ -9,6 +9,7 @@ interface IProps {
     onClickBackground?: (event: MouseEvent<any>) => void;
 }
 
+const ANIMATION_TIME = 0.25;
 const TAB_KEY = 9;
 const ESC_KEY = 27;
 
@@ -38,7 +39,7 @@ const Modal: React.FC<IProps> = props => {
                 setTimeout(() => {
                     setVisble(false);
                     onClickBackground?.(event);
-                }, 300);
+                }, ANIMATION_TIME * 1000);
             }
         },
         [onClickBackground]
@@ -88,13 +89,16 @@ const Background = styled.div`
 
 const showUpAnimation = keyframes`
     0%{
-        transform: scale(0) 
+        transform: scale(0);
+    }
+    1%{
+        transform: scale(0.5);
+    }
+    45%{
+        transform: scale(1.05);
     }
     80%{
-        transform: scale(1.1)
-    }
-    90%{
-        transform: scale(0.9)
+        transform: scale(0.95);
     }
     100%{
         transform: scale(1);
@@ -103,13 +107,16 @@ const showUpAnimation = keyframes`
 
 const showDownAnimation = keyframes`
     0%{
-        transform: scale(1) 
+        transform: scale(1);
     }
-    10%{
-        transform: scale(0.9)
+    1%{
+        transform: scale(0.95);
     }
-    20%{
-        transform: scale(1.1)
+    45%{
+        transform: scale(1.05);
+    }
+    80%{
+        transform: scale(0.5);
     }
     100%{
         transform: scale(0);
@@ -136,11 +143,14 @@ const ModalContainer = styled.div<{ shouldClose: boolean }>`
     ${props =>
         props.shouldClose
             ? css`
-                  animation: ${showDownAnimation} forwards 0.4s ease-out;
+                  animation: ${showDownAnimation} forwards ${ANIMATION_TIME}s ease-in;
               `
             : css`
-                  animation: ${showUpAnimation} 0.4s backwards ease-in;
+                  animation: ${showUpAnimation} ${ANIMATION_TIME}s backwards ease-in;
               `}
+    @media screen and (max-width: ${props => props.theme.mediumPoint}){
+        animation: none;
+    }
 `;
 
 export default Modal;
