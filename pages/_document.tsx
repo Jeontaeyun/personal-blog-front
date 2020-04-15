@@ -1,5 +1,5 @@
 import React from "react";
-import Document, { Main, NextScript, DocumentContext } from "next/document";
+import Document, { Head, Main, NextScript, DocumentContext } from "next/document";
 import { ServerStyleSheet } from "styled-components";
 import Helmet from "react-helmet";
 class MyDocument extends Document<{ helmet: any }> {
@@ -7,13 +7,14 @@ class MyDocument extends Document<{ helmet: any }> {
         const sheet = new ServerStyleSheet();
         try {
             const page = context.renderPage(App => props => sheet.collectStyles(<App {...props} />));
+            const styleTags = sheet.getStyleElement();
             const initialProps = await Document.getInitialProps(context);
             return {
                 ...initialProps,
                 styles: (
                     <>
                         {initialProps.styles}
-                        {sheet.getStyleElement()}
+                        {styleTags}
                     </>
                 ),
                 helmet: Helmet.renderStatic()
@@ -29,11 +30,11 @@ class MyDocument extends Document<{ helmet: any }> {
         const bodyAttrs = bodyAttributes.toComponent();
         return (
             <html {...htmlAttrs}>
-                <head>
+                <Head>
                     {this.props.styles}
                     <meta charSet="utf-8" />
                     <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-                </head>
+                </Head>
                 <body {...bodyAttrs}>
                     <Main />
                     <NextScript />
