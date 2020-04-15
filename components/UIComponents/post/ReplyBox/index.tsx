@@ -77,7 +77,7 @@ const ReplyBoxContainer = styled.div`
     margin: 2rem auto;
     margin-top: 6rem;
     & + & {
-        border-top: 1px solid ${props => props.theme.achromaticColor};
+        border-top: 1px solid ${props => props.theme.color.achromatic};
         margin-top: 2rem;
     }
 `;
@@ -124,10 +124,10 @@ const Button = styled.div<{ disabled?: boolean }>`
     font-size: 0.5rem;
     margin: 1rem 0.2rem;
     padding: 0.3rem 0.8rem;
-    border: 1px solid ${props => props.theme.mainColor};
+    border: 1px solid ${props => props.theme.color.main};
     border-radius: 0.6rem;
     font-weight: 700;
-    color: ${props => props.theme.mainColor};
+    color: ${props => props.theme.color.main};
     cursor: ${props => (props.disabled ? "not-allowed" : "pointer")};
 `;
 
@@ -136,7 +136,7 @@ const TextArea = styled.textarea`
     width: 100%;
     box-sizing: border-box;
     height: 150px;
-    border: 1px solid ${props => props.theme.achromaticColor};
+    border: 1px solid ${props => props.theme.color.achromatic};
     border-radius: 1px;
     resize: none;
     padding: 1rem;

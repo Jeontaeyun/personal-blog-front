@@ -86,7 +86,7 @@ const TextArea = styled.textarea<{ height: number }>`
     width: 100%;
     box-sizing: border-box;
     height: ${props => props.height + "px"};
-    border: 1px solid ${props => props.theme.achromaticColor};
+    border: 1px solid ${props => props.theme.color.achromatic};
     border-radius: 1px;
     resize: none;
     padding: 1rem;

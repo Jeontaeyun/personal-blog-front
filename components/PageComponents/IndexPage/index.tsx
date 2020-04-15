@@ -1,6 +1,7 @@
 import * as React from "react";
 import PostCardList from "containers/home/PostCardList";
 import styled from "styled-components";
+import Modal from "components/UIComponents/base/modal/Modal";
 
 interface IProps {
     category?: string[];
@@ -8,12 +9,12 @@ interface IProps {
 
 const IndexPage: React.FC<IProps> = props => {
     const { category } = props;
+    const postList = category.map((item, idx) => <PostCardList title={item} key={idx} />);
     return (
         <>
             <Container>
-                {category.map((item, idx) => (
-                    <PostCardList title={item} key={idx} />
-                ))}
+                {postList}
+                <Modal />
             </Container>
         </>
     );

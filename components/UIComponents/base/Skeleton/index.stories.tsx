@@ -4,7 +4,7 @@ import { withKnobs, text } from "@storybook/addon-knobs";
 import styled from "styled-components";
 
 export default {
-    title: "COMPONENTS|Common/Skeleton",
+    title: "COMPONENTS|Base/Skeleton",
     component: Component,
     decorators: [withKnobs],
     parameter: {

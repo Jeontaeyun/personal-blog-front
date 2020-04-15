@@ -9,12 +9,11 @@ interface IProps {
 
 const Button: React.FC<IProps> = props => {
     const { children, onClick, disabled } = props;
+
     return (
-        <>
-            <PlusButton onClick={onClick} disabled={disabled}>
-                {children}
-            </PlusButton>
-        </>
+        <Container onClick={onClick} disabled={disabled}>
+            {children}
+        </Container>
     );
 };
 
@@ -24,15 +23,15 @@ Button.defaultProps = {
     disabled: false
 };
 
-const PlusButton = styled.div<IProps>`
+const Container = styled.div<IProps>`
     display: inline-block;
+    color: white;
+    font-weight: 700;
     text-align: center;
     margin: 2rem auto;
     padding: 0.8rem 1rem;
-    background: ${props => (props.disabled ? props.theme.achromaticColor : `linear-gradient(45deg, #e45d4c,#eead9e)`)};
-    border-radius: 1.5rem;
-    font-weight: 700;
-    color: white;
+    background: ${props => (props.disabled ? props.theme.color.achromatic : props.theme.color.gradient)};
+    border-radius: ${props => props.theme.BORDER_RADIUS};
     cursor: ${props => (props.disabled ? "not-allowed" : "pointer")};
 `;
 

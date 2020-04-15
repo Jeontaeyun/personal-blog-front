@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
 import PostIndicator from "../PostIndicator";
-import LeftSideButton from "../LeftSideButton";
+import ShareInfo from "../ShareInfo";
 import ReplyEditor from "../ReplyEditor";
 import ReplyBox from "../ReplyBox";
 import PostCardList from "containers/home/PostCardList";
@@ -26,7 +26,7 @@ const PostContent: React.FC<IProps> = props => {
     return (
         <>
             <PostIndicator />
-            <LeftSideButton />
+            <ShareInfo />
             <PostContainer>
                 <Title>{title}</Title>
                 {description}

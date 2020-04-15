@@ -117,11 +117,11 @@ const Title = styled.div`
 `;
 
 const PostIndicatorContainer = styled.div`
-    color: ${props => props.theme.subColor};
+    color: ${props => props.theme.color.sub};
     font-weight: 550;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
-    border-left: 1px solid ${props => props.theme.achromaticColor};
+    border-left: 1px solid ${props => props.theme.color.achromatic};
 `;
 
 const IndicatorListP = styled.div<{ point: boolean }>`
@@ -132,11 +132,11 @@ const IndicatorListP = styled.div<{ point: boolean }>`
     padding-bottom: 0.2rem;
     padding-left: 1rem;
     margin: 0;
-    color: ${props => props.point && props.theme.mainColor};
+    color: ${props => props.point && props.theme.color.main};
     cursor: pointer;
     &:hover {
-        background: ${props => props.theme.achromaticColor};
-        color: ${props => props.theme.mainColor};
+        background: ${props => props.theme.color.achromatic};
+        color: ${props => props.theme.color.main};
         transition: all 0.3s ease-in-out;
     }
     @media screen and (max-width: ${props => props.theme.mediumPoint}) {
@@ -152,7 +152,7 @@ const IndicatorListP = styled.div<{ point: boolean }>`
         position: absolute;
         left: 0;
         top: 0;
-        border-left: 1px solid ${props.theme.mainColor};
+        border-left: 1px solid ${props.theme.color.main};
     }`}
 `;
 

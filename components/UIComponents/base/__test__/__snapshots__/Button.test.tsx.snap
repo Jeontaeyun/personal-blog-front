@@ -2,7 +2,7 @@
 
 exports[`[Button] Component Rendering should render disabled without crashing 1`] = `
 <div
-  className="sc-bdVaJa YfLeS"
+  className="sc-bdVaJa dkdaLU"
   disabled={true}
   onClick={[Function]}
 >
@@ -12,7 +12,7 @@ exports[`[Button] Component Rendering should render disabled without crashing 1`
 
 exports[`[Button] Component Rendering should render without crashing 1`] = `
 <div
-  className="sc-bdVaJa bRgoTr"
+  className="sc-bdVaJa ecSMga"
   disabled={false}
   onClick={[Function]}
 >

@@ -53,7 +53,7 @@ const Header = styled.div`
     margin: 0;
     width: 100%;
     height: 400px;
-    background: ${props => props.theme.backgroundColor};
+    background: ${props => props.theme.color.background};
 `;
 
 const Main = styled.div`
@@ -90,7 +90,7 @@ const Footer = styled.div`
     padding-top: 1rem;
     font-weight: 700;
     padding-bottom: 1rem;
-    background: ${props => props.theme.mainColor};
+    background: ${props => props.theme.color.main};
 `;
 
 const LayoutProfile = styled(ProfileImage)`

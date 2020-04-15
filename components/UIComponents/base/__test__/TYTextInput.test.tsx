@@ -3,6 +3,7 @@ import TYTextInput from "../TYTextInput";
 import renderer from "react-test-renderer";
 import { mount } from "enzyme";
 
+
 describe("[TYTextInput] Component Rendering", () => {
     it("should render without crashing", () => {
         const value = "";

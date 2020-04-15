@@ -73,11 +73,7 @@ const Title = styled.div`
 
 const CardListContainer = styled.div`
     width: 100%;
-    display: flex;
-    flex-direction: row;
     align-content: center;
-    flex-wrap: wrap;
-    justify-content: flex-start;
     @media screen and (max-width: ${props => props.theme.mediumPoint}) {
         flex-direction: column;
         align-content: center;

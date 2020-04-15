@@ -132,8 +132,8 @@ const Menu = styled.div`
     border-radius: 0.1rem;
     cursor: pointer;
     &:hover {
-        background: ${props => props.theme.achromaticColor};
-        color: ${props => props.theme.mainColor};
+        background: ${props => props.theme.color.achromatic};
+        color: ${props => props.theme.color.main};
     }
     @media screen and (max-width: ${props => props.theme.mediumPoint}) {
         height: 50px;
@@ -162,9 +162,9 @@ const Icon = styled.div<{ src: string }>`
     background-color: black;
   }
   &:hover{
-    background: ${props => props.theme.achromaticColor};
+    background: ${props => props.theme.color.achromatic};
     a{
-      background-color: ${props => props.theme.mainColor};
+      background-color: ${props => props.theme.color.main};
     }
   }
   @media screen and (max-width: ${props => props.theme.mediumPoint}) {

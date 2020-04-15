@@ -68,7 +68,7 @@ const Card = styled.div`
     width: 70%;
     height: 400px;
     margin: 0 auto;
-    background: ${props => props.theme.backgroundColor};
+    background: ${props => props.theme.color.background};
     margin-bottom: 3rem;
     border-radius: 0.2rem;
     cursor: pointer;
@@ -86,7 +86,7 @@ const Title = styled.div`
     font-size: 2rem;
     right: 0.5em;
     top: 45%;
-    color: ${props => props.theme.subColor};
+    color: ${props => props.theme.color.sub};
     @media screen and (max-width: ${props => props.theme.mediumPoint}) {
         font-size: 1.5rem;
         top: 47%;
@@ -103,7 +103,7 @@ const Descriptoin = styled.div`
     font-size: 0.8rem;
     right: 1.5em;
     top: 2rem;
-    color: ${props => props.theme.subColor};
+    color: ${props => props.theme.color.sub};
     z-index: 120;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -130,7 +130,7 @@ const Pattern = styled.div`
     width: 20px;
     height: 30px;
     border-radius: 0.2rem 0 1rem 1rem;
-    background: ${props => props.theme.mainColor};
+    background: ${props => props.theme.color.main};
 `;
 
 const CardImage = styled.div`
@@ -160,7 +160,7 @@ const HalfBackground = styled.div`
     bottom: 0;
     width: 100%;
     height: 40%;
-    background: ${props => props.theme.mainColor};
+    background: ${props => props.theme.color.main};
 `;
 
 export default AboutCard;

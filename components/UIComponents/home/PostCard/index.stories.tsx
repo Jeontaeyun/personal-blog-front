@@ -5,11 +5,10 @@
 import React from "react";
 import Component from "./index";
 import { withKnobs, text, date, object } from "@storybook/addon-knobs";
-import centered from "@storybook/addon-centered";
 export default {
-    title: "COMPONENTS|Common/PostCard",
+    title: "COMPONENTS|Base/PostCard",
     component: Component,
-    decorators: [withKnobs, centered],
+    decorators: [withKnobs],
     parameters: {
         componentSubtitle: "Main component for render post in post, main page"
     }

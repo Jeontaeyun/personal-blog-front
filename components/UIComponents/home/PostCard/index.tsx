@@ -6,6 +6,7 @@ import styled from "styled-components";
 import { ITag } from "types/common/Tag";
 
 import ProfileImage from "../../base/ProfileImage";
+import Badge from "components/UIComponents/base/Badge";
 
 interface IProps {
     /**Title for post card */
@@ -25,9 +26,8 @@ interface IProps {
  */
 const PostCard: React.FC<IProps> = props => {
     const { title, description, date, image, tags } = props;
-
     const renderTag = () => {
-        return tags.map(tag => <Tag key={tag.id}>{tag.name.slice(0, 12)}</Tag>);
+        return tags.map(tag => <Badge key={tag.id}>{tag.name.slice(0, 12)}</Badge>);
     };
 
     return (
@@ -63,6 +63,7 @@ PostCard.defaultProps = {
 };
 
 const Container = styled.div`
+    display: inline-block;
     cursor: pointer;
     position: relative;
     width: 420px;
@@ -102,19 +103,6 @@ const PositioningProfile = styled(ProfileImage)`
 const TagConatiner = styled.div`
     width: 100%;
     height: 30px;
-`;
-
-const Tag = styled.span`
-    height: 30px;
-    width: auto;
-    text-align: center;
-    padding: 0.2rem 1rem;
-    margin-right: 0.6rem;
-    border-radius: ${props => props.theme.BORDER_RADIUS};
-    font-size: 0.8rem;
-    border: 0.6px solid #ced4da;
-    color: ${props => props.theme.mainColor};
-    font-weight: 800;
 `;
 
 const Description = styled.div`

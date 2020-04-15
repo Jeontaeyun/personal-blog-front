@@ -1,19 +1,23 @@
 export type IThemeInterface = typeof theme;
 
 const theme = {
-    backgroundColor: "white",
-    achromaticColor: "#efefef",
+    color: {
+        background: "white",
+        achromatic: "#efefef",
 
-    mainColor: "#e45d4c",
-    subColor: "#ff8787",
+        main: "#e45d4c",
+        sub: "#ff8787",
 
-    gradient: "linear-gradient(160deg ,#ff8787, #e45d4c)",
+        white: "#ffffff",
+        black: "#000000",
 
+        gradient: "linear-gradient(160deg ,#ff8787, #e45d4c)"
+    },
     smallPoint: "420px",
     mediumPoint: "764px",
-    widePoint: "1024px",
+    widePoint: "1260px",
 
-    BORDER_RADIUS: "10px"
+    BORDER_RADIUS: "6px"
 };
 
 export default theme;

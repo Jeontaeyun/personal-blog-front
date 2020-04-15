@@ -2,6 +2,7 @@ import React from "react";
 import Button from "../Button";
 import renderer from "react-test-renderer";
 import { shallow, mount } from "enzyme";
+import "jest-styled-components";
 
 describe("[Button] Component Rendering", () => {
     it("should render without crashing", () => {
@@ -26,14 +27,11 @@ describe("[Button] Component Rendering", () => {
 
     it('rendering Text well with "로그인 버튼"', () => {
         let isClicked = false;
-
         const onClick = event => {
             isClicked = true;
         };
-
         const wrapper = mount(<Button onClick={onClick}>로그인 버튼</Button>);
         wrapper.simulate("click");
-
         expect(isClicked).toBe(true);
     });
 });

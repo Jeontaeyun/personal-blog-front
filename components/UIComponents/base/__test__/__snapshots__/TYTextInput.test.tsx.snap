@@ -2,7 +2,7 @@
 
 exports[`[TYTextInput] Component Rendering should render without crashing 1`] = `
 <div
-  className="sc-bdVaJa iWXCSn"
+  className="sc-AxjAm elXKLZ"
   label=""
   onChange={[Function]}
   placeholder="placeholder"
@@ -11,16 +11,16 @@ exports[`[TYTextInput] Component Rendering should render without crashing 1`] = 
   width="200px"
 >
   <div
-    className="sc-bwzfXH dedCfl"
+    className="sc-AxirZ jnRdAE"
     width="200px"
   >
     <label
-      className="sc-htpNat dFNVyK"
+      className="sc-AxiKw ljrVrG"
     >
       
     </label>
     <input
-      className="sc-bxivhb jpsEUD"
+      className="sc-AxhCb kAbIFR"
       label=""
       onBlur={[Function]}
       onChange={[Function]}

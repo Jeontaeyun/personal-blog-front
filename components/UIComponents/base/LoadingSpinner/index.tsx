@@ -98,9 +98,9 @@ const MainCircle = styled.div`
     align-items: center;
     height: 40px;
     padding: 0 24px;
-    border-radius: 10px;
     position: absolute;
-    background: ${props => props.theme.mainColor};
+    background: ${props => props.theme.color.main};
+    border-radius: ${props => props.theme.BORDER_RADIUS};
     transform-origin: center;
 `;
 
@@ -120,9 +120,9 @@ const ChildCircle = styled.div<{ width: number }>`
     position: absolute;
     z-index: -10;
     width: ${props => props.width + 20 + "px"};
-    height: 40px;
-    border-radius: 30px;
-    background: ${props => props.theme.mainColor};
+    height: 44px;
+    border-radius: ${props => props.theme.BORDER_RADIUS};
+    background: ${props => props.theme.color.main};
     transform-origin: center;
 `;
 

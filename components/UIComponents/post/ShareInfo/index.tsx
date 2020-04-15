@@ -1,84 +1,71 @@
 import React, { useEffect, useState, useCallback } from "react";
 import styled from "styled-components";
 import ProfileImage from "../../base/ProfileImage";
+import { useScrollHook } from "lib/hooks/utils";
 
 interface IProps {
     onClick?(): void;
     position?: { top?: string; left?: string; right?: string; bottom?: string };
     title?: string;
     description?: string;
+    visible?: boolean;
 }
 
-const LeftSideButton: React.FC<IProps> = props => {
-    const { title, description, position } = props;
-    const [isView, setIsView] = useState<boolean>(false);
-    const [sharing, setSharing] = useState<boolean>(false);
-    const scrollEvent = () => {
-        const crossBrowsingTop = document.documentElement.scrollTop || document.body.scrollTop;
-        const shouldSetVisible = crossBrowsingTop > 400;
-        if (shouldSetVisible) {
-            setIsView(true);
-        } else {
-            setIsView(false);
-        }
-    };
-
-    useEffect(() => {
-        window.addEventListener("scroll", scrollEvent);
-        window.addEventListener("load", scrollEvent);
-    }, []);
-
+const ShareInfo: React.FC<IProps> = props => {
+    const { title, description, position, visible } = props;
+    const [isView, setIsView] = useState<boolean>(true);
+    const [isSharingVisible, setIsSharingVisible] = useState<boolean>(false);
     const onClickSharing = useCallback(
         e => {
             e.preventDefault();
-            setSharing(!sharing);
+            setIsSharingVisible(!isSharingVisible);
         },
-        [sharing]
+        [isSharingVisible]
     );
+
+    useEffect(() => {
+        setIsView(visible);
+    }, [visible]);
+
     if (!isView) {
         return null;
     }
     if (isView) {
         return (
-            <>
-                <Container position={position}>
-                    <SideProfile size="120px" />
-                    <Title>{title}</Title>
-                    <Description>{description}</Description>
-                    <IconContainer>
-                        <Icon src="/icon/git.svg">
+            <Container position={position}>
+                <SideProfile size="120px" />
+                <Title>{title}</Title>
+                <Description>{description}</Description>
+                <IconContainer>
+                    <Icon src="/icon/git.svg">
+                        <a></a>
+                    </Icon>
+                    <Icon src="/icon/like.svg">
+                        <a></a>
+                    </Icon>
+                    <Icon src="/icon/share.svg" onClick={onClickSharing}>
+                        <a></a>
+                    </Icon>
+                    <SharingList visible={isSharingVisible}>
+                        <SharingIcon src="/icon/instagram.svg" visible={isSharingVisible}>
                             <a></a>
-                        </Icon>
-                        <Icon src="/icon/like.svg">
+                        </SharingIcon>
+                        <SharingIcon src="/icon/twitter.svg" visible={isSharingVisible}>
                             <a></a>
-                        </Icon>
-                        <Icon src="/icon/share.svg" onClick={onClickSharing}>
+                        </SharingIcon>
+                        <SharingIcon src="/icon/facebook.svg" visible={isSharingVisible}>
                             <a></a>
-                        </Icon>
-                        <SharingList visible={sharing}>
-                            <SharingIcon src="/icon/instagram.svg" visible={sharing}>
-                                <a></a>
-                            </SharingIcon>
-                            <SharingIcon src="/icon/twitter.svg" visible={sharing}>
-                                <a></a>
-                            </SharingIcon>
-                            <SharingIcon src="/icon/facebook.svg" visible={sharing}>
-                                <a></a>
-                            </SharingIcon>
-                        </SharingList>
-                    </IconContainer>
-                </Container>
-            </>
+                        </SharingIcon>
+                    </SharingList>
+                </IconContainer>
+            </Container>
         );
     }
 };
 
-LeftSideButton.defaultProps = {
-    onClick: () => {
-        //scroll Event
-        window.scrollTo({ top: 0, behavior: "smooth" });
-    },
-    position: { top: "7rem", left: "2rem" },
+ShareInfo.defaultProps = {
+    onClick: () => {},
+    position: { top: "2rem", left: "2rem" },
     title: "타이틀",
     description: `설명을 기술하는 부분입니부분입니다.설명을 기술하는 부분입니다.
                 설명을 기술하는 부분입니다.설명을 기술하는 부분입니다.`
@@ -114,7 +101,7 @@ const Description = styled.div`
     font-size: 0.5rem;
     line-height: 150%;
     padding-bottom: 2rem;
-    border-bottom: 1px solid ${props => props.theme.achromaticColor};
+    border-bottom: 1px solid ${props => props.theme.color.achromatic};
 `;
 
 const IconContainer = styled.div`
@@ -143,9 +130,9 @@ const Icon = styled.div<{ src: string }>`
     background-color: black;
   }
   &:hover{
-    background: ${props => props.theme.achromaticColor};
+    background: ${props => props.theme.color.achromatic};
     a{
-      background-color: ${props => props.theme.mainColor};
+      background-color: ${props => props.theme.color.main};
     }
   }
 `;
@@ -163,6 +150,8 @@ const SharingList = styled.ul<{ visible: boolean }>`
 
 const SharingIcon = styled.li<{ visible: boolean; src: string }>`
   display: ${props => (props.visible ? "block" : "none")};
+  margin:0;
+  padding: 0;
   margin-top: 1rem;
   width: 100%;
   height: 100%;
@@ -179,11 +168,11 @@ const SharingIcon = styled.li<{ visible: boolean; src: string }>`
     background-color: black;
   }
   &:hover{
-    background: ${props => props.theme.achromaticColor};
+    background: ${props => props.theme.color.achromatic};
     a{
-      background-color: ${props => props.theme.mainColor};
+      background-color: ${props => props.theme.color.main};
     }
   }
 `;
 
-export default LeftSideButton;
+export default ShareInfo;
