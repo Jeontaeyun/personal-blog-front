@@ -1,19 +1,31 @@
-import React, { MouseEvent, KeyboardEvent, TouchEvent, useState, useRef, useCallback } from "react";
-import ReactDOM from "react-dom";
+import React, {
+    MouseEvent,
+    KeyboardEvent,
+    TouchEvent,
+    useState,
+    useRef,
+    useCallback,
+    useImperativeHandle,
+    forwardRef
+} from "react";
 import styled, { keyframes, css } from "styled-components";
 import { useScrollLock, useScrollCenter } from "lib/hooks/utils";
 
+export interface IModal extends HTMLDivElement {
+    close: () => void;
+    open: () => void;
+}
 interface IProps {
     children?: React.ReactChild;
-    onClickClose?: (event: MouseEvent<any>) => void;
-    onClickBackground?: (event: MouseEvent<any>) => void;
+    onClickClose?: (event?: MouseEvent<any>) => void;
+    onClickBackground?: (event?: MouseEvent<any>) => void;
 }
 
 const ANIMATION_TIME = 0.25;
 const TAB_KEY = 9;
 const ESC_KEY = 27;
 
-const Modal: React.FC<IProps> = props => {
+const Modal: React.FC<IProps> = (props, ref) => {
     const { children, onClickBackground } = props;
     const [visible, setVisble] = useState<boolean>(true);
     const [shouldClose, setShouldClose] = useState<boolean>(false);
@@ -23,6 +35,21 @@ const Modal: React.FC<IProps> = props => {
 
     const overlayRef = useRef<HTMLDivElement>(null);
     const modalRef = useRef<HTMLDivElement>(centerRef.current);
+
+    const onClose = useCallback(() => {
+        setShouldClose(true);
+        setTimeout(() => {
+            setVisble(false);
+            onClickBackground?.();
+        }, ANIMATION_TIME * 1000);
+    }, []);
+
+    const onOpen = useCallback(() => {
+        setShouldClose(false);
+        setTimeout(() => {
+            setVisble(true);
+        }, ANIMATION_TIME * 1000);
+    }, []);
 
     const onHandleKeyDown = useCallback((event: KeyboardEvent<HTMLDivElement>) => {
         if (event.keyCode === ESC_KEY) {
@@ -35,11 +62,7 @@ const Modal: React.FC<IProps> = props => {
         (event: MouseEvent<HTMLDivElement>) => {
             if (event.target === overlayRef.current) {
                 event.preventDefault();
-                setShouldClose(true);
-                setTimeout(() => {
-                    setVisble(false);
-                    onClickBackground?.(event);
-                }, ANIMATION_TIME * 1000);
+                onClose();
             }
         },
         [onClickBackground]
@@ -48,6 +71,11 @@ const Modal: React.FC<IProps> = props => {
     const onHandleTouchStart = useCallback((event: TouchEvent<HTMLDivElement>) => {
         event.stopPropagation();
     }, []);
+
+    useImperativeHandle(ref, () => ({
+        close: onClose,
+        open: onOpen
+    }));
 
     if (!visible) {
         return null;
@@ -129,6 +157,7 @@ const ModalContainer = styled.div<{ shouldClose: boolean }>`
     align-items: center;
     position: absolute;
     box-sizing: border-box;
+    border: 1px solid #f1f2f3;
     max-width: 600px;
     width: 100%;
     height: 100%;
@@ -153,4 +182,4 @@ const ModalContainer = styled.div<{ shouldClose: boolean }>`
     }
 `;
 
-export default Modal;
+export default forwardRef<IModal, IProps>(Modal);
