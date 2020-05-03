@@ -52,17 +52,23 @@ const LoginModal: React.FC<IProps> = props => {
         }
     };
 
-    const onClickButton = useCallback(() => {
-        modalRef && modalRef.current && modalRef.current.open();
+    const onOpenModal = useCallback(() => {
+        modalRef.current && modalRef.current.open();
     }, []);
+
+    const onCloseModal = useCallback(() => {
+        modalRef.current && modalRef.current.close();
+    }, []);
+
     return (
         <>
             <Modal ref={modalRef}>
                 <Container>
                     <LeftGridContainer>
-                        <BearIcon data={"icon/bearIcon.svg"} type={"image/svg+xml"} />
+                        <BearIcon data={"icon/icon_character_bear.svg"} type={"image/svg+xml"} />
                     </LeftGridContainer>
                     <RightGridContainer>
+                        <CloseButton onClick={onCloseModal} />
                         <LoginTitle>{loginText()}</LoginTitle>
                         <LoginSectionTitle>{`이메일로 ${loginText()}`}</LoginSectionTitle>
                         <LocalLoginContainer>
@@ -83,7 +89,7 @@ const LoginModal: React.FC<IProps> = props => {
                     </RightGridContainer>
                 </Container>
             </Modal>
-            <div onClick={onClickButton}>{"Sign Up"}</div>
+            <ModalButton onClick={onOpenModal}>{"Sign Up"}</ModalButton>
         </>
     );
 };
@@ -95,12 +101,14 @@ const Container = styled.div`
     height: 100%;
 `;
 
+const ModalButton = styled.div``;
+
 const LeftGridContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-width: 210px;
+    max-width: 210px;
     height: 100%;
     background: #f1f3f5;
     @media screen and (max-width: ${props => props.theme.mediumPoint}) {
@@ -111,7 +119,8 @@ const LeftGridContainer = styled.div`
 const RightGridContainer = styled.div`
     display: flex;
     display: inline-block;
-    min-width: 390px;
+    max-width: 390px;
+    width: 100%;
     height: 100%;
     box-sizing: border-box;
     padding: 24px;
@@ -131,6 +140,20 @@ const OauthLoginContainer = styled.div`
     align-items: center;
     width: 100%;
     height: 80px;
+`;
+
+const CloseButton = styled.div`
+    display: none;
+    @media screen and (max-width: ${props => props.theme.mediumPoint}) {
+        cursor: pointer;
+        float: right;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 20px;
+        height: 20px;
+        background: blue;
+    }
 `;
 
 const LoginTitle = styled.div`

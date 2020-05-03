@@ -43,12 +43,12 @@ const FollowingNavigator: React.FC<IProps> = props => {
                         </a>
                     </Link>
                     <IconList>
-                        <Icon src="/icon/git.svg">
+                        <Icon src="/icon/icon_sns_git.svg">
                             <Link href="https://github.com/Jeontaeyun">
                                 <a></a>
                             </Link>
                         </Icon>
-                        <Icon src="/icon/instagram.svg">
+                        <Icon src="/icon/icon_sns_instagram.svg">
                             <Link href="https://www.instagram.com/stark_jeon_/?hl=ko">
                                 <a></a>
                             </Link>
@@ -111,7 +111,7 @@ const Logo = styled.div`
     display: inline-block;
     height: 100%;
     width: 150px;
-    background: url("./title.png");
+    background: url("./logo_connect_dot.png");
     border-radius: 0.1rem;
     @media screen and (max-width: ${props => props.theme.mediumPoint}) {
         display: block;

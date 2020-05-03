@@ -1,5 +1,4 @@
-import * as React from "react";
-import { useState, useCallback } from "react";
+import React, { useState, useCallback } from "react";
 import styled from "styled-components";
 import ProfileImage from "../../base/ProfileImage";
 import ReReply from "../ReReplyBox";
@@ -18,7 +17,7 @@ interface IProps {
 
 const ReplyBox: React.FC<IProps> = props => {
     const { description, name, date, isMe } = props;
-    const reple = [{ name: "아이디", description: "대대슬 대댓글", date: "2018년 1월 3일" }];
+    const reple = [{ name: "아이디", description: "대댓글 대댓글", date: "2018년 1월 3일" }];
     const [edit, setEdit] = useState<string>("");
     const onClickEdit = useCallback(
         event => {
@@ -39,7 +38,7 @@ const ReplyBox: React.FC<IProps> = props => {
                     <Title>{name}</Title>
                     <Date>{date}</Date>
                 </TitleContainer>
-                {!!!edit ? (
+                {!edit ? (
                     <>
                         <Description>{description}</Description>
                         <ReReply />

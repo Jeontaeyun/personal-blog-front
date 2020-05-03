@@ -3,45 +3,44 @@ import { useEffect, useState } from "react";
 import styled, { keyframes } from "styled-components";
 
 interface IProps {
-  onClick?(): void;
-  img?: string;
-  size?: string;
+    onClick?(): void;
+    img?: string;
+    size?: string;
 }
 
 const SideBottomButton: React.FC<IProps> = props => {
-  const { onClick, img, size } = props;
-  const [isView, setIsView] = useState<boolean>(false);
-  const scrollEvent = () => {
-    const crossBrowsingTop =
-      document.documentElement.scrollTop || document.body.scrollTop;
-    if (crossBrowsingTop > 400) {
-      setIsView(true);
-    } else {
-      setIsView(false);
-    }
-  };
-  useEffect(() => {
-    window.addEventListener("scroll", scrollEvent);
-    window.addEventListener("load", scrollEvent);
-  }, []);
-  return (
-    <>
-      {isView && (
-        <BottomButton view={isView} onClick={onClick} size={size}>
-          <Icon img={img} />
-        </BottomButton>
-      )}
-    </>
-  );
+    const { onClick, img, size } = props;
+    const [isView, setIsView] = useState<boolean>(false);
+    const scrollEvent = () => {
+        const crossBrowsingTop = document.documentElement.scrollTop || document.body.scrollTop;
+        if (crossBrowsingTop > 400) {
+            setIsView(true);
+        } else {
+            setIsView(false);
+        }
+    };
+    useEffect(() => {
+        window.addEventListener("scroll", scrollEvent);
+        window.addEventListener("load", scrollEvent);
+    }, []);
+    return (
+        <>
+            {isView && (
+                <BottomButton view={isView} onClick={onClick} size={size}>
+                    <Icon img={img} />
+                </BottomButton>
+            )}
+        </>
+    );
 };
 
 SideBottomButton.defaultProps = {
-  onClick: () => {
-    //scroll Event
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  },
-  img: "/icon/sidebarIcon.svg",
-  size: "50px",
+    onClick: () => {
+        //scroll Event
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    },
+    img: "/icon/icon_etc_sidebarIcon.svg",
+    size: "50px"
 };
 
 const fadeIn = keyframes`
@@ -93,22 +92,22 @@ const fadeOut = keyframes`
 `;
 
 const BottomButton = styled.div<{ size: string; view: boolean }>`
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  width: ${props => props.size};
-  height: ${props => props.size};
-  border-radius: 0.4rem;
-  background: linear-gradient(45deg, #e45d4c, #eead9e);
-  -webkit-box-shadow: 0px 2px 6px -2px rgba(41, 42, 43, 0.16);
-  -moz-box-shadow: 0px 2px 6px -2px rgba(41, 42, 43, 0.16);
-  box-shadow: 0px 2px 6px -2px rgba(41, 42, 43, 0.16);
-  cursor: pointer;
-  &:hover {
-    border-radius: 100%;
-    transition: border-radius 0.3s ease-in;
-  }
-  animation: ${props => (props.view ? fadeIn : fadeOut)} 0.3s;
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: ${props => props.size};
+    height: ${props => props.size};
+    border-radius: 0.4rem;
+    background: linear-gradient(45deg, #e45d4c, #eead9e);
+    -webkit-box-shadow: 0px 2px 6px -2px rgba(41, 42, 43, 0.16);
+    -moz-box-shadow: 0px 2px 6px -2px rgba(41, 42, 43, 0.16);
+    box-shadow: 0px 2px 6px -2px rgba(41, 42, 43, 0.16);
+    cursor: pointer;
+    &:hover {
+        border-radius: 100%;
+        transition: border-radius 0.3s ease-in;
+    }
+    animation: ${props => (props.view ? fadeIn : fadeOut)} 0.3s;
 `;
 const Icon = styled.div<IProps>`
   position:absolute;
