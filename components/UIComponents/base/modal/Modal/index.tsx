@@ -27,7 +27,7 @@ const ESC_KEY = 27;
 
 const Modal: React.FC<IProps> = (props, ref) => {
     const { children, onClickBackground } = props;
-    const [visible, setVisble] = useState<boolean>(true);
+    const [visible, setVisible] = useState<boolean>(true);
     const [shouldClose, setShouldClose] = useState<boolean>(false);
 
     useScrollLock(visible);
@@ -39,7 +39,7 @@ const Modal: React.FC<IProps> = (props, ref) => {
     const onClose = useCallback(() => {
         setShouldClose(true);
         setTimeout(() => {
-            setVisble(false);
+            setVisible(false);
             onClickBackground?.();
         }, ANIMATION_TIME * 1000);
     }, []);
@@ -47,7 +47,7 @@ const Modal: React.FC<IProps> = (props, ref) => {
     const onOpen = useCallback(() => {
         setShouldClose(false);
         setTimeout(() => {
-            setVisble(true);
+            setVisible(true);
         }, ANIMATION_TIME * 1000);
     }, []);
 
