@@ -66,15 +66,21 @@ const Container = styled.div`
     display: inline-block;
     cursor: pointer;
     position: relative;
-    width: 420px;
-    height: 400px;
+    width: 100%;
+    height: 100%;
+    max-width: 25%;
+    max-height: 400px;
     background: white;
     margin-bottom: 3rem;
     box-sizing: border-box;
     padding: 10px;
+    @media screen and (max-width: ${props => props.theme.widePoint}) {
+        max-width: 50%;
+        margin-bottom: 4rem;
+    }
     @media screen and (max-width: ${props => props.theme.mediumPoint}) {
-        height: 430px;
-        width: 100%;
+        max-height: 430px;
+        max-width: 100%;
         margin-bottom: 4rem;
     }
 `;

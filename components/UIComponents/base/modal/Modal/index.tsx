@@ -18,13 +18,13 @@ export interface IModal extends HTMLDivElement {
 interface IProps {
     children?: React.ReactChild;
     onClickClose?: (event?: MouseEvent<any>) => void;
-    onClickBackground?: (event?: MouseEvent<any>) => void;
+    onClickOverlay?: (event?: MouseEvent<any>) => void;
 }
 
 const ANIMATION_TIME = 0.25;
 
 const Modal: React.FC<IProps> = (props, ref) => {
-    const { children, onClickBackground } = props;
+    const { children, onClickOverlay } = props;
     const [visible, setVisible] = useState<boolean>(false);
     const [shouldClose, setShouldClose] = useState<boolean>(false);
 
@@ -38,7 +38,7 @@ const Modal: React.FC<IProps> = (props, ref) => {
         setShouldClose(true);
         setTimeout(() => {
             setVisible(false);
-            onClickBackground?.();
+            onClickOverlay?.();
         }, ANIMATION_TIME * 1000);
     }, []);
 
@@ -56,7 +56,7 @@ const Modal: React.FC<IProps> = (props, ref) => {
                 onClose();
             }
         },
-        [onClickBackground]
+        [onClose]
     );
 
     const onHandleTouchStart = useCallback((event: TouchEvent<HTMLDivElement>) => {
@@ -96,7 +96,7 @@ const Modal: React.FC<IProps> = (props, ref) => {
     }
     return (
         <Container onTouchStart={onHandleTouchStart}>
-            <Background ref={overlayRef} />
+            <Background ref={overlayRef} onClick={onHandleMouseDown} />
             <ModalContainer shouldClose={shouldClose} ref={modalRef}>
                 {children}
             </ModalContainer>
