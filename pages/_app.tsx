@@ -1,6 +1,6 @@
 import * as React from "react";
 import App from "next/app";
-import withApolloCient from "../lib/loaders/withApolloClient";
+import withApolloClient from "../lib/loaders/withApolloClient";
 import { ApolloProvider } from "@apollo/react-hooks";
 import { ApolloClient } from "apollo-boost";
 import { ThemeProvider } from "styled-components";
@@ -72,4 +72,4 @@ MyApp.getInitialProps = async context => {
     return { pageProps };
 };
 
-export default withApolloCient(MyApp);
+export default withApolloClient(MyApp);

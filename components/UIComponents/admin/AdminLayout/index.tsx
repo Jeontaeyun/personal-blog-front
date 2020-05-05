@@ -27,9 +27,10 @@ const Container = styled.div`
 
 const Contents = styled.div`
     position: absolute;
+    min-height: 4000px;
     left: 300px;
     height: auto;
     width: 100%;
-    background-color: red;
+    overflow: scroll;
 `;
 export default AdminLayout;

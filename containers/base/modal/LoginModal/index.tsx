@@ -1,6 +1,8 @@
 import React, { useRef, useCallback, useState, MouseEvent } from "react";
 import Modal, { IModal } from "components/UIComponents/base/modal/Modal";
 import styled from "styled-components";
+import { useMutation } from "@apollo/react-hooks";
+import { AUTHENTICATE_OAUTH } from "containers/base/authenticateGQL";
 
 enum MODAL_STATE {
     LOGIN = "LOGIN",
@@ -10,6 +12,7 @@ enum MODAL_STATE {
 interface IProps {}
 
 const LoginModal: React.FC<IProps> = props => {
+    const [authenticateOauth, { data, error }] = useMutation(AUTHENTICATE_OAUTH);
     const [modalState, setModalState] = useState(MODAL_STATE.LOGIN);
     const modalRef = useRef<IModal>(null);
 
@@ -24,6 +27,14 @@ const LoginModal: React.FC<IProps> = props => {
         },
         [modalState]
     );
+
+    const onOpenModal = useCallback(() => {
+        modalRef.current && modalRef.current.open();
+    }, []);
+
+    const onCloseModal = useCallback(() => {
+        modalRef.current && modalRef.current.close();
+    }, []);
 
     const stateButtonText = () => {
         switch (modalState) {
@@ -52,13 +63,13 @@ const LoginModal: React.FC<IProps> = props => {
         }
     };
 
-    const onOpenModal = useCallback(() => {
-        modalRef.current && modalRef.current.open();
+    const onAuthenticationGoogle = useCallback(() => {
+        authenticateOauth({ variables: { accessToken: "", platform: "GOOGLE" } });
     }, []);
 
-    const onCloseModal = useCallback(() => {
-        modalRef.current && modalRef.current.close();
-    }, []);
+    const onAuthenticationGitHub = useCallback(() => {}, []);
+
+    const onAuthenticationKakao = useCallback(() => {}, []);
 
     return (
         <>
@@ -68,7 +79,11 @@ const LoginModal: React.FC<IProps> = props => {
                         <BearIcon data={"icon/icon_character_bear.svg"} type={"image/svg+xml"} />
                     </LeftGridContainer>
                     <RightGridContainer>
-                        <CloseButton onClick={onCloseModal} />
+                        <CloseButton
+                            data={"icon/icon_action_close.svg"}
+                            type={"image/svg+xml"}
+                            onClick={onCloseModal}
+                        />
                         <LoginTitle>{loginText()}</LoginTitle>
                         <LoginSectionTitle>{`이메일로 ${loginText()}`}</LoginSectionTitle>
                         <LocalLoginContainer>
@@ -78,9 +93,9 @@ const LoginModal: React.FC<IProps> = props => {
                         </LocalLoginContainer>
                         <LoginSectionTitle>{`소셜 계정으로 ${loginText()}`}</LoginSectionTitle>
                         <OauthLoginContainer>
-                            <LoginButton />
-                            <LoginButton />
-                            <LoginButton />
+                            <LoginButton onClick={onAuthenticationGoogle} />
+                            <LoginButton onClick={onAuthenticationGitHub} />
+                            <LoginButton onClick={onAuthenticationKakao} />
                         </OauthLoginContainer>
                         <ChangeStateText>
                             {stateInfoText()}
@@ -101,7 +116,9 @@ const Container = styled.div`
     height: 100%;
 `;
 
-const ModalButton = styled.div``;
+const ModalButton = styled.div`
+    cursor: pointer;
+`;
 
 const LeftGridContainer = styled.div`
     display: flex;
@@ -142,7 +159,7 @@ const OauthLoginContainer = styled.div`
     height: 80px;
 `;
 
-const CloseButton = styled.div`
+const CloseButton = styled.object`
     display: none;
     @media screen and (max-width: ${props => props.theme.mediumPoint}) {
         cursor: pointer;
@@ -150,9 +167,8 @@ const CloseButton = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 20px;
-        height: 20px;
-        background: blue;
+        width: 36px;
+        height: 36px;
     }
 `;
 

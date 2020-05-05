@@ -1,10 +1,10 @@
 import React, {
     MouseEvent,
-    KeyboardEvent,
     TouchEvent,
     useState,
     useRef,
     useCallback,
+    useEffect,
     useImperativeHandle,
     forwardRef
 } from "react";
@@ -22,12 +22,10 @@ interface IProps {
 }
 
 const ANIMATION_TIME = 0.25;
-const TAB_KEY = 9;
-const ESC_KEY = 27;
 
 const Modal: React.FC<IProps> = (props, ref) => {
     const { children, onClickBackground } = props;
-    const [visible, setVisible] = useState<boolean>(true);
+    const [visible, setVisible] = useState<boolean>(false);
     const [shouldClose, setShouldClose] = useState<boolean>(false);
 
     useScrollLock(visible);
@@ -51,13 +49,6 @@ const Modal: React.FC<IProps> = (props, ref) => {
         }, ANIMATION_TIME * 1000);
     }, []);
 
-    const onHandleKeyDown = useCallback((event: KeyboardEvent<HTMLDivElement>) => {
-        if (event.keyCode === ESC_KEY) {
-            event.stopPropagation();
-            console.log("ESC");
-        }
-    }, []);
-
     const onHandleMouseDown = useCallback(
         (event: MouseEvent<HTMLDivElement>) => {
             if (event.target === overlayRef.current) {
@@ -72,17 +63,40 @@ const Modal: React.FC<IProps> = (props, ref) => {
         event.stopPropagation();
     }, []);
 
+    const onHandleKeyDown = useCallback(
+        (event: KeyboardEvent) => {
+            console.log(event.code);
+            if (event.code === "Tab") {
+                /**
+                 * TODO:
+                 */
+            }
+            if (event.code === "Escape" && !shouldClose) {
+                event.stopPropagation();
+                onClose();
+            }
+        },
+        [shouldClose]
+    );
+
     useImperativeHandle(ref, () => ({
         close: onClose,
         open: onOpen
     }));
 
+    useEffect(() => {
+        window.addEventListener<"keydown">("keydown", onHandleKeyDown);
+        return () => {
+            window.removeEventListener<"keydown">("keydown", onHandleKeyDown);
+        };
+    }, [shouldClose]);
+
     if (!visible) {
         return null;
     }
     return (
-        <Container onTouchStart={onHandleTouchStart} onMouseDown={onHandleMouseDown}>
-            <Background ref={overlayRef} onKeyPress={onHandleKeyDown} />
+        <Container onTouchStart={onHandleTouchStart}>
+            <Background ref={overlayRef} />
             <ModalContainer shouldClose={shouldClose} ref={modalRef}>
                 {children}
             </ModalContainer>

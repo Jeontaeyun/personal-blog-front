@@ -62,7 +62,7 @@ const FollowingNavigator: React.FC<IProps> = props => {
 
 const Container = styled.div<{ view: boolean }>`
     position: fixed;
-    z-index: 200;
+    z-index: ${props => props.theme.zIndex.navigation};
     width: 100%;
     height: 50px;
     top: 0;

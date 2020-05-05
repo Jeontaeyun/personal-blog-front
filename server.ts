@@ -6,6 +6,7 @@ import expressSession from "express-session";
 import dotenv from "dotenv";
 import chalk from "chalk";
 import path from "path";
+import cors from "cors";
 import { parse } from "url";
 
 dotenv.config();
@@ -23,6 +24,13 @@ app.prepare().then(() => {
         server.use(morgan("dev"));
     }
 
+    server.use(
+        cors({
+            origin: "*",
+            credentials: true
+        })
+    );
+
     server.use(Express.json());
     server.use(Express.urlencoded({ extended: true }));
     server.use(cookieParser(process.env.COOKIE_SECRET));
@@ -39,7 +47,8 @@ app.prepare().then(() => {
     );
 
     server.get("/post/:postId", (req: Express.Request, res: Express.Response) => {
-        return app.render(req, res, "/post", { postId: req.params.postId });
+        const { postId } = req.params;
+        return app.render(req, res, "/post", { postId });
     });
 
     server.get("*", (req: Express.Request, res: Express.Response) => {
