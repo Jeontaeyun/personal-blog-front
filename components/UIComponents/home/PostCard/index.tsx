@@ -26,13 +26,14 @@ interface IProps {
  */
 const PostCard: React.FC<IProps> = props => {
     const { title, description, date, image, tags } = props;
+
     const renderTag = () => {
         return tags.map(tag => <Badge key={tag.id}>{tag.name.slice(0, 12)}</Badge>);
     };
 
     return (
         <Container>
-            <TagConatiner>{renderTag()}</TagConatiner>
+            <TagContainer>{renderTag()}</TagContainer>
             <CardImage image={image}>
                 <PositioningProfile size={"40px"} />
             </CardImage>
@@ -57,6 +58,12 @@ PostCard.defaultProps = {
     date: 12323,
     tags: [
         { name: "Javascript", id: "1" },
+        { name: "Backend", id: "2" },
+        { name: "Docker", id: "3" },
+        { name: "Javascript", id: "1" },
+        { name: "Backend", id: "2" },
+        { name: "Javascript", id: "1" },
+        { name: "Docker", id: "3" },
         { name: "Backend", id: "2" },
         { name: "Docker", id: "3" }
     ]
@@ -106,9 +113,13 @@ const PositioningProfile = styled(ProfileImage)`
     right: 40px;
 `;
 
-const TagConatiner = styled.div`
+const TagContainer = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
     width: 100%;
-    height: 30px;
+    height: auto;
+    margin: 4px 0;
 `;
 
 const Description = styled.div`
@@ -149,4 +160,4 @@ const Date = styled.p`
     line-height: 2.4;
 `;
 
-export default PostCard;
+export default React.memo(PostCard);

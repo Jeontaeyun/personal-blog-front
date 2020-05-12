@@ -1,6 +1,5 @@
 import * as React from "react";
 import App from "next/app";
-import withApolloClient from "../lib/loaders/withApolloClient";
 import { ApolloProvider } from "@apollo/react-hooks";
 import { ApolloClient } from "apollo-boost";
 import { ThemeProvider } from "styled-components";
@@ -10,6 +9,7 @@ import Helmet from "react-helmet";
 import AppLayout from "components/UIComponents/base/AppLayout";
 import { Router } from "next/dist/client/router";
 import AdminLayout from "components/UIComponents/admin/AdminLayout";
+import { withApolloClient } from "lib/loaders";
 
 interface IProps extends Router {
     Component: React.FC;

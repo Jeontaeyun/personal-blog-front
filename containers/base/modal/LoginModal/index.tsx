@@ -67,9 +67,13 @@ const LoginModal: React.FC<IProps> = props => {
         authenticateOauth({ variables: { accessToken: "", platform: "GOOGLE" } });
     }, []);
 
-    const onAuthenticationGitHub = useCallback(() => {}, []);
+    const onAuthenticationGitHub = useCallback(() => {
+        authenticateOauth({ variables: { accessToken: "", platform: "GITHUB" } });
+    }, []);
 
-    const onAuthenticationKakao = useCallback(() => {}, []);
+    const onAuthenticationKakao = useCallback(() => {
+        authenticateOauth({ variables: { accessToken: "", platform: "KAKAO" } });
+    }, []);
 
     return (
         <>
@@ -79,11 +83,7 @@ const LoginModal: React.FC<IProps> = props => {
                         <BearIcon data={"icon/icon_character_bear.svg"} type={"image/svg+xml"} />
                     </LeftGridContainer>
                     <RightGridContainer>
-                        <CloseButton
-                            data={"icon/icon_action_close.svg"}
-                            type={"image/svg+xml"}
-                            onClick={onCloseModal}
-                        />
+                        <CloseButton src={"icon/icon_action_close.svg"} onClick={onCloseModal} />
                         <LoginTitle>{loginText()}</LoginTitle>
                         <LoginSectionTitle>{`이메일로 ${loginText()}`}</LoginSectionTitle>
                         <LocalLoginContainer>
@@ -159,7 +159,7 @@ const OauthLoginContainer = styled.div`
     height: 80px;
 `;
 
-const CloseButton = styled.object`
+const CloseButton = styled.img`
     display: none;
     @media screen and (max-width: ${props => props.theme.mediumPoint}) {
         cursor: pointer;
@@ -200,7 +200,7 @@ const PasswordInput = styled.input`
     height: 36px;
     font-size: 14px;
     box-sizing: border-box;
-    margin: 4px 0;
+    margin: 8px 0;
     padding: 8px;
     border: 1px solid ${props => props.theme.color.black70};
 `;

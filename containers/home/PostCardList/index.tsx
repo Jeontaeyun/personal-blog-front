@@ -57,6 +57,16 @@ PostCardList.defaultProps = {
             title: "백엔드",
             description: "본문의 내용입니다.",
             createdAt: 2412
+        },
+        {
+            title: "백엔드",
+            description: "본문의 내용입니다.",
+            createdAt: 2412
+        },
+        {
+            title: "백엔드",
+            description: "본문의 내용입니다.",
+            createdAt: 2412
         }
     ]
 };

@@ -1,5 +1,4 @@
-import * as React from "react";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled, { keyframes } from "styled-components";
 
 interface IProps {
@@ -26,9 +25,9 @@ const SideBottomButton: React.FC<IProps> = props => {
     return (
         <>
             {isView && (
-                <BottomButton view={isView} onClick={onClick} size={size}>
+                <Container view={isView} onClick={onClick} size={size}>
                     <Icon img={img} />
-                </BottomButton>
+                </Container>
             )}
         </>
     );
@@ -91,7 +90,7 @@ const fadeOut = keyframes`
   }
 `;
 
-const BottomButton = styled.div<{ size: string; view: boolean }>`
+const Container = styled.div<{ size: string; view: boolean }>`
     position: fixed;
     bottom: 2rem;
     right: 2rem;

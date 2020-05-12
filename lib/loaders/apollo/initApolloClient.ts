@@ -1,5 +1,6 @@
 // Initialize Apollo Client
-import { ApolloClient, InMemoryCache, HttpLink, NormalizedCacheObject } from "apollo-boost";
+import { ApolloClient, InMemoryCache, NormalizedCacheObject } from "apollo-boost";
+import { createHttpLink } from "apollo-link-http";
 import fetch from "isomorphic-unfetch";
 
 let apolloClient: ApolloClient<any> | null = null;
@@ -12,14 +13,14 @@ if (!process.browser) {
 
 function createApolloClient(initialState: NormalizedCacheObject) {
     const { GRAPHQL_URI } = process.env;
-    console.log(`${GRAPHQL_URI}/graphql`);
+    const link = createHttpLink({
+        uri: `${GRAPHQL_URI}/graphql`,
+        credentials: "same-origin"
+    });
     return new ApolloClient({
         connectToDevTools: process.browser,
         ssrMode: !process.browser,
-        link: new HttpLink({
-            uri: `${GRAPHQL_URI}/graphql`,
-            credentials: "same-origin"
-        }),
+        link,
         cache: new InMemoryCache().restore(initialState)
     });
 }

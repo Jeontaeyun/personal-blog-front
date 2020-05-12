@@ -1,5 +1,7 @@
 import Express from "express";
 import next from "next";
+import https from "https";
+import http from "http";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
 import expressSession from "express-session";
@@ -8,12 +10,19 @@ import chalk from "chalk";
 import path from "path";
 import cors from "cors";
 import { parse } from "url";
+import fs from "fs";
 
 dotenv.config();
 
-const __DEV__ = process.env.NODE_ENV === "development";
+const { NODE_ENV, PORT = 8080, SSL_PORT = 8080 } = process.env;
+const __DEV__ = NODE_ENV === "development";
 const app = next({ dev: __DEV__ });
 const handle = app.getRequestHandler();
+
+const httpsOptions = {
+    key: fs.readFileSync("./config/certificates/localhost.key"),
+    cert: fs.readFileSync("./config/certificates/localhost.crt")
+};
 
 app.prepare().then(() => {
     const server = Express();
@@ -56,10 +65,16 @@ app.prepare().then(() => {
         return handle(req, res, parsedURL);
     });
 
-    server.listen(3060, () => {
+    http.createServer(server).listen(PORT, () => {
         console.log(
             chalk.bgBlue.black("START"),
-            `Next server running on port 3060 on ${__DEV__ ? "development" : "production"} environment`
+            `Next server running on port ${PORT} on ${__DEV__ ? "development" : "production"} environment`
+        );
+    });
+    https.createServer(httpsOptions, server).listen(SSL_PORT, () => {
+        console.log(
+            chalk.bgBlue.black("START"),
+            `Next server running on port ${SSL_PORT} on ${__DEV__ ? "development" : "production"} environment`
         );
     });
 });

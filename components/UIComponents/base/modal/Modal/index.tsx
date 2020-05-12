@@ -65,10 +65,10 @@ const Modal: React.FC<IProps> = (props, ref) => {
 
     const onHandleKeyDown = useCallback(
         (event: KeyboardEvent) => {
-            console.log(event.code);
+            console.log("hi");
             if (event.code === "Tab") {
                 /**
-                 * TODO:
+                 * TODO: Tab Action with Input, button
                  */
             }
             if (event.code === "Escape" && !shouldClose) {
@@ -85,22 +85,25 @@ const Modal: React.FC<IProps> = (props, ref) => {
     }));
 
     useEffect(() => {
+        console.log("rendering");
         window.addEventListener<"keydown">("keydown", onHandleKeyDown);
         return () => {
+            console.log("cleanUp");
             window.removeEventListener<"keydown">("keydown", onHandleKeyDown);
         };
-    }, [shouldClose]);
+    }, []);
 
-    if (!visible) {
-        return null;
-    }
     return (
-        <Container onTouchStart={onHandleTouchStart}>
-            <Background ref={overlayRef} onClick={onHandleMouseDown} />
-            <ModalContainer shouldClose={shouldClose} ref={modalRef}>
-                {children}
-            </ModalContainer>
-        </Container>
+        <>
+            {visible && (
+                <Container onTouchStart={onHandleTouchStart}>
+                    <Background ref={overlayRef} onClick={onHandleMouseDown} />
+                    <ModalContainer shouldClose={shouldClose} ref={modalRef}>
+                        {children}
+                    </ModalContainer>
+                </Container>
+            )}
+        </>
     );
 };
 

@@ -44,14 +44,10 @@ const FollowingNavigator: React.FC<IProps> = props => {
                     </Link>
                     <IconList>
                         <Icon src="/icon/icon_sns_git.svg">
-                            <Link href="https://github.com/Jeontaeyun">
-                                <a></a>
-                            </Link>
+                            <a href="https://github.com/Jeontaeyun" />
                         </Icon>
                         <Icon src="/icon/icon_sns_instagram.svg">
-                            <Link href="https://www.instagram.com/stark_jeon_/?hl=ko">
-                                <a></a>
-                            </Link>
+                            <a href="https://www.instagram.com/stark_jeon_/?hl=ko" />
                         </Icon>
                     </IconList>
                 </MenuContainer>
