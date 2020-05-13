@@ -43,15 +43,11 @@ const FollowingNavigator: React.FC<IProps> = props => {
                         </a>
                     </Link>
                     <IconList>
-                        <Icon src="/icon/git.svg">
-                            <Link href="https://github.com/Jeontaeyun">
-                                <a></a>
-                            </Link>
+                        <Icon src="/icon/icon_sns_git.svg">
+                            <a href="https://github.com/Jeontaeyun" />
                         </Icon>
-                        <Icon src="/icon/instagram.svg">
-                            <Link href="https://www.instagram.com/stark_jeon_/?hl=ko">
-                                <a></a>
-                            </Link>
+                        <Icon src="/icon/icon_sns_instagram.svg">
+                            <a href="https://www.instagram.com/stark_jeon_/?hl=ko" />
                         </Icon>
                     </IconList>
                 </MenuContainer>
@@ -62,7 +58,7 @@ const FollowingNavigator: React.FC<IProps> = props => {
 
 const Container = styled.div<{ view: boolean }>`
     position: fixed;
-    z-index: 200;
+    z-index: ${props => props.theme.zIndex.navigation};
     width: 100%;
     height: 50px;
     top: 0;
@@ -111,7 +107,7 @@ const Logo = styled.div`
     display: inline-block;
     height: 100%;
     width: 150px;
-    background: url("./title.png");
+    background: url("./logo_connect_dot.png");
     border-radius: 0.1rem;
     @media screen and (max-width: ${props => props.theme.mediumPoint}) {
         display: block;

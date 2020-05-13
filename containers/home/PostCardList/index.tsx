@@ -27,9 +27,9 @@ const PostCardList: React.FC<IProps> = props => {
             <Container>
                 <Title>{title}</Title>
                 <CardListContainer>{postCards}</CardListContainer>
-                <div style={{ textAlign: "center" }}>
-                    <Button>더보기+</Button>
-                </div>
+                <ShowMoreButtonContainer>
+                    <Button>{"더보기 + "}</Button>
+                </ShowMoreButtonContainer>
             </Container>
         </>
     );
@@ -52,19 +52,35 @@ PostCardList.defaultProps = {
             title: "백엔드",
             description: "본문의 내용입니다.",
             createdAt: 2412
+        },
+        {
+            title: "백엔드",
+            description: "본문의 내용입니다.",
+            createdAt: 2412
+        },
+        {
+            title: "백엔드",
+            description: "본문의 내용입니다.",
+            createdAt: 2412
+        },
+        {
+            title: "백엔드",
+            description: "본문의 내용입니다.",
+            createdAt: 2412
         }
     ]
 };
 
 const Container = styled.div`
-    margin: 3rem auto;
     width: 100%;
+    margin: 3rem auto;
     @media screen and (max-width: ${props => props.theme.mediumPoint}) {
         width: 98%;
     }
 `;
 
 const FlexCard = styled(PostCard)``;
+
 const Title = styled.div`
     font-size: 1.5rem;
     margin-bottom: 2rem;
@@ -72,12 +88,17 @@ const Title = styled.div`
 `;
 
 const CardListContainer = styled.div`
+    display: relative;
     width: 100%;
     align-content: center;
     @media screen and (max-width: ${props => props.theme.mediumPoint}) {
         flex-direction: column;
         align-content: center;
     }
+`;
+
+const ShowMoreButtonContainer = styled.div`
+    text-align: center;
 `;
 
 export default PostCardList;

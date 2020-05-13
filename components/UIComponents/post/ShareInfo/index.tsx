@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
 import styled from "styled-components";
 import ProfileImage from "../../base/ProfileImage";
-import { useScrollHook } from "lib/hooks/utils";
 
 interface IProps {
     onClick?(): void;
@@ -37,23 +36,23 @@ const ShareInfo: React.FC<IProps> = props => {
                 <Title>{title}</Title>
                 <Description>{description}</Description>
                 <IconContainer>
-                    <Icon src="/icon/git.svg">
+                    <Icon src="/icon/icon_sns_git.svg">
                         <a></a>
                     </Icon>
-                    <Icon src="/icon/like.svg">
+                    <Icon src="/icon/icon_action.svg">
                         <a></a>
                     </Icon>
-                    <Icon src="/icon/share.svg" onClick={onClickSharing}>
+                    <Icon src="/icon/icon_action_share.svg" onClick={onClickSharing}>
                         <a></a>
                     </Icon>
                     <SharingList visible={isSharingVisible}>
-                        <SharingIcon src="/icon/instagram.svg" visible={isSharingVisible}>
+                        <SharingIcon src="/icon/icon_sns_instagram.svg" visible={isSharingVisible}>
                             <a></a>
                         </SharingIcon>
-                        <SharingIcon src="/icon/twitter.svg" visible={isSharingVisible}>
+                        <SharingIcon src="/icon/icon_sns_twitter.svg" visible={isSharingVisible}>
                             <a></a>
                         </SharingIcon>
-                        <SharingIcon src="/icon/facebook.svg" visible={isSharingVisible}>
+                        <SharingIcon src="/icon/icon_sns_facebook.svg" visible={isSharingVisible}>
                             <a></a>
                         </SharingIcon>
                     </SharingList>

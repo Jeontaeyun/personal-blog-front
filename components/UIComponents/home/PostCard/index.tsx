@@ -26,13 +26,14 @@ interface IProps {
  */
 const PostCard: React.FC<IProps> = props => {
     const { title, description, date, image, tags } = props;
+
     const renderTag = () => {
         return tags.map(tag => <Badge key={tag.id}>{tag.name.slice(0, 12)}</Badge>);
     };
 
     return (
         <Container>
-            <TagConatiner>{renderTag()}</TagConatiner>
+            <TagContainer>{renderTag()}</TagContainer>
             <CardImage image={image}>
                 <PositioningProfile size={"40px"} />
             </CardImage>
@@ -58,6 +59,12 @@ PostCard.defaultProps = {
     tags: [
         { name: "Javascript", id: "1" },
         { name: "Backend", id: "2" },
+        { name: "Docker", id: "3" },
+        { name: "Javascript", id: "1" },
+        { name: "Backend", id: "2" },
+        { name: "Javascript", id: "1" },
+        { name: "Docker", id: "3" },
+        { name: "Backend", id: "2" },
         { name: "Docker", id: "3" }
     ]
 };
@@ -66,15 +73,21 @@ const Container = styled.div`
     display: inline-block;
     cursor: pointer;
     position: relative;
-    width: 420px;
-    height: 400px;
+    width: 100%;
+    height: 100%;
+    max-width: 25%;
+    max-height: 400px;
     background: white;
     margin-bottom: 3rem;
     box-sizing: border-box;
     padding: 10px;
+    @media screen and (max-width: ${props => props.theme.widePoint}) {
+        max-width: 50%;
+        margin-bottom: 4rem;
+    }
     @media screen and (max-width: ${props => props.theme.mediumPoint}) {
-        height: 430px;
-        width: 100%;
+        max-height: 430px;
+        max-width: 100%;
         margin-bottom: 4rem;
     }
 `;
@@ -100,9 +113,13 @@ const PositioningProfile = styled(ProfileImage)`
     right: 40px;
 `;
 
-const TagConatiner = styled.div`
+const TagContainer = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
     width: 100%;
-    height: 30px;
+    height: auto;
+    margin: 4px 0;
 `;
 
 const Description = styled.div`
@@ -143,4 +160,4 @@ const Date = styled.p`
     line-height: 2.4;
 `;
 
-export default PostCard;
+export default React.memo(PostCard);

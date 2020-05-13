@@ -1,7 +1,7 @@
 import * as React from "react";
 import PostCardList from "containers/home/PostCardList";
 import styled from "styled-components";
-import Modal from "components/UIComponents/base/modal/Modal";
+import LoginModal from "containers/base/modal/LoginModal";
 
 interface IProps {
     category?: string[];
@@ -13,8 +13,8 @@ const IndexPage: React.FC<IProps> = props => {
     return (
         <>
             <Container>
+                <LoginModal />
                 {postList}
-                <Modal />
             </Container>
         </>
     );

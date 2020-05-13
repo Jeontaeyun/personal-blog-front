@@ -6,7 +6,7 @@ class MyDocument extends Document<{ helmet: any }> {
     static async getInitialProps(context: DocumentContext) {
         const sheet = new ServerStyleSheet();
         try {
-            const page = context.renderPage(App => props => sheet.collectStyles(<App {...props} />));
+            context.renderPage(App => props => sheet.collectStyles(<App {...props} />));
             const styleTags = sheet.getStyleElement();
             const initialProps = await Document.getInitialProps(context);
             return {

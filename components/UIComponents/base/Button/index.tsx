@@ -3,13 +3,12 @@ import styled from "styled-components";
 
 interface IProps {
     children?: string;
-    onClick?: (event) => void;
+    onClick?: (event: any) => void;
     disabled?: boolean;
 }
 
 const Button: React.FC<IProps> = props => {
     const { children, onClick, disabled } = props;
-
     return (
         <Container onClick={onClick} disabled={disabled}>
             {children}

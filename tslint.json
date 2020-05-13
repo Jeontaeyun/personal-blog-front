@@ -3,6 +3,7 @@
     "rules": {
         "jsx-key": true,
         "jsx-wrap-multiline": true,
+        "jsx-no-multiline-js": false,
         "adjacent-overload-signatures": true,
         "ban-comma-operator": true,
         "no-namespace": true,
