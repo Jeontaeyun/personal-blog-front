@@ -5,11 +5,7 @@ import { NextPage } from "next";
 interface IProps {}
 
 const Index: NextPage<IProps> = () => {
-    return (
-        <>
-            <IndexPage />
-        </>
-    );
+    return <IndexPage />;
 };
 
 export default Index;

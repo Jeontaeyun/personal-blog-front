@@ -6,6 +6,12 @@ const theme = {
         achromatic: "#efefef",
 
         main: "#e45d4c",
+        main100: "#660c0c",
+        main90: "#c92a2a",
+        main80: "#e03131",
+        main70: "#f03e3e",
+        main60: "#fa5252",
+        main50: "#ff6b6b",
         main40: "#ffa8a8",
         main30: "#ffc9c9",
         main20: "#ffe3e3",

@@ -5,11 +5,7 @@ import AboutPage from "components/PageComponents/AboutPage";
 interface IProps {}
 
 const about: NextPage<IProps> = () => {
-  return (
-    <>
-      <AboutPage />
-    </>
-  );
+    return <AboutPage />;
 };
 
 export default about;

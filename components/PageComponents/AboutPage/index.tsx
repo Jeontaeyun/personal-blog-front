@@ -36,7 +36,7 @@ const ContentsContainer = styled.div`
     width: 60%;
     height: 100%;
     min-height: 1200px;
-    background: ${props => props.theme.color.main10};
+    background: ${props => props.theme.color.black10};
     vertical-align: top;
     @media screen and (max-width: ${props => props.theme.mediumPoint}) {
         display: none;
@@ -47,7 +47,7 @@ const DescriptionContainer = styled.div`
     display: inline-block;
     width: 40%;
     min-height: 1200px;
-    background: ${props => props.theme.color.black99};
+    background: ${props => props.theme.color.main100};
     @media screen and (max-width: ${props => props.theme.mediumPoint}) {
         width: 100%;
     }

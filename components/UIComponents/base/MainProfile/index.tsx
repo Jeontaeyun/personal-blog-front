@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { Image } from "public";
+import { Image, Icon } from "public";
+import config from "config";
 
 type Props = {};
 
@@ -9,10 +10,10 @@ const MainProfile: React.FC<Props> = props => {
         <Container>
             <ProfileImage src={Image.profile} alt={"프로필 이미지"} />
             <ButtonContainer>
-                <SnsButton />
-                <SnsButton />
-                <SnsButton />
-                <SnsButton />
+                <SnsButton href={config.sns.linkedIn} src={Icon.sns.linkedIn} />
+                <SnsButton href={config.sns.medium} src={Icon.sns.medium} />
+                <SnsButton href={config.sns.instagram} src={Icon.sns.instagram} />
+                <SnsButton href={config.sns.facebook} src={Icon.sns.facebook} />
             </ButtonContainer>
         </Container>
     );
@@ -39,11 +40,14 @@ const ProfileImage = styled.img`
     object-fit: cover;
 `;
 
-const SnsButton = styled.div`
+const SnsButton = styled.a<{ src: string }>`
     display: inline-block;
-    width: 60px;
-    height: 60px;
-    border: 1px solid white;
+    width: 40px;
+    height: 40px;
+    margin: 0px 8px;
+    mask: url('${props => props.src}');
+    mask-size: contain;
+    background: ${props => props.theme.color.white};
 `;
 
 export default MainProfile;
