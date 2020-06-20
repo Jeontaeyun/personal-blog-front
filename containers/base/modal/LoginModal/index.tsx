@@ -1,8 +1,8 @@
-import React, { useRef, useCallback, useState, MouseEvent } from "react";
-import Modal, { IModal } from "components/UIComponents/base/modal/Modal";
+import React, { useRef, useCallback, useState, useMemo, MouseEvent } from "react";
+import Modal, { IModalHandler } from "components/UIComponents/base/modal/Modal";
 import styled from "styled-components";
 import { useMutation } from "@apollo/react-hooks";
-import { AUTHENTICATE_OAUTH } from "containers/base/authenticateGQL";
+import { AUTHENTICATE_OAUTH } from "containers/base/modal/LoginModal/authenticateGQL";
 
 enum MODAL_STATE {
     LOGIN = "LOGIN",
@@ -14,7 +14,7 @@ interface IProps {}
 const LoginModal: React.FC<IProps> = props => {
     const [authenticateOauth, { data, error }] = useMutation(AUTHENTICATE_OAUTH);
     const [modalState, setModalState] = useState(MODAL_STATE.LOGIN);
-    const modalRef = useRef<IModal>(null);
+    const modalRef = useRef<IModalHandler>(null);
 
     const onToggleModalState = useCallback(
         (event: MouseEvent<HTMLSpanElement>) => {
@@ -32,8 +32,8 @@ const LoginModal: React.FC<IProps> = props => {
         modalRef.current && modalRef.current.open();
     }, []);
 
-    const onCloseModal = useCallback(() => {
-        modalRef.current && modalRef.current.close();
+    const onCloseModal = useCallback(async () => {
+        modalRef.current && (await modalRef.current.close());
     }, []);
 
     const stateButtonText = () => {
@@ -45,23 +45,23 @@ const LoginModal: React.FC<IProps> = props => {
         }
     };
 
-    const stateInfoText = () => {
+    const stateInfoText = useMemo(() => {
         switch (modalState) {
             case MODAL_STATE.LOGIN:
                 return "아직 회원이 아니신가요?";
             case MODAL_STATE.SIGN_UP:
                 return "계정이 이미 있으신가요?";
         }
-    };
+    }, [modalState]);
 
-    const loginText = () => {
+    const loginText = useMemo(() => {
         switch (modalState) {
             case MODAL_STATE.LOGIN:
                 return "로그인";
             case MODAL_STATE.SIGN_UP:
                 return "회원가입";
         }
-    };
+    }, [modalState]);
 
     const onAuthenticationGoogle = useCallback(() => {
         authenticateOauth({ variables: { accessToken: "", platform: "GOOGLE" } });
@@ -84,21 +84,21 @@ const LoginModal: React.FC<IProps> = props => {
                     </LeftGridContainer>
                     <RightGridContainer>
                         <CloseButton src={"icon/icon_action_close.svg"} onClick={onCloseModal} />
-                        <LoginTitle>{loginText()}</LoginTitle>
-                        <LoginSectionTitle>{`이메일로 ${loginText()}`}</LoginSectionTitle>
+                        <LoginTitle>{loginText}</LoginTitle>
+                        <LoginSectionTitle>{`이메일로 ${loginText}`}</LoginSectionTitle>
                         <LocalLoginContainer>
                             <EmailInput type={"text"} placeholder={"이메일을 입력하세요."} />
                             <PasswordInput type={"password"} placeholder={"비밀번호를 입력하세요."} />
                             <LocalLoginButton>{"로그인"}</LocalLoginButton>
                         </LocalLoginContainer>
-                        <LoginSectionTitle>{`소셜 계정으로 ${loginText()}`}</LoginSectionTitle>
+                        <LoginSectionTitle>{`소셜 계정으로 ${loginText}`}</LoginSectionTitle>
                         <OauthLoginContainer>
                             <LoginButton onClick={onAuthenticationGoogle} />
                             <LoginButton onClick={onAuthenticationGitHub} />
                             <LoginButton onClick={onAuthenticationKakao} />
                         </OauthLoginContainer>
                         <ChangeStateText>
-                            {stateInfoText()}
+                            {stateInfoText}
                             <ChangeStateButton onClick={onToggleModalState}>{stateButtonText()}</ChangeStateButton>
                         </ChangeStateText>
                     </RightGridContainer>
@@ -118,6 +118,7 @@ const Container = styled.div`
 
 const ModalButton = styled.div`
     cursor: pointer;
+    margin-top: 120px;
 `;
 
 const LeftGridContainer = styled.div`

@@ -11,9 +11,9 @@ import React, {
 import styled, { keyframes, css } from "styled-components";
 import { useScrollLock, useScrollCenter } from "lib/hooks/utils";
 
-export interface IModal extends HTMLDivElement {
-    close: () => void;
-    open: () => void;
+export interface IModalHandler extends HTMLDivElement {
+    close: () => Promise<boolean>;
+    open: () => Promise<boolean>;
 }
 interface IProps {
     children?: React.ReactChild;
@@ -36,17 +36,23 @@ const Modal: React.FC<IProps> = (props, ref) => {
 
     const onClose = useCallback(() => {
         setShouldClose(true);
-        setTimeout(() => {
-            setVisible(false);
-            onClickOverlay?.();
-        }, ANIMATION_TIME * 1000);
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                setVisible(false);
+                onClickOverlay?.();
+                resolve(true);
+            });
+        });
     }, []);
 
     const onOpen = useCallback(() => {
         setShouldClose(false);
-        setTimeout(() => {
-            setVisible(true);
-        }, ANIMATION_TIME * 1000);
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                setVisible(true);
+                resolve(true);
+            }, ANIMATION_TIME * 1000);
+        });
     }, []);
 
     const onHandleMouseDown = useCallback(
@@ -65,7 +71,7 @@ const Modal: React.FC<IProps> = (props, ref) => {
 
     const onHandleKeyDown = useCallback(
         (event: KeyboardEvent) => {
-            console.log("hi");
+            console.log(event.code);
             if (event.code === "Tab") {
                 /**
                  * TODO: Tab Action with Input, button
@@ -80,8 +86,8 @@ const Modal: React.FC<IProps> = (props, ref) => {
     );
 
     useImperativeHandle(ref, () => ({
-        close: onClose,
-        open: onOpen
+        close: () => onClose(),
+        open: () => onOpen()
     }));
 
     useEffect(() => {
@@ -199,4 +205,4 @@ const ModalContainer = styled.div<{ shouldClose: boolean }>`
     }
 `;
 
-export default forwardRef<IModal, IProps>(Modal);
+export default forwardRef<IModalHandler, IProps>(Modal);
