@@ -31,9 +31,9 @@ class MyDocument extends Document<{ helmet: any }> {
         return (
             <html {...htmlAttrs}>
                 <Head>
-                    {this.props.styles}
                     <meta charSet="utf-8" />
                     <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+                    {this.props.styles}
                 </Head>
                 <body {...bodyAttrs}>
                     <Main />

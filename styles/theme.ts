@@ -40,7 +40,7 @@ const theme = {
     mediumPoint: "764px",
     widePoint: "1260px",
 
-    BORDER_RADIUS: "6px"
+    BORDER_RADIUS: "4px"
 };
 
 export default theme;

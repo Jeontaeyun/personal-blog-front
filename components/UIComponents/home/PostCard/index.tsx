@@ -1,7 +1,7 @@
 import "moment/locale/ko";
 
 import moment from "moment";
-import React from "react";
+import React, { useMemo } from "react";
 import styled from "styled-components";
 import { ITag } from "types/common/Tag";
 
@@ -27,13 +27,13 @@ interface IProps {
 const PostCard: React.FC<IProps> = props => {
     const { title, description, date, image, tags } = props;
 
-    const renderTag = () => {
+    const tagList = useMemo(() => {
         return tags.map(tag => <Badge key={tag.id}>{tag.name.slice(0, 12)}</Badge>);
-    };
+    }, [tags]);
 
     return (
         <Container>
-            <TagContainer>{renderTag()}</TagContainer>
+            <TagContainer>{tagList}</TagContainer>
             <CardImage image={image}>
                 <PositioningProfile size={"40px"} />
             </CardImage>

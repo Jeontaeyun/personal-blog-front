@@ -10,6 +10,7 @@ interface IProps {
 const SideBottomButton: React.FC<IProps> = props => {
     const { onClick, img, size } = props;
     const [isView, setIsView] = useState<boolean>(false);
+
     const scrollEvent = () => {
         const crossBrowsingTop = document.documentElement.scrollTop || document.body.scrollTop;
         if (crossBrowsingTop > 400) {
@@ -18,10 +19,16 @@ const SideBottomButton: React.FC<IProps> = props => {
             setIsView(false);
         }
     };
+
     useEffect(() => {
         window.addEventListener("scroll", scrollEvent);
         window.addEventListener("load", scrollEvent);
+        return () => {
+            window.removeEventListener("scroll", scrollEvent);
+            window.removeEventListener("load", scrollEvent);
+        };
     }, []);
+
     return (
         <>
             {isView && (

@@ -14,11 +14,11 @@ const PostCardList: React.FC<IProps> = props => {
     const { title, postList } = props;
     const postCards = postList.map((item, idx) => (
         <FlexCard
+            key={`${item.id}`}
             image={item.thumbnailURL}
             title={item.title}
             description={item.description}
             date={item.createdAt}
-            key={idx}
         />
     ));
 
@@ -28,7 +28,7 @@ const PostCardList: React.FC<IProps> = props => {
                 <Title>{title}</Title>
                 <CardListContainer>{postCards}</CardListContainer>
                 <ShowMoreButtonContainer>
-                    <Button>{"더보기 + "}</Button>
+                    <Button>{" 더보기 + "}</Button>
                 </ShowMoreButtonContainer>
             </Container>
         </>
@@ -44,7 +44,7 @@ PostCardList.defaultProps = {
             createdAt: 124124
         },
         {
-            title: "백엔드",
+            title: "프론트",
             description: "본문의 내용입니다.",
             createdAt: 12124
         },

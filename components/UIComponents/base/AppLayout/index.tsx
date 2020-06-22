@@ -10,23 +10,9 @@ interface IProps {
 
 const AppLayout: React.FC<IProps> = props => {
     const { MainContents } = props;
-    const [isFollowingNav, setIsFollowingNav] = useState(false);
-    const scrollEvent = (event: any) => {
-        const crossBrowsingTop = document.documentElement.scrollTop || document.body.scrollTop;
-        const shouldSetVisible = crossBrowsingTop > 400;
-        if (shouldSetVisible) setIsFollowingNav(true);
-        else setIsFollowingNav(false);
-    };
-    useEffect(() => {
-        window.addEventListener("scroll", scrollEvent);
-        return () => {
-            window.removeEventListener("scroll", scrollEvent);
-        };
-    }, []);
-
     return (
         <Container>
-            <FollowingNavigator isView={isFollowingNav} />
+            <FollowingNavigator isView={true} />
             {MainContents}
             <SideBottomButton size="40px" />
         </Container>

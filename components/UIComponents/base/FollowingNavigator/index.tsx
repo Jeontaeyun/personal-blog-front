@@ -1,58 +1,81 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Link from "next/link";
-interface IProps {
+
+import { Icon } from "public";
+import config from "config";
+
+type Props = {
     children?: React.ReactChild;
     isView?: boolean;
+};
+
+enum NAVIGATION {
+    HOME = "HOME",
+    ABOUT = "ABOUT",
+    ARCHIVES = "ARCHIVES",
+    PORTFOLIO = "PORTFOLIO",
+    POST = "POST"
 }
 
-const FollowingNavigator: React.FC<IProps> = props => {
+const NAVIGATION_TEXT: { [key in keyof typeof NAVIGATION]: string } = {
+    [NAVIGATION.HOME]: "home",
+    [NAVIGATION.ABOUT]: "About",
+    [NAVIGATION.ARCHIVES]: "아카이브",
+    [NAVIGATION.PORTFOLIO]: "포트폴리오",
+    [NAVIGATION.POST]: "포스트"
+};
+
+const NAVIGATION_LINK: { [key in keyof typeof NAVIGATION]: string } = {
+    [NAVIGATION.HOME]: "/",
+    [NAVIGATION.ABOUT]: "/about",
+    [NAVIGATION.ARCHIVES]: "/archives",
+    [NAVIGATION.PORTFOLIO]: "/portfolio",
+    [NAVIGATION.POST]: "/post"
+};
+
+const FollowingNavigator: React.FC<Props> = props => {
     const { isView } = props;
-    const [view, setView] = useState(false);
+    const [view, setView] = useState(isView);
+
+    const navigation = Object.keys(NAVIGATION).map((key: NAVIGATION) => {
+        switch (key) {
+            case NAVIGATION.HOME:
+                return (
+                    <Link href="/" key={key}>
+                        <Logo />
+                    </Link>
+                );
+            case NAVIGATION.ABOUT:
+            case NAVIGATION.ARCHIVES:
+            case NAVIGATION.PORTFOLIO:
+            case NAVIGATION.POST:
+                return (
+                    <Link href={NAVIGATION_LINK[key]} key={key}>
+                        <Menu>{NAVIGATION_TEXT[key]}</Menu>
+                    </Link>
+                );
+        }
+    });
+
     useEffect(() => {
         setView(isView);
     }, [isView]);
+
     return (
-        <>
-            <Container view={view}>
-                <MenuContainer>
-                    <Link href="/">
-                        <a>
-                            <Logo />
-                        </a>
-                    </Link>
-                    <Link href="/about">
-                        <a>
-                            <Menu>
-                                <p>About</p>
-                            </Menu>
-                        </a>
-                    </Link>
-                    <Link href="/Archives">
-                        <a>
-                            <Menu>
-                                <p>Archives</p>
-                            </Menu>
-                        </a>
-                    </Link>
-                    <Link href="/post">
-                        <a>
-                            <Menu>
-                                <p>Post</p>
-                            </Menu>
-                        </a>
-                    </Link>
-                    <IconList>
-                        <Icon src="/icon/icon_sns_git.svg">
-                            <a href="https://github.com/Jeontaeyun" />
-                        </Icon>
-                        <Icon src="/icon/icon_sns_instagram.svg">
-                            <a href="https://www.instagram.com/stark_jeon_/?hl=ko" />
-                        </Icon>
-                    </IconList>
-                </MenuContainer>
-            </Container>
-        </>
+        <Container view={view}>
+            <MenuContainer>
+                {navigation}
+                <IconList>
+                    <CustomIcon src={Icon.sns.gitRound}>
+                        <a href={config.sns.github} />
+                    </CustomIcon>
+                    <CustomIcon src={Icon.sns.instagramRound}>
+                        <a href={config.sns.instagram} />
+                    </CustomIcon>
+                </IconList>
+            </MenuContainer>
+        </Container>
     );
 };
 
@@ -103,7 +126,8 @@ const IconList = styled.span`
     }
 `;
 
-const Logo = styled.div`
+const Logo = styled.nav`
+    cursor: pointer;
     display: inline-block;
     height: 100%;
     width: 150px;
@@ -117,32 +141,33 @@ const Logo = styled.div`
     }
 `;
 
-const Menu = styled.div`
+const Menu = styled.nav`
+    cursor: pointer;
     font-size: 16px;
     display: inline-block;
     vertical-align: top;
+    box-sizing: border-box;
     margin: 0;
     height: 100%;
-    padding: 0 1rem;
-    border-radius: 0.1rem;
-    p {
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    cursor: pointer;
+    padding: 18px 24px;
+    border-radius: 2px;
     &:hover {
         background: ${props => props.theme.color.achromatic};
         color: ${props => props.theme.color.main};
     }
     @media screen and (max-width: ${props => props.theme.mediumPoint}) {
         height: 50px;
-        padding: 0 0.5rem;
+        font-size: 16px;
+        padding: 18px 12px;
+    }
+    @media screen and (max-width: ${props => props.theme.smallPoint}) {
+        height: 50px;
+        font-size: 14px;
+        padding: 18px 4px;
     }
 `;
 
-const Icon = styled.div<{ src: string }>`
+const CustomIcon = styled.div<{ src: string }>`
   display: inline-block;
   position:relative;
   height: 100%;

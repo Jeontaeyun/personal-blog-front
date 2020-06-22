@@ -1,8 +1,10 @@
 export default {
     sns: {
-        instagram: "/icon/icon_sns_instagram.svg",
-        linkedIn: "/icon/icon_sns_linkedIn.svg",
-        facebook: "/icon/icon_sns_facebook.svg",
-        medium: "/icon/icon_sns_medium.svg"
+        instagramRound: "/icon/sns/icon_sns_instagram_round.svg",
+        gitRound: "/icon/sns/icon_sns_git_round.svg",
+        instagram: "/icon/sns/icon_sns_instagram.svg",
+        linkedIn: "/icon/sns/icon_sns_linkedIn.svg",
+        facebook: "/icon/sns/icon_sns_facebook.svg",
+        medium: "/icon/sns/icon_sns_medium.svg"
     }
 };
